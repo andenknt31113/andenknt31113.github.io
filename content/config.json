@@ -1,0 +1,14 @@
+{
+  "languageCode": "ja",
+  "topicType": "STANDARD",
+  "intervalDays": 2,
+  "postHourJst": 10,
+  "imageBaseUrl": "https://andenknt31113.github.io/images/",
+  "callToAction": null,
+  "_memo": {
+    "intervalDays": "投稿の間隔（日）。2 = 2日に1回。",
+    "postHourJst": "参考値。実際の実行時刻は .github/workflows/gbp-auto-post.yml の cron で決まります。",
+    "imageBaseUrl": "images/ フォルダを GitHub Pages で公開したときの URL。末尾のスラッシュ必須。",
+    "callToAction": "ボタンを付ける場合の例: {\"actionType\": \"BOOK\", \"url\": \"https://予約ページのURL\"}。actionType は BOOK / ORDER / SHOP / LEARN_MORE / SIGN_UP / CALL。不要なら null。"
+  }
+}

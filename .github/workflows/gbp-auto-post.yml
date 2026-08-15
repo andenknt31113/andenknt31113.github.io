@@ -1,0 +1,66 @@
+name: GBP 自動投稿
+
+on:
+  schedule:
+    # 毎日 01:00 UTC（＝日本時間 10:00）に起動する。
+    # 実際に投稿するかどうかは content/config.json の intervalDays（既定 2日）と
+    # content/state.json の前回投稿日時をもとにスクリプト側が判定する。
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "投稿間隔を無視して今すぐ投稿する"
+        type: boolean
+        default: false
+      dry_run:
+        description: "実際には投稿せず、内容だけ確認する"
+        type: boolean
+        default: false
+
+concurrency:
+  group: gbp-auto-post
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 本文・画像の設定を検証
+        run: python3 scripts/gbp_post.py --check
+
+      - name: 投稿スクリプトを実行
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+          GBP_ACCOUNT_ID: ${{ secrets.GBP_ACCOUNT_ID }}
+          GBP_LOCATION_ID: ${{ secrets.GBP_LOCATION_ID }}
+        run: |
+          ARGS=""
+          if [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          python3 scripts/gbp_post.py $ARGS
+
+      - name: 投稿状況（state.json）をコミット
+        if: success()
+        run: |
+          if git diff --quiet -- content/state.json; then
+            echo "state.json に変更なし（投稿していないためコミット不要）"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/state.json
+          git commit -m "chore: GBP自動投稿の状態を更新"
+          for i in 1 2 3 4; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            echo "push に失敗しました。リトライします（$i 回目）"
+            sleep $((2 ** i))
+          done
+          echo "state.json の push に失敗しました" >&2
+          exit 1
