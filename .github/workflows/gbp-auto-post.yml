@@ -1,11 +1,11 @@
 name: GBP 自動投稿
 
+# 【停止中】運用はスプレッドシート版（apps-script/）に決定したため、定期実行は止めてある。
+# GitHub版を使う場合は下の schedule の3行のコメントを外すこと（設定は docs/SETUP-GitHub.md）。
 on:
-  schedule:
-    # 毎日 01:00 UTC（＝日本時間 10:00）に起動する。
-    # 実際に投稿するかどうかは content/config.json の intervalDays（既定 2日）と
-    # content/state.json の前回投稿日時をもとにスクリプト側が判定する。
-    - cron: "0 1 * * *"
+  # schedule:
+  #   # 毎日 01:00 UTC（＝日本時間 10:00）。投稿するかは intervalDays と state.json で判定する。
+  #   - cron: "0 1 * * *"
   workflow_dispatch:
     inputs:
       force:
