@@ -1,12 +1,138 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>OFC Fantasy Optimizer</title>
-  </head>
-  <body>
-    <h1>OFC Fantasy Optimizer</h1>
-    <p>app-ads.txt is available at /app-ads.txt</p>
-  </body>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="24時間ネット予約受付中のヘアサロン公式サイト。クーポン・メニュー・スタイリスト・空席状況をご確認いただけます。" />
+  <title>ヘアサロン公式サイト・24時間ネット予約</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main>
+    <!-- ヒーロー -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-label">HAIR &amp; BEAUTY SALON</p>
+        <div class="hero-rating">
+          <span class="rating-score" id="hero-score"></span>
+          <span>
+            <span class="stars" id="hero-stars"></span>
+            <span class="rating-count" id="hero-count"></span>
+          </span>
+        </div>
+        <h1 id="hero-catch"></h1>
+        <p class="hero-desc" id="hero-desc"></p>
+        <ul class="hero-meta" id="hero-meta"></ul>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="reserve.html">空席を見て予約する</a>
+          <a class="btn btn-outline btn-lg" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.6)" href="menu.html">クーポン・メニュー</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- お知らせ -->
+    <section class="container" style="margin-top:28px;">
+      <div class="notice is-info">
+        <b>お知らせ</b>
+        <span>ネット予約は24時間受付中です。当日のご予約は施術開始<span id="lead-hours"></span>時間前まで承ります。それ以降はお電話でご相談ください。</span>
+      </div>
+    </section>
+
+    <!-- クーポン -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">COUPON</span>
+          <h2 class="section-title">おすすめクーポン</h2>
+          <p class="section-desc">ネット予約限定の特別価格でご案内しています。</p>
+        </div>
+        <div class="coupon-list" id="home-coupons"></div>
+        <p style="text-align:center;margin-top:26px;">
+          <a class="btn btn-outline" href="menu.html">すべてのクーポン・メニューを見る</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- スタイル -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">HAIR STYLE</span>
+          <h2 class="section-title">ヘアスタイル</h2>
+          <p class="section-desc">なりたいイメージが見つかったら、そのままご予約いただけます。</p>
+        </div>
+        <div class="style-grid" id="home-styles"></div>
+        <p style="text-align:center;margin-top:26px;">
+          <a class="btn btn-outline" href="gallery.html">スタイルをもっと見る</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- スタッフ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">STAFF</span>
+          <h2 class="section-title">スタッフ紹介</h2>
+          <p class="section-desc">指名予約も承ります。得意分野からお選びください。</p>
+        </div>
+        <div class="staff-grid" id="home-staff"></div>
+      </div>
+    </section>
+
+    <!-- 口コミ -->
+    <section class="section section-alt">
+      <div class="container-narrow">
+        <div class="section-head">
+          <span class="section-label">REVIEW</span>
+          <h2 class="section-title">お客様の声</h2>
+        </div>
+        <div class="review-list" id="home-reviews"></div>
+        <p style="text-align:center;margin-top:26px;">
+          <a class="btn btn-outline" href="reviews.html">口コミをすべて見る</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 店舗情報 -->
+    <section class="section" id="info">
+      <div class="container-narrow">
+        <div class="section-head">
+          <span class="section-label">SALON INFO</span>
+          <h2 class="section-title">サロン情報</h2>
+        </div>
+        <table class="info-table"><tbody id="salon-info"></tbody></table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq">
+      <div class="container-narrow">
+        <div class="section-head">
+          <span class="section-label">FAQ</span>
+          <h2 class="section-title">よくあるご質問</h2>
+        </div>
+        <div id="faq-list"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container-narrow" style="text-align:center;">
+        <h2 class="section-title" style="margin-bottom:14px;">ご予約はネットが便利です</h2>
+        <p class="section-desc" style="margin-bottom:24px;">空席状況を見ながら、24時間いつでもご予約いただけます。</p>
+        <a class="btn btn-primary btn-lg" href="reserve.html">空席カレンダーを見る</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/pages.js"></script>
+</body>
 </html>
