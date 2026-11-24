@@ -563,8 +563,8 @@
       shot: '05-battle-home',
       tagJa: 'OFFLINE PRO CPU BATTLE',
       tagEn: 'OFFLINE PRO CPU BATTLE',
-      titleJa: 'オフライン最強 AI 対戦（初級〜さいきょう）',
-      titleEn: 'Offline AI Battles (Easy to Strongest)',
+      titleJa: 'オフライン最強 AI 対戦（入門〜Pro AI）',
+      titleEn: 'Offline AI Battles (Beginner to Pro AI)',
       descJa: '通信ゼロでサクサク打てる実戦卓。54枚・52枚対応、対局履歴やブックマークからいつでも AI 1 局レビューへ直行。',
       descEn: 'Play fast offline matches across 54-card & 52-card rules, bookmark tough hands, and launch full AI reviews with one tap.'
     },
@@ -594,7 +594,7 @@
           'AI 1 局レビュー 1 日 1 局',
           '今日の 1 問（毎日無料）＋ ドリル 1 日 3 問',
           'ファンタジーソルバー＆練習 1 日 3 回',
-          'CPU 対戦（よわい〜つよい）無制限',
+          'CPU 対戦（入門〜標準 AI）無制限',
           '5 秒点数計算＆ 26 枚計算ツール無制限'
         ],
         cta: '無料で始める'
@@ -631,7 +631,7 @@
         items: [
           '平場ソルバー（S0〜S4・54枚/52枚・全スタック）無制限',
           'AI 1 局レビュー＆実戦ミス自動復習無制限',
-          'Pro 限定「さいきょう」C++20 ネイティブ AI 対戦',
+          'Pro 限定「Pro AI」C++20 ネイティブ AI 対戦',
           '厳選 180 問プロドリル無制限',
           'Standard の全機能（ファンタジー無制限・広告なし）込み'
         ],
@@ -652,7 +652,7 @@
           'AI Full-Hand Review: 1 full hand/day',
           'Free Daily Spot + 3 Spot Drills/day',
           'Fantasy Solver & Training: 3/day',
-          'Unlimited offline CPU battles (Easy–Strong)',
+          'Unlimited offline CPU battles (Beginner–Standard AI)',
           'Unlimited 5-second & 26-card Score Calculator'
         ],
         cta: 'Download Free'
@@ -689,7 +689,7 @@
         items: [
           'Unlimited Flat-Play Solver (S0–S4, 54c & 52c, 50pt–∞)',
           'Unlimited AI Full-Hand Reviews & mistake replay',
-          'Pro-exclusive "Strongest" native C++20 CPU',
+          'Pro-exclusive "Pro AI" native C++20 CPU',
           'Unlimited 180+ curated Pro Spot Drills',
           'Includes all Standard features & zero ads'
         ],
@@ -710,11 +710,11 @@
       },
       {
         q: 'Pro 買い切りプラン（¥88,000）は何が含まれますか？',
-        a: 'アプリ内の全 Pro 機能（平場ソルバー・AI 1局レビュー・さいきょう AI・180 問ドリル・ファンタジー無制限・広告なし）を端末内で追加課金なく永久に利用できます。サーバー維持費に依存しないため安心です。'
+        a: 'アプリ内の全 Pro 機能（平場ソルバー・AI 1局レビュー・Pro AI 対戦・180 問ドリル・ファンタジー無制限・広告なし）を端末内で追加課金なく永久に利用できます。サーバー維持費に依存しないため安心です。'
       },
       {
         q: 'まず無料でどこまで試せますか？',
-        a: '平場ソルバー 1 日 1 回、AI 1 局レビュー 1 日 1 局、今日の 1 問（毎日無料）、CPU 対戦（よわい〜つよい）、5 秒点数計算ツールをすべて無料で体験してから Pro を検討できます。'
+        a: '平場ソルバー 1 日 1 回、AI 1 局レビュー 1 日 1 局、今日の 1 問（毎日無料）、CPU 対戦（入門〜標準 AI）、5 秒点数計算ツールをすべて無料で体験してから Pro を検討できます。'
       }
     ],
     en: [
@@ -728,7 +728,7 @@
       },
       {
         q: 'What does the Pro Lifetime ($599.99 / ¥88,000) license cover?',
-        a: 'One-time purchase for lifetime access to all on-device Pro features (unlimited Flat Solver, AI Hand Review, Strongest CPU, 180+ Pro Drills, Fantasy Solver, no ads) with zero recurring fees.'
+        a: 'One-time purchase for lifetime access to all on-device Pro features (unlimited Flat Solver, AI Hand Review, Pro AI battles, 180+ Pro Drills, Fantasy Solver, no ads) with zero recurring fees.'
       },
       {
         q: 'Can I test the solver accuracy before subscribing?',
