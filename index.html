@@ -1,12 +1,281 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>OFC Fantasy Optimizer</title>
+    <title>OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver &amp; Trainer</title>
+    <meta
+      name="description"
+      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）の 100% オフライン C++20 ソルバー＆トレーニングアプリ。54枚/52枚対応・実効スタック別FL価値・AI 1局レビュー・5秒点数計算。無料クイズと点数計算ツールをブラウザで今すぐ体験。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver" />
+    <meta
+      property="og:description"
+      content="100% offline C++20 OFC Pineapple solver for 54-card &amp; 52-card games. Try exact S2–S3 OFC quizzes and the 5-second score calculator free in your browser."
+    />
+    <meta property="og:url" content="https://andenknt31113.github.io/" />
+    <meta property="og:image" content="https://andenknt31113.github.io/assets/og-v3-ja.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver" />
+    <meta
+      name="twitter:description"
+      content="Try 3 exact-enumeration OFC Pineapple spots &amp; 5-second score calculator free in your browser."
+    />
+    <meta name="twitter:image" content="https://andenknt31113.github.io/assets/og-v3-ja.jpg" />
+    <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>OFC Fantasy Optimizer</h1>
-    <p>app-ads.txt is available at /app-ads.txt</p>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#">
+          <img class="brand-icon" src="assets/logo-128.webp" alt="OFC Fantasy Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Fantasy Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#quiz" data-i18n="nav_quiz">無料クイズ</a>
+          <a href="#calculator" data-i18n="nav_calc">5秒点数計算</a>
+          <a href="#features" data-i18n="nav_features">機能</a>
+          <a href="#data" data-i18n="nav_data">FLデータ</a>
+          <a href="#pricing" data-i18n="nav_pricing">料金</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" class="lang-btn active" data-lang="ja">日本語</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+            data-i18n="cta_store_short"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow" data-i18n="hero_eyebrow">v3.0 · 100% OFFLINE NATIVE C++20 ENGINE</div>
+            <h1 class="hero-title" data-i18n-html="hero_title">
+              OFC Pineapple を、<br />勘から<span class="gold">「期待値」</span>へ。
+            </h1>
+            <p class="hero-sub" data-i18n="hero_sub">
+              初手 S0 から最終 S4 までの平場ソルバー、AI 1局レビュー、実効スタック（50pt〜∞）別の最適解、54枚／52枚（ジョーカーなし）完全対応。すべて iPhone 内でオフライン動作。
+            </p>
+            <div class="hero-ctas">
+              <a
+                class="btn btn-gold"
+                href="https://apps.apple.com/app/id6757732173"
+                target="_blank"
+                rel="noopener"
+                data-i18n="cta_download"
+              >App Store で無料ダウンロード</a>
+              <a class="btn btn-ghost" href="#quiz" data-i18n="cta_try_tools">ブラウザで無料クイズ＆5秒計算を試す</a>
+            </div>
+            <div class="trust-pills">
+              <span class="trust-pill" data-i18n="pill_offline">100% オフライン C++20</span>
+              <span class="trust-pill" data-i18n="pill_decks">54枚（JK2枚）＆ 52枚（JKなし）</span>
+              <span class="trust-pill" data-i18n="pill_stacks">実効スタック 50pt / 100pt / 200pt / ∞</span>
+              <span class="trust-pill" data-i18n="pill_zero_latency">サーバー待ちゼロ</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-phone-stack">
+              <img
+                class="hero-shot"
+                data-shot="01-game-review"
+                src="assets/01-game-review-ja.webp"
+                alt="AI Full-Hand Review screenshot"
+                width="660"
+                height="1434"
+              />
+              <img
+                class="hero-shot-secondary"
+                data-shot="02-flat-solver-pro"
+                src="assets/02-flat-solver-pro-ja.webp"
+                alt="Flat-Play Solver Pro screenshot"
+                width="660"
+                height="1434"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Free Interactive Tool #1: Exact OFC Quiz -->
+      <section class="section" id="quiz">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker" data-i18n="quiz_kicker">FREE INTERACTIVE TOOL #1</span>
+            <h2 class="section-title" data-i18n="quiz_heading">あなたの OFC 直感、厳密計算に勝てるか？</h2>
+            <p class="section-desc" data-i18n="quiz_desc">
+              実戦から厳選した 3 問をブラウザ上でそのまま解けます。すべて C++20 エンジンで検証した期待値（EV）・FL 突入率・ファウル率を即時採点。
+            </p>
+          </div>
+          <div class="panel" id="quiz-root"></div>
+        </div>
+      </section>
+
+      <!-- Free Interactive Tool #2: 5-Second Quick Score Calculator -->
+      <section class="section" id="calculator">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker" data-i18n="calc_kicker">FREE INTERACTIVE TOOL #2</span>
+            <h2 class="section-title" data-i18n="calc_heading">実卓向け 5 秒 OFC 点数計算（無料）</h2>
+            <p class="section-desc" data-i18n="calc_desc">
+              26 枚のカードを入力せずに「各段の勝敗・ロイヤリティ・ファウル有無」だけで行ポイント・スクープ（±3）・ロイヤリティ差・次局ファンタジー（14〜17枚）を即座に清算します。
+            </p>
+          </div>
+          <div class="panel" id="calc-root"></div>
+        </div>
+      </section>
+
+      <!-- Feature Showcase -->
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker" data-i18n="feat_kicker">INSIDE v3.0</span>
+            <h2 class="section-title" data-i18n="feat_heading">強くなるために必要な道具を、iPhone 1 台に。</h2>
+            <p class="section-desc" data-i18n="feat_desc">
+              タップで画像を拡大できます。全機能がオフラインで動作するため、海外遠征や機内、オフライン卓でもそのまま解析可能。
+            </p>
+          </div>
+          <div class="features-grid" id="features-grid"></div>
+        </div>
+      </section>
+
+      <!-- Reproducible FL Research Data -->
+      <section class="section" id="data">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker" data-i18n="data_kicker">REPRODUCIBLE C++20 BENCHMARKS</span>
+            <h2 class="section-title" data-i18n="data_heading">スタック深さとジョーカー有無で、FL 価値は別物になる。</h2>
+            <p class="section-desc" data-i18n="data_desc">
+              「スタック無限・54枚」の感覚のまま 50pt 卓や 52 枚（ジョーカーなし）卓を打つと、Trips 特攻で大きく期待値を落とします。アプリ内では 1 タップで卓条件を切替可能。
+            </p>
+          </div>
+          <div class="charts-grid">
+            <figure class="chart-card" style="margin:0;">
+              <img
+                class="chart-img"
+                data-chart="chart-stack-fl"
+                src="assets/chart-stack-fl-ja.webp"
+                alt="Effective stack vs FL value chart"
+                width="1400"
+                height="788"
+                loading="lazy"
+              />
+              <figcaption class="chart-caption" data-i18n="chart1_cap">
+                54枚（JK2枚）実効スタック別 FL 価値：Trips（17枚）は ∞ 126.4pt → 50pt 42.0pt（-67%）。一方 QQ（14枚）は 100pt でも 22.8pt とほぼ不変。
+              </figcaption>
+            </figure>
+            <figure class="chart-card" style="margin:0;">
+              <img
+                class="chart-img"
+                data-chart="chart-54-vs-52"
+                src="assets/chart-54-vs-52-ja.webp"
+                alt="54-card vs 52-card FL value chart"
+                width="1400"
+                height="788"
+                loading="lazy"
+              />
+              <figcaption class="chart-caption" data-i18n="chart2_cap">
+                54枚 vs 52枚（JKなし）：ジョーカー 2 枚が抜けると継続率が急落し、QQ 14.0pt（-40%）／Trips 58.5pt（-54%）まで半減。
+              </figcaption>
+            </figure>
+          </div>
+          <div class="methodology-box" data-i18n="methodology_note">
+            計測条件（再現性注記）：C++20 厳密分枝限定 FL ソルバー（1,200 局／ティア）＋ 100,000 連鎖マルコフ計算、同枚数リファンタジー（RULES §5.1 / §6）。既存の参照ソルバーと同様「自分の FL 連鎖のみ」を積算した定義値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="section" id="pricing">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker" data-i18n="price_kicker">TRANSPARENT PRICING</span>
+            <h2 class="section-title" data-i18n="price_heading">まずは無料で体験。本格研究には Pro。</h2>
+            <p class="section-desc" data-i18n="price_desc">
+              毎日の「今日の 1 問」・AI 1局レビュー・平場ソルバー・5秒点数計算はすべて無料で試せます。ガチ勢向けの Pro プランはサブスクとオンデバイス永久買い切りを用意。
+            </p>
+          </div>
+          <div class="pricing-grid" id="pricing-grid"></div>
+          <p class="pricing-footnote" data-i18n="pricing_footnote">
+            ※ 表示価格は日本（JPY）／米国（USD）の基準目安です。実際の請求額は App Store の各地域通貨・為替レートに準じます。サブスクリプションは iOS の「設定」からいつでも解約できます。買い切りプランは自動更新されません。
+          </p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker">FAQ</span>
+            <h2 class="section-title" data-i18n="faq_heading">よくある質問</h2>
+          </div>
+          <div class="faq-grid" id="faq-grid"></div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-banner">
+            <h2 data-i18n="final_title">今日の 1 問から、期待値ベースの OFC へ。</h2>
+            <p data-i18n="final_desc">
+              インストール無料・アカウント登録不要。100% オフラインで今すぐ平場ソルバー・AI 1局レビュー・5秒点数計算を試せます。
+            </p>
+            <a
+              class="btn btn-gold"
+              href="https://apps.apple.com/app/id6757732173"
+              target="_blank"
+              rel="noopener"
+              data-i18n="cta_download"
+            >App Store で無料ダウンロード</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Fantasy Optimizer</div>
+        <div class="footer-links">
+          <a
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+          <a
+            href="https://andenknt31113.github.io/ofc-fantasy-optimizer-legal/privacy-policy.html"
+            target="_blank"
+            rel="noopener"
+            data-i18n="footer_privacy"
+          >プライバシーポリシー</a>
+          <a
+            href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+            target="_blank"
+            rel="noopener"
+            data-i18n="footer_terms"
+          >利用規約（Apple EULA）</a>
+          <a href="mailto:andenk31113@icloud.com" data-i18n="footer_support">お問い合わせ</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+      <img id="lightbox-img" alt="" />
+    </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
