@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070709" />
+    <title>OFC Pineapple Opening 5-Card Strategy &amp; Foul Rate Guide — OFC Optimizer</title>
+    <meta
+      name="description"
+      content="Solver-backed Open Face Chinese (OFC) Pineapple strategy guide: how to set your first 5 cards on Street 0, why 71.2% of optimal plays flip by stack depth, why chasing 0% foul rate loses EV, and how to place Jokers."
+    />
+    <link rel="canonical" href="https://ofcoptimizer.com/en/opening-strategy/" />
+    <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/opening-strategy/" />
+    <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/opening-strategy/" />
+    <link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/opening-strategy/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:title" content="OFC Pineapple Opening 5-Card Strategy &amp; Foul Rate Guide" />
+    <meta
+      property="og:description"
+      content="Data from 66 solver-mined Street 0 spots: 71.2% stack flips, 30.0% average optimal foul rate, and 5 actionable opening rules."
+    />
+    <meta property="og:url" content="https://ofcoptimizer.com/en/opening-strategy/" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ofcoptimizer" />
+    <meta name="twitter:title" content="OFC Pineapple Opening 5-Card Strategy &amp; Foul Rate Guide" />
+    <meta
+      name="twitter:description"
+      content="Solver data from 66 curated Street 0 hands: stack flips, optimal foul risk, and 5 practical rules to set your opening 5 cards."
+    />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../../styles.css?v=20261125-3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "OFC Pineapple Opening 5-Card Strategy & Foul Rate Guide",
+        "description": "Solver-backed guide to setting the first 5 cards in Open Face Chinese (OFC) Pineapple Poker, covering stack-depth flips, optimal foul rate vs Fantasyland EV, and Joker placement.",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "inLanguage": "en",
+        "author": { "@type": "Organization", "name": "OFC Optimizer" },
+        "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
+        "mainEntityOfPage": "https://ofcoptimizer.com/en/opening-strategy/",
+        "image": "https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which street matters most in OFC Pineapple Poker?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Street 0 (setting your opening 5 cards) creates the largest EV swings in OFC Pineapple. Across 66 solver-curated Street 0 spots in OFC Optimizer, the gap between the #1 and #2 play averages +2.27 pts and reaches up to +6.18 pts on a single decision."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should you try to avoid fouling at all costs in OFC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. In 54-card Joker OFC with Progressive Fantasyland, Top QQ–AAA chains are worth 23–126 pts in deep stacks. Across our 66 curated Street 0 spots, the #1 solver line accepts an average 30.0% foul rate in exchange for a 39.1% Fantasyland entry rate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does effective stack depth change OFC opening strategy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In a 50pt effective stack, 17-card Trips Fantasyland drops from 126.4 pts to 42.0 pts (-67%). Because Fantasyland upside shrinks dramatically, 71.2% (47 of 66) of curated Street 0 spots actually flip their #1 optimal placement between 50pt cap and deep stacks."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <img class="brand-icon" src="../../assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/?mode=daily&amp;lang=en" target="_blank" rel="noopener">Daily Spot ↗</a>
+          <a href="../rules-and-royalties/">Rules &amp; Royalties</a>
+          <a href="../fantasyland-ev-guide/">FL EV Guide</a>
+          <a href="../#pricing">Pricing</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <a class="lang-btn" href="../../opening-strategy/">日本語</a>
+            <a class="lang-btn active" href="./" aria-current="page">EN</a>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section" style="border-top:0;padding-top:36px;">
+      <div class="container article-wrap article-body">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">OFC Optimizer Home</a>
+          <span>/</span>
+          <span>Opening 5-Card Strategy</span>
+        </nav>
+
+        <div class="eyebrow">SOLVER STRATEGY · STREET 0 PLAYBOOK</div>
+        <h1 class="hero-title" style="font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:14px;">
+          OFC Pineapple <span class="gold">Opening 5-Card Strategy</span> &amp; Foul Guide
+        </h1>
+        <p class="lead">
+          Your opening 5 cards on <strong>Street 0</strong> lock in the entire architecture of an Open Face Chinese (OFC) Pineapple hand. Using real solver data from <strong>66 curated Street 0 spots</strong> in OFC Optimizer, here are the 5 principles that separate EV-driven regulars from passive players.
+        </p>
+
+        <div class="hero-ctas" style="margin-bottom:28px;">
+          <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=daily&amp;lang=en" target="_blank" rel="noopener">Play Today's Daily Spot Free →</a>
+          <a class="btn btn-ghost btn-sm" href="https://app.ofcoptimizer.com/?mode=flat&amp;lang=en" target="_blank" rel="noopener">Analyze Any Opening 5 in Browser ↗</a>
+        </div>
+
+        <h2>1. Three Counterintuitive Numbers from 66 Solver Spots</h2>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;">
+            <thead>
+              <tr>
+                <th>Metric (66 Curated Street 0 Spots)</th>
+                <th style="white-space:nowrap;">Measured</th>
+                <th>Strategic Takeaway</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Average #1 vs. #2 EV Gap</td>
+                <td class="hi" style="white-space:nowrap;">+2.27 pts</td>
+                <td>One Street 0 mistake can cost up to <strong>+6.18 pts</strong></td>
+              </tr>
+              <tr>
+                <td>Stack Flip Rate (50pt vs. ∞)</td>
+                <td class="hi" style="white-space:nowrap;">71.2%</td>
+                <td>47 of 66 spots change their #1 line by stack depth</td>
+              </tr>
+              <tr>
+                <td>Average #1 Fantasyland Rate</td>
+                <td style="white-space:nowrap;">39.1%</td>
+                <td>Optimal lines aggressively unlock QQ+ Top routes</td>
+              </tr>
+              <tr>
+                <td>Average #1 Foul Rate</td>
+                <td style="white-space:nowrap;">30.0%</td>
+                <td>Playing "never foul" quietly leaks massive EV</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          Source: OFC Optimizer v3.0 curated pro spot bank (54-card 2-Joker Progressive Fantasyland rules, Street 0 subset of 66 spots).
+        </p>
+
+        <h2>2. Why Playing "Never Foul" Costs You Big Money</h2>
+        <p>
+          The most common leak among improving OFC players is treating every foul as a catastrophe and hiding Q, K, and A in Middle or Bottom instead of shooting for Fantasyland on Top.
+        </p>
+        <p>
+          In 54-card Progressive Fantasyland at deep stacks, entering Fantasyland is worth <strong>23.2 pts (QQ)</strong>, <strong>38.0 pts (KK)</strong>, <strong>64.5 pts (AA)</strong>, and <strong>126.4 pts (Trips)</strong>. Accepting an extra 10% foul risk (~1.2 pts EV cost) to gain +10% Fantasyland equity (+2.3 to +6.5 pts) is a huge net win.
+        </p>
+        <div class="methodology-box" style="margin-top:0;">
+          <strong>Rule of thumb:</strong> In deep-stack Joker OFC, optimal #1 lines regularly carry a <strong>25%–38% foul rate</strong>. If your long-run foul rate is under 12%, you are almost certainly leaving huge Fantasyland EV on the table.
+        </div>
+
+        <h2>3. Five Actionable Rules for Your Opening 5 Cards</h2>
+
+        <div class="flip-grid">
+          <div class="flip-card gold">
+            <h3>Rule 1: Keep Bottom Flexible Unless You Have a Real Draw</h3>
+            <p>
+              Dumping 3 disconnected cards onto Bottom traps your Middle row later and causes ugly late-street fouls. Commit 3+ cards to Bottom only for clear equity—like a 3-card flush draw, two pair, or trips.
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>Rule 2: Put Q, K, and A to Work on Top Early</h3>
+            <p>
+              In deep stacks, placing a live Q, K, or A (or pocket pair) on Top immediately opens progressive Fantasyland equity. Avoid clogging Top with two low rags (2–5), which kills your FL ceiling from Street 0.
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>Rule 3: Tighten Up When Playing 50pt–100pt Effective Stacks</h3>
+            <p>
+              At a 50pt cap, Trips FL falls from <strong>126.4 pts to 42.0 pts (-67%)</strong> and AA FL drops <strong>-45%</strong>. That's why 71.2% of our curated Street 0 spots flip—short stacks reward cleaner, lower-foul boards over wild Top gambles.
+            </p>
+          </div>
+          <div class="flip-card gold">
+            <h3>Rule 4: Treat Opening Jokers as Dual-Purpose Weapons</h3>
+            <p>
+              A Joker on Top supercharges QQ+ and Trips FL entry, while a Joker in Middle or Bottom acts as foul insurance and unlocks high-royalty Flushes, Full Houses, and Quads. Compare total FL% vs. Foul% before defaulting to Top.
+            </p>
+          </div>
+        </div>
+
+        <h3>Rule 5: Always Count Dead Cards When Acting Second</h3>
+        <p>
+          When your opponent acts first and exposes 5 cards, dead cards immediately reshape your EV. If they already hold 3–4 cards of your flush suit or block your Top pair ranks, shift away from dead draws and lean into live ranks—small card-removal reads add up rapidly across a session.
+        </p>
+
+        <h2>4. High-Impact Street 0 Example Hands (Solver Verified)</h2>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;font-size:13px;">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;">Pattern</th>
+                <th style="padding:10px 8px;">Example 5 Cards</th>
+                <th style="padding:10px 8px;white-space:nowrap;">EV Gap</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px 8px;">Flush vs. FL</td>
+                <td style="padding:10px 8px;white-space:nowrap;">8♥ 9♠ 7♥ 2♥ J♥</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">+6.18 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">All-Broadway</td>
+                <td style="padding:10px 8px;white-space:nowrap;">A♠ J♥ K♣ Q♠ T♠</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">+5.73 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">Opening Joker</td>
+                <td style="padding:10px 8px;white-space:nowrap;">7♠ 4♣ 8♠ 5♣ JK</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">+4.69 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">Stack Flip (AA+K)</td>
+                <td style="padding:10px 8px;white-space:nowrap;">5♣ 8♠ A♥ A♠ K♥</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">+3.45 pt</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Hands like <strong>5♣ 8♠ A♥ A♠ K♥</strong> are classic stack-flip spots: deep stacks reward aggressive Top FL chasing, while a 50pt cap flips toward anchoring AA safely below. Drilling one real spot per day calibrates your intuition far faster than memorizing static charts.
+        </p>
+
+        <section class="section" style="padding-bottom:12px;margin-top:36px;">
+          <div class="cta-banner">
+            <h2>Put Your Street 0 Instincts to the Test.</h2>
+            <p>
+              Play Today's Daily Spot free in your browser (no signup), inspect your exact EV gap &amp; foul %, or explore full stack-depth Fantasyland benchmarks.
+            </p>
+            <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+              <a class="btn btn-gold" href="https://app.ofcoptimizer.com/?mode=daily&amp;lang=en" target="_blank" rel="noopener">Play Today's Daily Spot Free →</a>
+              <a class="btn btn-ghost" href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">Download Free on App Store</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Optimizer</div>
+        <div class="footer-links">
+          <a href="../">Home</a>
+          <a href="../rules-and-royalties/">Rules &amp; Royalties</a>
+          <a href="../fantasyland-ev-guide/">FL EV Guide</a>
+          <a href="https://app.ofcoptimizer.com/?lang=en" target="_blank" rel="noopener">Web App ↗</a>
+          <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">X (@ofcoptimizer)</a>
+          <a href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">App Store</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070709" />
+    <title>OFC パイナップル（チャイポ）初手 5 枚戦略＆ファウル回避ガイド — OFC Optimizer</title>
+    <meta
+      name="description"
+      content="OFC パイナップル（オープンフェイスチャイニーズポーカー）で最も期待値差がつく初手 5 枚の置き方、実効スタックによる最善手の逆転（実測 71.2%）、最適ファウル率 30% の真実、ジョーカー初手の鉄則をソルバーデータで解説。"
+    />
+    <link rel="canonical" href="https://ofcoptimizer.com/opening-strategy/" />
+    <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/opening-strategy/" />
+    <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/opening-strategy/" />
+    <link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/opening-strategy/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="OFC パイナップル（チャイポ）初手 5 枚戦略＆ファウル回避ガイド" />
+    <meta
+      property="og:description"
+      content="厳選 66 局面のソルバー解析で見えた「初手 5 枚の 5 原則」「スタック逆転 71.2%」「ファウル 0% を目指すほど損する理由」を分かりやすく解説。"
+    />
+    <meta property="og:url" content="https://ofcoptimizer.com/opening-strategy/" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ofcoptimizer" />
+    <meta name="twitter:title" content="OFC パイナップル 初手 5 枚戦略＆ファウル回避ガイド" />
+    <meta
+      name="twitter:description"
+      content="ソルバー実測 66 局面から導いたチャイポ初手 5 枚の勝ち方。スタック逆転・FL 狙い・ジョーカー初手を完全整理。"
+    />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
+    <link rel="icon" type="image/png" href="../assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../styles.css?v=20261125-3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "OFC パイナップル（チャイポ）初手 5 枚戦略＆ファウル回避ガイド",
+        "description": "OFC パイナップルにおける初手 5 枚の最適配置セオリー、実効スタックによる最善手の逆転（71.2%）、最適ファウル率とファンタジーランド期待値のバランスをソルバーデータで解説。",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "inLanguage": "ja",
+        "author": { "@type": "Organization", "name": "OFC Optimizer" },
+        "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
+        "mainEntityOfPage": "https://ofcoptimizer.com/opening-strategy/",
+        "image": "https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "チャイポ（OFC パイナップル）で一番期待値に差がつくのはどの巡目ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "初手 5 枚（ストリート 0）です。OFC Optimizer の厳選初手 66 局面では、最善手と次点の期待値差が平均 +2.27 pt、大きい局面では +6.18 pt に達します。初手でボードの骨格を誤ると後半のドローで取り返せません。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "OFC では絶対にファウルしないように打つべきですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "いいえ。54 枚（ジョーカー 2 枚）のプログレッシブ・ファンタジーランドでは、トップ QQ〜AAA の期待値が 23〜126 pt と非常に大きいため、最善手でも平均 30% 前後のファウル率を許容してファンタジーを狙う局面が多く存在します。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "実効スタック（50pt キャップ vs 無限）で初手の打ち方は変わりますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "大きく変わります。50pt スタックではトップ Trips（17 枚 FL）の期待値が 126.4 pt から 42.0 pt（-67%）まで縮むため、厳選初手 66 局面のうち 71.2%（47 局面）で最善手が逆転します。浅いスタックほどファウル回避と手堅いロイヤリティが有利になります。"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <img class="brand-icon" src="../assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/?mode=daily" target="_blank" rel="noopener">今日の 1 問 ↗</a>
+          <a href="../rules-and-royalties/">ルール＆点数表</a>
+          <a href="../fantasyland-ev-guide/">FL期待値表</a>
+          <a href="../#pricing">料金</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <a class="lang-btn active" href="./" aria-current="page">日本語</a>
+            <a class="lang-btn" href="../en/opening-strategy/">EN</a>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section" style="border-top:0;padding-top:36px;">
+      <div class="container article-wrap article-body">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">OFC Optimizer トップ</a>
+          <span>/</span>
+          <span>初手 5 枚戦略ガイド</span>
+        </nav>
+
+        <div class="eyebrow">SOLVER STRATEGY · STREET 0 PLAYBOOK</div>
+        <h1 class="hero-title" style="font-size:clamp(1.52rem,4vw,2.55rem);margin-bottom:14px;">
+          OFC パイナップル（チャイポ）<br /><span class="gold">初手 5 枚戦略＆ファウル回避</span>
+        </h1>
+        <p class="lead">
+          オープンフェイスチャイニーズポーカー（OFC Pineapple）で最も勝敗と期待値を分けるのが<strong>初手 5 枚（ストリート 0）</strong>です。OFC Optimizer のソルバーが厳選した <strong>初手 66 局面の実測データ</strong>をもとに、中級者がやりがちなミスと期待値ベースの 5 原則をまとめました。
+        </p>
+
+        <div class="hero-ctas" style="margin-bottom:28px;">
+          <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=daily" target="_blank" rel="noopener">今日の 1 問で実力を試す（無料）→</a>
+          <a class="btn btn-ghost btn-sm" href="https://app.ofcoptimizer.com/?mode=flat" target="_blank" rel="noopener">平場ソルバーで手元の 5 枚を解析 ↗</a>
+        </div>
+
+        <h2>1. ソルバー実測 66 局面で見えた「3 つの意外な真実」</h2>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;">
+            <thead>
+              <tr>
+                <th>指標（厳選初手 66 局面）</th>
+                <th style="white-space:nowrap;">実測値</th>
+                <th>実戦への意味</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#1 と #2 の平均 EV 差</td>
+                <td class="hi" style="white-space:nowrap;">+2.27 pt</td>
+                <td>初手 1 回の判断ミスで最大 <strong>+6.18 pt</strong> 失う</td>
+              </tr>
+              <tr>
+                <td>スタック逆転率（50pt vs ∞）</td>
+                <td class="hi" style="white-space:nowrap;">71.2%</td>
+                <td>66 局面中 47 局面で最善手 #1 が入れ替わる</td>
+              </tr>
+              <tr>
+                <td>最善手 #1 の平均 FL 突入率</td>
+                <td style="white-space:nowrap;">39.1%</td>
+                <td>守備一辺倒より FL 突入を優先する場面が多い</td>
+              </tr>
+              <tr>
+                <td>最善手 #1 の平均ファウル率</td>
+                <td style="white-space:nowrap;">30.0%</td>
+                <td>「絶対ファウルしない打ち方」は期待値を取りこぼす</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          ※ 出典：OFC Optimizer v3.0 厳選プロドリルバンク（54 枚ジョーカー 2 枚ルール・初手 66 局面、全問 AI 最善手と次点の厳密評価）より集計。
+        </p>
+
+        <h2>2. なぜ「絶対ファウルしない打ち方」は損をするのか？</h2>
+        <p>
+          初心者が最初につまずく最大の罠が<strong>「ファウル（バースト）を極端に恐れて、トップに Q / K / A やペアを置けない」</strong>ことです。
+        </p>
+        <p>
+          確かにファウルすると相手に 6 pt＋相手のロイヤリティを支払います。しかし 54 枚（ジョーカー 2 枚）のプログレッシブ・ファンタジーランドでは、次局の期待値が
+          <strong>QQ（14 枚）= 23.2 pt、KK（15 枚）= 38.0 pt、AA（16 枚）= 64.5 pt、Trips（17 枚）= 126.4 pt</strong>（スタック無限時）と圧倒的に高くなります。
+        </p>
+        <div class="methodology-box" style="margin-top:0;">
+          <strong>計算の目安：</strong>たとえファウル率が 10% 上がって平均 -1.2 pt 程度の損失が増えても、トップ QQ〜AA によるファンタジー突入率が 10% 上がれば +2.3〜+6.5 pt のプラスになるため、<strong>差し引き大きく期待値プラス</strong>になります。
+        </div>
+
+        <h2>3. 初手 5 枚で迷わなくなる 5 原則</h2>
+
+        <div class="flip-grid">
+          <div class="flip-card gold">
+            <h3>原則 ①：ボトムは「2 枚＋空き 3 枠」か「完成・強ドロー」から</h3>
+            <p>
+              ボトムに無関係なカードを 3 枚以上詰めると、後からフラッシュやフルハウスを作る柔軟性が失われ、ミドルに強い役を作った瞬間にファウルしやすくなります。フラッシュドロー 3 枚・ツーペア・スリーカードなど<strong>明確な目的がある場合だけボトムを厚く</strong>します。
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>原則 ②：トップには Q / K / A を積極的に配置する</h3>
+            <p>
+              特に深いスタックでは、トップに <strong>Q・K・A の 1 枚（またはペア）</strong>を置いてファンタジー突入ルートを初手から開くのが王道です。逆に 2〜5 のような低いカードをトップに 2 枚以上置くと、FL 突入率が激減します。
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>原則 ③：50pt など浅いスタックでは「ファウル回避」へギアチェンジ</h3>
+            <p>
+              実効スタック 50pt では Trips FL の期待値が <strong>126.4 pt → 42.0 pt（-67%）</strong>、AA FL も <strong>64.5 pt → 35.5 pt（-45%）</strong>へ激減します。そのため浅いスタックでは無茶なトップ攻めを控え、ファウル率を抑えながらボトム・ミドルを固める手が逆転します。
+            </p>
+          </div>
+          <div class="flip-card gold">
+            <h3>原則 ④：ジョーカー初手は「FL 突入」か「ミドル高額役」の二刀流</h3>
+            <p>
+              54 枚ルールのジョーカーは<strong>トップに置けば QQ+ / Trips の確率を一気に押し上げ</strong>、ミドルやボトムに置けばフラッシュ・フルハウス・フォーカードへの保険になります。トップのペア候補とボトムの完成力を見比べて、一番 FL 突入率が高い段へ配置するのが基本です。
+            </p>
+          </div>
+        </div>
+
+        <h3>原則 ⑤：後手番では「相手の公開 5 枚」を見てデッドカードを数える</h3>
+        <p>
+          相手がすでにボトムに同スートを 3〜4 枚置いていれば、そのスートのフラッシュ完成率は目に見えて下がります。また、相手がトップに A や K を置いている場合は自分のペア候補（アウツ）が減るため、<strong>後手番では相手の盤面にないランク・スートを優先する</strong>だけで長期勝率が大きく改善します。
+        </p>
+
+        <h2>4. 実戦の分岐スポット例（ソルバー実測データより）</h2>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;">
+            <thead>
+              <tr>
+                <th>初手 5 枚のタイプ</th>
+                <th>実例ハンド</th>
+                <th style="white-space:nowrap;">#1 vs #2 差</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>フラッシュ vs FL 攻め</td>
+                <td style="white-space:nowrap;">8♥ 9♠ 7♥ 2♥ J♥</td>
+                <td class="hi" style="white-space:nowrap;">+6.18 pt</td>
+              </tr>
+              <tr>
+                <td>ブロードウェイ 5 枚</td>
+                <td style="white-space:nowrap;">A♠ J♥ K♣ Q♠ T♠</td>
+                <td class="hi" style="white-space:nowrap;">+5.73 pt</td>
+              </tr>
+              <tr>
+                <td>ジョーカー入り初手</td>
+                <td style="white-space:nowrap;">7♠ 4♣ 8♠ 5♣ JK</td>
+                <td class="hi" style="white-space:nowrap;">+4.69 pt</td>
+              </tr>
+              <tr>
+                <td>スタック逆転（AA + K）</td>
+                <td style="white-space:nowrap;">5♣ 8♠ A♥ A♠ K♥</td>
+                <td class="hi" style="white-space:nowrap;">+3.45 pt</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          たとえば <strong>5♣ 8♠ A♥ A♠ K♥</strong> のように AA と K を同時に引いた局面では、「トップに K（または AA）を攻めて FL を狙うか」「ボトムに AA を置いて安定させるか」が<strong>50pt スタックと無限スタックで逆転</strong>します。自分の感覚と AI 最善手のズレを 1 日 1 問ずつ埋めるのが上達の最短ルートです。
+        </p>
+
+        <section class="section" style="padding-bottom:12px;margin-top:36px;">
+          <div class="cta-banner">
+            <h2>まずは今日の 1 問で、自分の初手感覚をチェックしよう。</h2>
+            <p>
+              登録不要・無料で毎日の実戦スポットを AI 採点。手元の 5 枚をそのまま解析できる平場ソルバーや、スタック別ファンタジー期待値表も公開中。
+            </p>
+            <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+              <a class="btn btn-gold" href="https://app.ofcoptimizer.com/?mode=daily" target="_blank" rel="noopener">今日の 1 問をブラウザで解く（無料）→</a>
+              <a class="btn btn-ghost" href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">App Store で無料ダウンロード</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Optimizer</div>
+        <div class="footer-links">
+          <a href="../">トップページ</a>
+          <a href="../rules-and-royalties/">ルール＆点数表</a>
+          <a href="../fantasyland-ev-guide/">FL期待値表</a>
+          <a href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener">Web版アプリ ↗</a>
+          <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">公式 X (@ofcoptimizer)</a>
+          <a href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">App Store</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

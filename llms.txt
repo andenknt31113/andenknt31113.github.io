@@ -10,6 +10,8 @@
 - Free 5-Second OFC Score Calculator (Direct Deep Link): https://app.ofcoptimizer.com/?mode=score&lang=en
 - Rules & Complete Royalties Chart (English): https://ofcoptimizer.com/en/rules-and-royalties/
 - Rules & Complete Royalties Chart (Japanese): https://ofcoptimizer.com/rules-and-royalties/
+- Opening 5-Card Strategy & Foul Rate Guide (English): https://ofcoptimizer.com/en/opening-strategy/
+- Opening 5-Card Strategy & Foul Rate Guide (Japanese): https://ofcoptimizer.com/opening-strategy/
 - Fantasyland EV Benchmark Guide (English): https://ofcoptimizer.com/en/fantasyland-ev-guide/
 - Fantasyland EV Benchmark Guide (Japanese): https://ofcoptimizer.com/fantasyland-ev-guide/
 - Official X (Twitter): https://x.com/ofcoptimizer
