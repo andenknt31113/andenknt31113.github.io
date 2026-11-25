@@ -7,7 +7,7 @@
     <title>OFC パイナップル ファンタジーランド（FL）期待値表：実効スタック別（50pt〜∞）＆ 54枚 vs 52枚 — OFC Optimizer</title>
     <meta
       name="description"
-      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）のファンタジーランド（FL）期待値表。C++20 厳密分枝限定ソルバー＋10万連鎖シミュレーションによる実効スタック別（50pt/100pt/200pt/∞）と 54枚 vs 52枚（ジョーカーなし）比較、最善手が逆転する実戦スポットを解説。"
+      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）のファンタジーランド（FL）期待値表。厳密 FL ソルバー＋10万回連鎖シミュレーションによる実効スタック別（50pt/100pt/200pt/∞）と 54枚 vs 52枚（ジョーカーなし）比較、最善手が逆転する実戦スポットを解説。"
     />
     <link rel="canonical" href="https://ofcoptimizer.com/fantasyland-ev-guide/" />
     <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/fantasyland-ev-guide/" />
@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="OFC パイナップル FL 期待値表（実効スタック別＆54枚 vs 52枚）" />
     <meta
       name="twitter:description"
-      content="C++20 厳密ソルバー＋10万連鎖シミュレーションで検証した実測 FL 価値テーブル。"
+      content="厳密ソルバー＋10万回連鎖シミュレーションで検証した実測 FL 価値テーブル。"
     />
     <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
     <link rel="icon" type="image/png" href="../assets/favicon-64.png" />
@@ -38,7 +38,7 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "OFC パイナップル ファンタジーランド（FL）期待値表：実効スタック別（50pt〜∞）＆ 54枚 vs 52枚",
-        "description": "OFC Pineapple のファンタジーランド期待値を実効スタック別および 54枚・52枚別に C++20 厳密計算したベンチマークガイド。",
+        "description": "OFC Pineapple のファンタジーランド期待値を実効スタック別および 54枚・52枚別に 厳密計算したベンチマークガイド。",
         "datePublished": "2026-11-25",
         "dateModified": "2026-11-25",
         "inLanguage": "ja",
@@ -118,7 +118,7 @@
           <span>ファンタジーランド期待値ガイド</span>
         </nav>
 
-        <div class="eyebrow">REPRODUCIBLE C++20 BENCHMARKS · 2026</div>
+        <div class="eyebrow">SOLVER EV BENCHMARKS · 2026</div>
         <h1 class="hero-title" style="margin-bottom:14px;">
           OFC パイナップル ファンタジーランド（FL）期待値表：<span class="gold">実効スタック別＆54枚 vs 52枚</span>
         </h1>
@@ -198,7 +198,7 @@
         <figure class="chart-card" style="margin:0 0 24px;">
           <img
             class="chart-img"
-            src="../assets/chart-stack-fl-ja.webp?v=20261125-4"
+            src="../assets/chart-stack-fl-ja.webp?v=20261125-5"
             alt="54枚 OFC パイナップル 実効スタック別ファンタジーランド期待値グラフ"
             width="1400"
             height="788"
@@ -260,7 +260,7 @@
         <figure class="chart-card" style="margin:0 0 24px;">
           <img
             class="chart-img"
-            src="../assets/chart-54-vs-52-ja.webp?v=20261125-4"
+            src="../assets/chart-54-vs-52-ja.webp?v=20261125-5"
             alt="54枚 vs 52枚（ジョーカーなし）OFC ファンタジーランド期待値比較グラフ"
             width="1400"
             height="788"
@@ -351,14 +351,14 @@
 
         <h2>4. 計測条件（再現性注記）</h2>
         <div class="methodology-box" style="margin-top:0;">
-          OFC Optimizer の C++20 厳密分枝限定 FL ソルバー（1,200 局／ティア）と 100,000 連鎖マルコフ計算（同枚数リファンタジー採用）で算出。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。
+          OFC Optimizer の 厳密 FL ソルバー（各ティア 1,200 局解析）と 100,000 回連鎖シミュレーション（同枚数リファンタジー採用）で算出。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。
         </div>
 
         <section class="section" style="padding-bottom:12px;margin-top:36px;">
           <div class="cta-banner">
             <h2>卓条件に合わせた最適解を、1 タップで。</h2>
             <p>
-              実効スタック（50pt / 100pt / 200pt / ∞）と 54枚 / 52枚ルールを 1 タップで切替可能。PC・Android は登録不要の無料 Web 版、iPhone では 100% オフライン C++20 で動作します。
+              実効スタック（50pt / 100pt / 200pt / ∞）と 54枚 / 52枚ルールを 1 タップで切替可能。PC・Android は登録不要の無料 Web 版、iPhone では 100% オフラインで高速動作します。
             </p>
             <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
               <a class="btn btn-gold" href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">App Store で無料ダウンロード</a>

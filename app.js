@@ -16,25 +16,25 @@
       nav_data: 'FLデータ',
       nav_pricing: '料金',
       cta_store_short: 'App Store',
-      hero_eyebrow: 'v3.0 · 100% OFFLINE NATIVE C++20 ENGINE',
+      hero_eyebrow: 'v3.0 · 100% OFFLINE AI SOLVER & REVIEW',
       hero_title: 'OFC Pineapple を、<br />勘から<span class="gold">「期待値」</span>へ。',
       hero_sub:
         '初手 S0 から最終 S4 までの平場ソルバー、AI 1局レビュー、実効スタック（50pt〜∞）別の最適解、54枚／52枚（ジョーカーなし）完全対応。iPhone 内オフライン動作＋PC・Android 向け無料 Web 版も公開中。',
       cta_download: 'App Store で無料ダウンロード',
       cta_open_webapp: 'ブラウザで Web 版アプリを操作 →',
-      pill_offline: '100% オフライン C++20',
+      pill_offline: '100% オフライン対応',
       pill_decks: '54枚（JK2枚）＆ 52枚（JKなし）',
       pill_stacks: '実効スタック 50pt / 100pt / 200pt / ∞',
       pill_webapp: 'PC・Android は Web 版で無料体験',
       quiz_kicker: 'INTERACTIVE OFC QUIZ',
       quiz_heading: 'あなたの OFC 直感、厳密計算に勝てるか？',
       quiz_desc:
-        '実戦から厳選した 3 問をブラウザ上でそのまま解けます。すべて C++20 エンジン＋最新 FL 価値テーブルで検証した期待値（EV）・FL 突入率・ファウル率を即時採点。',
+        '実戦から厳選した 3 問をブラウザ上でそのまま解けます。すべて専用ソルバー＋最新 FL 価値テーブルで検証した期待値（EV）・FL 突入率・ファウル率を即時採点。',
       feat_kicker: 'INSIDE v3.0',
       feat_heading: '強くなるために必要な道具を、iPhone 1 台に。',
       feat_desc:
         '画像をタップすると拡大表示できます。全機能がオンデバイスで完結するため、海外遠征・機内・オフライン卓でも待ち時間ゼロで解析できます。',
-      data_kicker: 'REPRODUCIBLE C++20 BENCHMARKS',
+      data_kicker: 'SOLVER EV BENCHMARKS',
       data_heading: 'スタック深さとジョーカー有無で、FL 価値は別物になる。',
       data_desc:
         '「スタック無限・54枚」の感覚のまま 50pt 卓や 52 枚（ジョーカーなし）卓を打つと、Trips 特攻で大きく期待値を落とします。アプリ内では 1 タップで卓条件を切替可能。',
@@ -43,7 +43,7 @@
       chart2_cap:
         '54枚 vs 52枚（JKなし）：ジョーカー 2 枚が抜けると継続率が急落し、QQ 14.0pt（-40%）／Trips 58.5pt（-54%）まで半減。',
       methodology_note:
-        '計測条件（再現性注記）：C++20 厳密分枝限定 FL ソルバー（1,200 局／ティア）＋ 100,000 連鎖マルコフ計算（同枚数リファンタジー採用）。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。',
+        '計測条件（再現性注記）：厳密 FL ソルバー（各ティア 1,200 局解析）＋ 100,000 回連鎖シミュレーション（同枚数リファンタジー採用）。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。',
       price_kicker: 'TRANSPARENT PRICING',
       price_heading: 'まずは無料で体験。本格研究には Pro。',
       price_desc:
@@ -53,7 +53,7 @@
       faq_heading: 'よくある質問',
       final_title: '今日の 1 問から、期待値ベースの OFC へ。',
       final_desc:
-        '登録不要・無料で今すぐ開始。iPhone では 100% オフライン C++20 で動作し、PC や Android でも Web 版アプリからそのまま体験できます。',
+        '登録不要・無料で今すぐ開始。iPhone では 100% オフラインで高速動作し、PC や Android でも Web 版アプリからそのまま体験できます。',
       footer_privacy: 'プライバシーポリシー',
       footer_terms: '利用規約（Apple EULA）',
       footer_support: 'お問い合わせ',
@@ -82,25 +82,25 @@
       nav_data: 'FL Data',
       nav_pricing: 'Pricing',
       cta_store_short: 'App Store',
-      hero_eyebrow: 'v3.0 · 100% OFFLINE NATIVE C++20 ENGINE',
+      hero_eyebrow: 'v3.0 · 100% OFFLINE AI SOLVER & REVIEW',
       hero_title: 'Solve Every Street of <span class="gold">OFC Pineapple.</span>',
       hero_sub:
         'Full Street 0–4 Flat-Play Solver, Street-by-Street AI Hand Review, Effective Stack presets (50pt–∞), and both 54-card (2 Jokers) & 52-card (No Jokers)—100% offline on iPhone, plus a free live Web App for PC & Android.',
       cta_download: 'Download Free on App Store',
       cta_open_webapp: 'Open Web App in Browser →',
-      pill_offline: '100% Offline C++20',
+      pill_offline: '100% Offline',
       pill_decks: '54-Card (2 Jokers) & 52-Card',
       pill_stacks: 'Effective Stack 50pt / 100pt / 200pt / ∞',
       pill_webapp: 'Live Web App (PC & Android)',
       quiz_kicker: 'INTERACTIVE OFC QUIZ',
       quiz_heading: 'Can Your OFC Intuition Beat Exact Enumeration?',
       quiz_desc:
-        'Play 3 real solver-mined spots right in your browser. Instant grading with exact EV, Fantasyland %, and Foul % computed by our C++20 engine.',
+        'Play 3 real solver-mined spots right in your browser. Instant grading with exact EV, Fantasyland %, and Foul % computed by our exact solver.',
       feat_kicker: 'INSIDE v3.0',
       feat_heading: 'Every Serious OFC Study Tool, In Your Pocket.',
       feat_desc:
         'Tap any screen to zoom. Every neural net and exact endgame solver runs on-device—study on flights, live poker rooms, or anywhere offline.',
-      data_kicker: 'REPRODUCIBLE C++20 BENCHMARKS',
+      data_kicker: 'SOLVER EV BENCHMARKS',
       data_heading: 'Stack Depth & Jokers Completely Reshape FL Value.',
       data_desc:
         'Playing 50pt tables or 52-card (No Joker) games with infinite-stack 54-card intuition bleeds EV on high-risk Trips chases. Switch presets in one tap inside the app.',
@@ -109,7 +109,7 @@
       chart2_cap:
         '54-Card vs 52-Card (No Jokers): Removing 2 Jokers slashes repeat rates—cutting QQ to 14.0pt (-40%) and Trips to 58.5pt (-54%).',
       methodology_note:
-        'Methodology: Exact C++20 branch-and-bound FL solver (1,200 hands/tier) + 100,000-chain Markov simulation with same-card Re-Fantasy. Counts own FL chains only (subtracting opponent counter-FL lowers values substantially). Standard error at ∞: QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt.',
+        'Methodology: Exact FL solver (1,200 hands/tier) + 100,000-chain simulation with same-card Re-Fantasy. Counts own FL chains only (subtracting opponent counter-FL lowers values substantially). Standard error at ∞: QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt.',
       price_kicker: 'TRANSPARENT PRICING',
       price_heading: 'Start Free. Upgrade to Pro When You Grind.',
       price_desc:
@@ -119,7 +119,7 @@
       faq_heading: 'Frequently Asked Questions',
       final_title: 'Stop Guessing. Start Studying EV.',
       final_desc:
-        'Free to start, no account required. Run 100% offline C++20 solves on iPhone, or test the live Web App right now on PC or Android.',
+        'Free to start, no account required. Run 100% offline solves on iPhone, or test the live Web App right now on PC or Android.',
       footer_privacy: 'Privacy Policy',
       footer_terms: 'Terms of Use (Apple EULA)',
       footer_support: 'Contact Support',
@@ -218,8 +218,8 @@
         '[A] は QQ FL（23.2pt）が 100% 確定しますが、AA FL（64.5pt）の権利とボトムフルハウス（+6pt）を同時に放棄します。[B] はファウル率 0.0% のままフルハウスを確定させつつ、最終 S4 の 3 枚で残り A 3枚・JK 2枚・Q 2枚を引けば 44.6% で AA・13.2% で QQ に入るため +11.37pt もの大差で圧勝します。',
       explainEn:
         '[A] guarantees QQ FL (23.2pt) but throws away both AA FL (64.5pt) and a +6pt Bottom Full House. [B] locks the Full House with 0.0% foul risk while keeping 44.6% AA FL + 13.2% QQ FL outs on the final 3-card pull—crushing [A] by +11.37pt!',
-      methodJa: 'C++20 厳密全列挙 (Exact S3) · 54枚 · 最新 100k 連鎖 FL テーブル',
-      methodEn: 'C++20 Exact S3 Enumeration · 54-Card · 100k-Chain FL Table'
+      methodJa: '終盤厳密計算 (Exact S3) · 54枚 · 最新 100k 連鎖 FL テーブル',
+      methodEn: 'Exact S3 Solver · 54-Card · 100k-Chain FL Table'
     },
     {
       id: 'pro-d3-s3-02',
@@ -295,8 +295,8 @@
         'ファウル率は [A][B] どちらも 16.2% で完全一致しますが、ミドルが 33 で止まった局面で「JK を 22 にダウングレードして相手のトップ A♥K♠ を抜ける」 [B] が +0.85pt の厳密優位。ファウル率を 7.5% に半減させる [C] もミドル 33 を捨てる損が大きく -1.50pt 劣ります。',
       explainEn:
         'Both [A] and [B] share the exact same 16.2% foul rate, yet [B] gains +0.85pt because Joker + 2♠ creates a legal Pair of 2s underneath Middle 33—stealing Top from Opponent’s A♥ K♠. Even halving foul risk in [C] (7.5%) loses -1.50pt by giving up Middle 33.',
-      methodJa: 'C++20 厳密全列挙 (Exact S3) · 54枚 · 上級実戦スポット',
-      methodEn: 'C++20 Exact S3 Enumeration · 54-Card · Master Spot'
+      methodJa: '終盤厳密計算 (Exact S3) · 54枚 · 上級実戦スポット',
+      methodEn: 'Exact S3 Solver · 54-Card · Master Spot'
     },
     {
       id: 'pro-d3-s2-11',
@@ -412,7 +412,7 @@
       tagEn: 'FANTASY SOLVER + 4×13 KEYBOARD',
       titleJa: '厳密ファンタジー解析＆片手 4×13 入力',
       titleEn: 'Exact Fantasy Solver & 4×13 Keyboard',
-      descJa: '14〜17 枚のファンタジーランドを C++20 分枝限定で厳密最適化。4×13 スート配列キーボードで実卓のハンドも爆速入力。',
+      descJa: '14〜17 枚のファンタジーランドを全パターンから厳密最適化。4×13 スート配列キーボードで実卓のハンドも爆速入力。',
       descEn: 'Branch-and-bound exact solver for 14–17 card Fantasyland hands, paired with a fast one-handed 4×13 suited card keyboard.'
     },
     {
@@ -488,7 +488,7 @@
         items: [
           '平場ソルバー（S0〜S4・54枚/52枚・全スタック）無制限',
           'AI 1 局レビュー＆実戦ミス自動復習無制限',
-          'Pro 限定「Pro AI」ネイティブ AI 対戦',
+          'Pro 限定「Pro AI」最上位 AI 対戦',
           '平場プロドリル無制限',
           'Standard の全機能（ファンタジー無制限・広告なし）込み'
         ],
@@ -547,7 +547,7 @@
         items: [
           'Unlimited Flat-Play Solver (S0–S4, 54c & 52c, 50pt–∞)',
           'Unlimited AI Full-Hand Reviews & mistake replay',
-          'Pro-exclusive "Pro AI" native CPU',
+          'Pro-exclusive "Pro AI" top opponent',
           'Unlimited curated Pro Spot Drills',
           'Includes all Standard features & zero ads'
         ],
@@ -560,7 +560,7 @@
     ja: [
       {
         q: 'PC や Android でも使えますか？',
-        a: 'はい。アカウント登録不要・無料でそのまま操作できる Web 版アプリを公開しています。PC や Android スマホのブラウザから CPU 対戦・平場ソルバー・AI 1局レビュー・ファンタジー解析を試せます（Pro プラン・ネイティブ C++20 高速オフライン動作は現在 iOS アプリ版で提供中です）。'
+        a: 'はい。アカウント登録不要・無料でそのまま操作できる Web 版アプリを公開しています。PC や Android スマホのブラウザから CPU 対戦・平場ソルバー・AI 1局レビュー・ファンタジー解析を試せます（Pro プラン・100% オフライン高速動作は現在 iOS アプリ版で提供中です）。'
       },
       {
         q: '52 枚（ジョーカーなし）ルールにも対応していますか？',
@@ -568,7 +568,7 @@
       },
       {
         q: 'オフライン環境でもソルバーは動きますか？',
-        a: 'はい、iOS アプリは 100% オンデバイス（ネイティブ C++20 エンジン）で動作します。通信不要なので機内や海外のポーカールームでも遅延ゼロで解析できます。'
+        a: 'はい、iOS アプリは 100% 端末内（100% オフライン）で動作します。通信不要なので機内や海外のポーカールームでも遅延ゼロで解析できます。'
       },
       {
         q: 'Pro 買い切りプラン（¥88,000）は何が含まれますか？',
@@ -582,7 +582,7 @@
     en: [
       {
         q: 'Can I use it on PC or Android?',
-        a: 'Yes! You can open our free, no-signup Web App right in your PC or Android browser to play CPU battles, test the Flat-Play Solver, and run AI Full-Hand Reviews. Full Pro plans and ultra-fast offline native C++20 solving are currently available on iOS.'
+        a: 'Yes! You can open our free, no-signup Web App right in your PC or Android browser to play CPU battles, test the Flat-Play Solver, and run AI Full-Hand Reviews. Full Pro plans and ultra-fast 100% offline solving are currently available on iOS.'
       },
       {
         q: 'Does it support 52-card (No Joker) OFC Pineapple?',
@@ -590,7 +590,7 @@
       },
       {
         q: 'Does the solver work offline without internet?',
-        a: 'Yes—our iOS app runs 100% offline with a native C++20 engine directly on your iPhone, with zero server wait time on flights or in live poker rooms.'
+        a: 'Yes—our iOS app runs 100% offline with a offline engine directly on your iPhone, with zero server wait time on flights or in live poker rooms.'
       },
       {
         q: 'What does the Pro Lifetime ($599.99 / ¥88,000) license cover?',
@@ -670,8 +670,8 @@
     const pageUrl = lang === 'en' ? 'https://ofcoptimizer.com/en/#quiz' : 'https://ofcoptimizer.com/#quiz';
     const text =
       lang === 'en'
-        ? `Scored ${solvedCorrect}/${total} on the OFC Optimizer exact C++20 Pineapple quiz (${isRight ? 'nailed' : 'tested'} ${q.tabEn})! Can you beat the solver?`
-        : `OFC Optimizer の C++20 厳密クイズで ${solvedCorrect}/${total} 問正解！（${q.tabJa}）あなたの直感はソルバーに勝てる？`;
+        ? `Scored ${solvedCorrect}/${total} on the OFC Optimizer exact Pineapple OFC quiz (${isRight ? 'nailed' : 'tested'} ${q.tabEn})! Can you beat the solver?`
+        : `OFC Optimizer の厳密クイズで ${solvedCorrect}/${total} 問正解！（${q.tabJa}）あなたの直感はソルバーに勝てる？`;
     return `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(pageUrl)}`;
   }
 
@@ -1019,7 +1019,7 @@
     });
     document.querySelectorAll('[data-chart]').forEach((img) => {
       const name = img.getAttribute('data-chart');
-      img.src = `${ASSET_BASE}assets/${name}-${lang}.webp?v=20261125-4`;
+      img.src = `${ASSET_BASE}assets/${name}-${lang}.webp?v=20261125-5`;
     });
 
     document.querySelectorAll('.lang-btn').forEach((btn) => {

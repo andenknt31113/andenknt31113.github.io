@@ -7,13 +7,13 @@
     <title>OFC Optimizer v3.0 — 100% オフライン OFC Pineapple ソルバー＆トレーニング</title>
     <meta
       name="description"
-      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）の 100% オフライン C++20 ソルバー＆トレーニングアプリ。54枚/52枚対応・実効スタック別FL価値・AI 1局レビュー。PC・Android ブラウザから無料 Web 版＆厳密クイズを今すぐ体験。"
+      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）の 100% オフライン AI ソルバー＆トレーニングアプリ。54枚/52枚対応・実効スタック別FL価値・AI 1局レビュー。PC・Android ブラウザから無料 Web 版＆厳密クイズを今すぐ体験。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="OFC Optimizer v3.0 — Offline OFC Pineapple Solver" />
     <meta
       property="og:description"
-      content="100% offline C++20 OFC Pineapple solver for 54-card &amp; 52-card games. Try exact S2–S3 OFC quizzes and the live Web App free in your browser."
+      content="100% offline OFC Pineapple solver for 54-card &amp; 52-card games. Try exact S2–S3 OFC quizzes and the live Web App free in your browser."
     />
     <meta property="og:url" content="https://ofcoptimizer.com/" />
     <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
@@ -42,7 +42,7 @@
         "operatingSystem": "iOS, Web",
         "url": "https://ofcoptimizer.com/",
         "downloadUrl": "https://apps.apple.com/app/id6757732173",
-        "description": "100% offline C++20 Open Face Chinese (OFC) Pineapple Poker solver, Street 0–4 flat-play analysis, AI full-hand review, effective stack Fantasyland value benchmarks, and live browser Web App.",
+        "description": "100% offline Open Face Chinese (OFC) Pineapple Poker solver, Street 0–4 flat-play analysis, AI full-hand review, effective stack Fantasyland value benchmarks, and live browser Web App.",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -87,7 +87,7 @@
       <section class="hero">
         <div class="container hero-grid">
           <div>
-            <div class="eyebrow" data-i18n="hero_eyebrow">v3.0 · 100% OFFLINE NATIVE C++20 ENGINE</div>
+            <div class="eyebrow" data-i18n="hero_eyebrow">v3.0 · 100% OFFLINE AI SOLVER & REVIEW</div>
             <h1 class="hero-title" data-i18n-html="hero_title">
               OFC Pineapple を、<br />勘から<span class="gold">「期待値」</span>へ。
             </h1>
@@ -111,7 +111,7 @@
               >ブラウザで Web 版アプリを操作 →</a>
             </div>
             <div class="trust-pills">
-              <span class="trust-pill" data-i18n="pill_offline">100% オフライン C++20</span>
+              <span class="trust-pill" data-i18n="pill_offline">100% オフライン対応</span>
               <span class="trust-pill" data-i18n="pill_decks">54枚（JK2枚）＆ 52枚（JKなし）</span>
               <span class="trust-pill" data-i18n="pill_stacks">実効スタック 50pt / 100pt / 200pt / ∞</span>
               <span class="trust-pill" data-i18n="pill_webapp">PC・Android は Web 版で無料体験</span>
@@ -147,7 +147,7 @@
             <span class="section-kicker" data-i18n="quiz_kicker">INTERACTIVE OFC QUIZ</span>
             <h2 class="section-title" data-i18n="quiz_heading">あなたの OFC 直感、厳密計算に勝てるか？</h2>
             <p class="section-desc" data-i18n="quiz_desc">
-              実戦から厳選した 3 問をブラウザ上でそのまま解けます。すべて C++20 エンジン＋最新 FL 価値テーブルで検証した期待値（EV）・FL 突入率・ファウル率を即時採点。
+              実戦から厳選した 3 問をブラウザ上でそのまま解けます。すべて専用ソルバー＋最新 FL 価値テーブルで検証した期待値（EV）・FL 突入率・ファウル率を即時採点。
             </p>
           </div>
           <div class="panel" id="quiz-root"></div>
@@ -172,7 +172,7 @@
       <section class="section" id="data">
         <div class="container">
           <div class="section-head">
-            <span class="section-kicker" data-i18n="data_kicker">REPRODUCIBLE C++20 BENCHMARKS</span>
+            <span class="section-kicker" data-i18n="data_kicker">SOLVER EV BENCHMARKS</span>
             <h2 class="section-title" data-i18n="data_heading">スタック深さとジョーカー有無で、FL 価値は別物になる。</h2>
             <p class="section-desc" data-i18n="data_desc">
               「スタック無限・54枚」の感覚のまま 50pt 卓や 52 枚（ジョーカーなし）卓を打つと、Trips 特攻で大きく期待値を落とします。アプリ内では 1 タップで卓条件を切替可能。
@@ -183,7 +183,7 @@
               <img
                 class="chart-img"
                 data-chart="chart-stack-fl"
-                src="assets/chart-stack-fl-ja.webp?v=20261125-4"
+                src="assets/chart-stack-fl-ja.webp?v=20261125-5"
                 alt="Effective stack vs FL value chart"
                 width="1400"
                 height="788"
@@ -197,7 +197,7 @@
               <img
                 class="chart-img"
                 data-chart="chart-54-vs-52"
-                src="assets/chart-54-vs-52-ja.webp?v=20261125-4"
+                src="assets/chart-54-vs-52-ja.webp?v=20261125-5"
                 alt="54-card vs 52-card FL value chart"
                 width="1400"
                 height="788"
@@ -209,7 +209,7 @@
             </figure>
           </div>
           <div class="methodology-box" data-i18n="methodology_note">
-            計測条件（再現性注記）：C++20 厳密分枝限定 FL ソルバー（1,200 局／ティア）＋ 100,000 連鎖マルコフ計算（同枚数リファンタジー採用）。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。
+            計測条件（再現性注記）：厳密 FL ソルバー（各ティア 1,200 局解析）＋ 100,000 回連鎖シミュレーション（同枚数リファンタジー採用）。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。
           </div>
           <div class="guide-callout">
             <div class="guide-callout-text">
@@ -254,7 +254,7 @@
           <div class="cta-banner">
             <h2 data-i18n="final_title">今日の 1 問から、期待値ベースの OFC へ。</h2>
             <p data-i18n="final_desc">
-              登録不要・無料で今すぐ開始。iPhone では 100% オフライン C++20 で動作し、PC や Android でも Web 版アプリからそのまま体験できます。
+              登録不要・無料で今すぐ開始。iPhone では 100% オフラインで高速動作し、PC や Android でも Web 版アプリからそのまま体験できます。
             </p>
             <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
               <a
@@ -313,6 +313,6 @@
       <img id="lightbox-img" alt="" />
     </div>
 
-    <script src="app.js?v=20261125-4"></script>
+    <script src="app.js?v=20261125-5"></script>
   </body>
 </html>
