@@ -2,7 +2,7 @@
   'use strict';
 
   const APP_STORE_URL = 'https://apps.apple.com/app/id6757732173';
-  const WEB_APP_URL = 'https://ofc-optimizer.pages.dev/';
+  const WEB_APP_URL = 'https://app.ofcoptimizer.com/';
   const LANG_STORAGE_KEY = 'ofc_lp_lang_v1';
   const ASSET_BASE = document.documentElement.dataset.assetBase || '';
   const PAGE_DEFAULT_LANG = document.documentElement.dataset.defaultLang || '';
