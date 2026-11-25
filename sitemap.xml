@@ -37,4 +37,22 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/fantasyland-ev-guide/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/fantasyland-ev-guide/" />
   </url>
+  <url>
+    <loc>https://ofcoptimizer.com/rules-and-royalties/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/rules-and-royalties/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/rules-and-royalties/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/rules-and-royalties/" />
+  </url>
+  <url>
+    <loc>https://ofcoptimizer.com/en/rules-and-royalties/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/rules-and-royalties/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/rules-and-royalties/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/rules-and-royalties/" />
+  </url>
 </urlset>

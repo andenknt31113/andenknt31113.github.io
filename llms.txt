@@ -6,8 +6,13 @@
 - Landing Page (Japanese): https://ofcoptimizer.com/
 - Landing Page (English): https://ofcoptimizer.com/en/
 - Live Browser Web App (Free, no signup, PC & Android): https://app.ofcoptimizer.com/
+- Free Daily OFC Spot (Direct Deep Link): https://app.ofcoptimizer.com/?mode=daily&lang=en
+- Free 5-Second OFC Score Calculator (Direct Deep Link): https://app.ofcoptimizer.com/?mode=score&lang=en
+- Rules & Complete Royalties Chart (English): https://ofcoptimizer.com/en/rules-and-royalties/
+- Rules & Complete Royalties Chart (Japanese): https://ofcoptimizer.com/rules-and-royalties/
 - Fantasyland EV Benchmark Guide (English): https://ofcoptimizer.com/en/fantasyland-ev-guide/
 - Fantasyland EV Benchmark Guide (Japanese): https://ofcoptimizer.com/fantasyland-ev-guide/
+- Official X (Twitter): https://x.com/ofcoptimizer
 - iOS App Store: https://apps.apple.com/app/id6757732173
 - Privacy Policy: https://ofcoptimizer.com/ofc-fantasy-optimizer-legal/privacy-policy.html
 
