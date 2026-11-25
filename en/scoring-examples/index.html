@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070709" />
+    <title>How to Score OFC Pineapple Poker: 4 Worked Examples (Scoops &amp; Fouls) — OFC Optimizer</title>
+    <meta
+      name="description"
+      content="Step-by-step Open Face Chinese (OFC) Pineapple scoring examples: 2–1 split boards, 3–0 scoops (+6 pts), net royalties, single-player foul penalties (-33 pts), and double-foul ties, plus a free 5-second score calculator."
+    />
+    <link rel="canonical" href="https://ofcoptimizer.com/en/scoring-examples/" />
+    <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/scoring-examples/" />
+    <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/scoring-examples/" />
+    <link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/scoring-examples/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:title" content="How to Score OFC Pineapple Poker: 4 Worked Examples" />
+    <meta
+      property="og:description"
+      content="Master OFC Pineapple row points, scoops, net royalties, and foul penalties with 4 crystal-clear worked examples."
+    />
+    <meta property="og:url" content="https://ofcoptimizer.com/en/scoring-examples/" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ofcoptimizer" />
+    <meta name="twitter:title" content="How to Score OFC Pineapple Poker: 4 Worked Examples" />
+    <meta
+      name="twitter:description"
+      content="Clear arithmetic walkthrough of scoops (+6 pts), royalty netting, and foul penalties, linked to our free 5-second calculator."
+    />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../../styles.css?v=20261125-3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Score OFC Pineapple Poker: 4 Worked Examples (Scoops, Royalties & Fouls)",
+        "description": "Step-by-step arithmetic walkthrough of Open Face Chinese Pineapple scoring including 2-1 row splits, 3-0 scoops, royalty differences, and foul penalties.",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "inLanguage": "en",
+        "author": { "@type": "Organization", "name": "OFC Optimizer" },
+        "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
+        "mainEntityOfPage": "https://ofcoptimizer.com/en/scoring-examples/",
+        "image": "https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you still collect royalties on a row that you lose?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. As long as your board is valid (not fouled), all of your royalties count—even on rows where your opponent makes a stronger hand. Final royalty settlement is always your total royalties minus your opponent's total royalties."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much is a scoop worth in OFC Pineapple?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Winning all 3 rows awards +3 row points plus a +3 scoop bonus, for +6 points total before royalties."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does 3-handed OFC scoring work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Score each pair of players heads-up independently (A vs. B, B vs. C, and A vs. C), then sum each player's net points across both matchups."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <img class="brand-icon" src="../../assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/?mode=score&amp;lang=en" target="_blank" rel="noopener">5-Sec Calc ↗</a>
+          <a href="../rules-and-royalties/">Royalties</a>
+          <a href="../opening-strategy/">Strategy</a>
+          <a href="../fantasyland-ev-guide/">FL EV</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <a class="lang-btn" href="../../scoring-examples/">日本語</a>
+            <a class="lang-btn active" href="./" aria-current="page">EN</a>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section" style="border-top:0;padding-top:36px;">
+      <div class="container article-wrap article-body">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">OFC Optimizer Home</a>
+          <span>/</span>
+          <span>Scoring &amp; Foul Examples</span>
+        </nav>
+
+        <div class="eyebrow">SCORING WALKTHROUGH · 4 REAL EXAMPLES</div>
+        <h1 class="hero-title" style="font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:14px;">
+          How to Score <span class="gold">OFC Pineapple Poker</span>: 4 Worked Examples
+        </h1>
+        <p class="lead">
+          Every heads-up OFC Pineapple hand settles in three quick steps: <strong>(1) Row points</strong>, <strong>(2) Scoop bonus (+3)</strong>, and <strong>(3) Net royalties</strong>. Here are the 4 real-table situations that trip players up—worked out step by step.
+        </p>
+
+        <div class="hero-ctas" style="margin-bottom:28px;">
+          <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=score&amp;lang=en" target="_blank" rel="noopener">Open Free 5-Second Score Calculator ↗</a>
+          <a class="btn btn-ghost btn-sm" href="../rules-and-royalties/">See Complete Royalties Chart →</a>
+        </div>
+
+        <h2>Example 1: Winning 2 of 3 Rows—and Still Losing by 19 Points</h2>
+        <p>Player A wins both Middle and Bottom (2–1 on rows), yet Player B's monster Top Trips (KKK = +21 pts) flips the settlement into a 19-point win for B:</p>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;font-size:13px;">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;">Row</th>
+                <th style="padding:10px 8px;">Player A</th>
+                <th style="padding:10px 8px;">Player B</th>
+                <th style="padding:10px 8px;white-space:nowrap;">Winner</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px 8px;">Top</td>
+                <td style="padding:10px 8px;">66 (+1)</td>
+                <td style="padding:10px 8px;"><strong>KKK (+21)</strong></td>
+                <td style="padding:10px 8px;white-space:nowrap;">B</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">Mid</td>
+                <td style="padding:10px 8px;"><strong>A-high Straight (+4)</strong></td>
+                <td style="padding:10px 8px;">9-high Straight (+4)</td>
+                <td style="padding:10px 8px;white-space:nowrap;">A</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">Bot</td>
+                <td style="padding:10px 8px;"><strong>A-high Flush (+4)</strong></td>
+                <td style="padding:10px 8px;">Q-high Flush (+4)</td>
+                <td style="padding:10px 8px;white-space:nowrap;">A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="methodology-box" style="margin-top:0;">
+          <strong>Step-by-step arithmetic:</strong><br />
+          1. <strong>Row points:</strong> A wins 2–1 = <strong>A +1 pt</strong><br />
+          2. <strong>Scoop:</strong> <strong>0 pt</strong><br />
+          3. <strong>Royalty net:</strong> A (1+4+4 = 9) − B (21+4+4 = 29) = <strong>A -20 pts</strong><br />
+          👉 <strong>Final Settlement: +1 + (-20) = -19 pts (Player B wins +19 pts &amp; enters 17-card Fantasyland!)</strong>
+        </div>
+
+        <h2>Example 2: Clean 3–0 Scoop (+6 pts) + Royalties</h2>
+        <div class="flip-card gold" style="margin:14px 0 24px;">
+          <h3 style="margin-top:0;">Player A: Top KK (+8) / Mid Trips (+2) / Bot Straight (+2) = 12 royalties<br />Player B: Top High Card (0) / Mid One Pair (0) / Bot Two Pair (0) = 0 royalties</h3>
+          <p style="margin-bottom:0;">
+            • <strong>Row points:</strong> A wins all 3 rows = <strong>+3 pts</strong><br />
+            • <strong>Scoop bonus:</strong> <strong>+3 pts</strong> (total <strong>+6 pts</strong> for a scoop)<br />
+            • <strong>Royalty net:</strong> 12 − 0 = <strong>+12 pts</strong><br />
+            👉 <strong>Final Settlement: A wins +18 pts (+ 15-card Fantasyland next hand)</strong>
+          </p>
+        </div>
+
+        <h2>Example 3: Single-Player Foul Penalty (-33 pt Swing)</h2>
+        <div class="flip-card" style="margin:14px 0 24px;">
+          <h3 style="margin-top:0;">Player A: FOULS (Top QQ, Mid Two Pair, Bot One Pair)<br />Player B: Valid (Top AA +9 / Mid Full House +12 / Bot Full House +6 = 27 royalties)</h3>
+          <p style="margin-bottom:0;">
+            • Fouling voids <strong>all</strong> of Player A's royalties (Top QQ +7 becomes 0).<br />
+            • Player B automatically receives <strong>+6 pts (scoop) + all 27 of B's royalties</strong>.<br />
+            👉 <strong>Final Settlement: Player A pays Player B 33 pts (and B enters 16-card FL!)</strong>
+          </p>
+        </div>
+
+        <h2>Example 4: Double Foul (0-pt Tie)</h2>
+        <p>
+          If both players foul their boards, the hand is a <strong>0-pt tie</strong>. Neither player collects royalties and neither enters or repeats Fantasyland.
+        </p>
+
+        <section class="section" style="padding-bottom:12px;margin-top:36px;">
+          <div class="cta-banner">
+            <h2>Settle Any Live Table Hand in 5 Seconds.</h2>
+            <p>
+              Use our free browser Score Calculator (no signup)—choose 5-second quick rank input or full 26-card automatic foul &amp; royalty detection, then share a scorecard image straight to your group chat.
+            </p>
+            <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+              <a class="btn btn-gold" href="https://app.ofcoptimizer.com/?mode=score&amp;lang=en" target="_blank" rel="noopener">Open Free 5-Second Calculator ↗</a>
+              <a class="btn btn-ghost" href="https://app.ofcoptimizer.com/?mode=daily&amp;lang=en" target="_blank" rel="noopener">Play Today's Daily Spot Free →</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Optimizer</div>
+        <div class="footer-links">
+          <a href="../">Home</a>
+          <a href="../rules-and-royalties/">Rules &amp; Royalties</a>
+          <a href="../opening-strategy/">Strategy Guide</a>
+          <a href="../joker-vs-52card/">Joker vs 52-Card</a>
+          <a href="../fantasyland-ev-guide/">FL EV Guide</a>
+          <a href="https://app.ofcoptimizer.com/?lang=en" target="_blank" rel="noopener">Web App ↗</a>
+          <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">X (@ofcoptimizer)</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

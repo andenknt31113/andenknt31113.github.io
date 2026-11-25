@@ -10,6 +10,8 @@
 - Free 5-Second OFC Score Calculator (Direct Deep Link): https://app.ofcoptimizer.com/?mode=score&lang=en
 - Rules & Complete Royalties Chart (English): https://ofcoptimizer.com/en/rules-and-royalties/
 - Rules & Complete Royalties Chart (Japanese): https://ofcoptimizer.com/rules-and-royalties/
+- Scoring & Foul Settlement Examples (English): https://ofcoptimizer.com/en/scoring-examples/
+- Scoring & Foul Settlement Examples (Japanese): https://ofcoptimizer.com/scoring-examples/
 - Opening 5-Card Strategy & Foul Rate Guide (English): https://ofcoptimizer.com/en/opening-strategy/
 - Opening 5-Card Strategy & Foul Rate Guide (Japanese): https://ofcoptimizer.com/opening-strategy/
 - Joker 54-Card vs. 52-Card Rules & EV Guide (English): https://ofcoptimizer.com/en/joker-vs-52card/
