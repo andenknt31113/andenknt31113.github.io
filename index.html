@@ -1,28 +1,28 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" data-default-lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver &amp; Trainer</title>
+    <title>OFC Optimizer v3.0 — 100% オフライン OFC Pineapple ソルバー＆トレーニング</title>
     <meta
       name="description"
       content="OFC Pineapple（オープンフェイスチャイニーズポーカー）の 100% オフライン C++20 ソルバー＆トレーニングアプリ。54枚/52枚対応・実効スタック別FL価値・AI 1局レビュー。PC・Android ブラウザから無料 Web 版＆厳密クイズを今すぐ体験。"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver" />
+    <meta property="og:title" content="OFC Optimizer v3.0 — Offline OFC Pineapple Solver" />
     <meta
       property="og:description"
       content="100% offline C++20 OFC Pineapple solver for 54-card &amp; 52-card games. Try exact S2–S3 OFC quizzes and the live Web App free in your browser."
     />
     <meta property="og:url" content="https://ofcoptimizer.com/" />
-    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver" />
+    <meta name="twitter:title" content="OFC Optimizer v3.0 — Offline OFC Pineapple Solver" />
     <meta
       name="twitter:description"
       content="Try 3 exact-enumeration OFC Pineapple spots &amp; the live browser Web App for free."
     />
-    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg" />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
     <link rel="canonical" href="https://ofcoptimizer.com/" />
     <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/" />
     <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/" />
@@ -31,17 +31,17 @@
     <meta property="og:locale:alternate" content="en_US" />
     <link rel="icon" type="image/png" href="assets/favicon-64.png" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20261125-2" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "OFC Fantasy Optimizer",
+        "name": "OFC Optimizer",
         "applicationCategory": "GameApplication",
         "operatingSystem": "iOS, Web",
         "url": "https://ofcoptimizer.com/",
         "downloadUrl": "https://apps.apple.com/app/id6757732173",
-        "description": "100% offline C++20 Open Face Chinese (OFC) Pineapple Poker solver, AI full-hand review, effective stack Fantasyland value calculator, and 5-second score calculator.",
+        "description": "100% offline C++20 Open Face Chinese (OFC) Pineapple Poker solver, Street 0–4 flat-play analysis, AI full-hand review, effective stack Fantasyland value benchmarks, and live browser Web App.",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -54,12 +54,12 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#">
-          <img class="brand-icon" src="assets/logo-128.webp" alt="OFC Fantasy Optimizer" width="34" height="34" />
-          <span class="brand-name">OFC Fantasy Optimizer</span>
+          <img class="brand-icon" src="assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
           <span class="brand-ver">v3.0</span>
         </a>
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener" data-i18n="nav_webapp">Web版アプリ</a>
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener" data-i18n="nav_webapp">Web版アプリ ↗</a>
           <a href="#quiz" data-i18n="nav_quiz">無料クイズ</a>
           <a href="#features" data-i18n="nav_features">機能</a>
           <a href="#data" data-i18n="nav_data">FLデータ</a>
@@ -67,8 +67,8 @@
         </nav>
         <div class="header-actions">
           <div class="lang-toggle" role="group" aria-label="Language">
-            <button type="button" class="lang-btn active" data-lang="ja">日本語</button>
-            <button type="button" class="lang-btn" data-lang="en">EN</button>
+            <a class="lang-btn active" href="./" data-lang="ja" aria-current="page">日本語</a>
+            <a class="lang-btn" href="en/" data-lang="en">EN</a>
           </div>
           <a
             class="btn btn-gold btn-sm header-cta"
@@ -91,7 +91,7 @@
               OFC Pineapple を、<br />勘から<span class="gold">「期待値」</span>へ。
             </h1>
             <p class="hero-sub" data-i18n="hero_sub">
-              初手 S0 から最終 S4 までの平場ソルバー、AI 1局レビュー、実効スタック（50pt〜∞）別の最適解、54枚／52枚（ジョーカーなし）完全対応。すべて iPhone 内でオフライン動作。
+              初手 S0 から最終 S4 までの平場ソルバー、AI 1局レビュー、実効スタック（50pt〜∞）別の最適解、54枚／52枚（ジョーカーなし）完全対応。iPhone 内オフライン動作＋PC・Android 向け無料 Web 版も公開中。
             </p>
             <div class="hero-ctas">
               <a
@@ -272,8 +272,14 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>© 2026 OFC Fantasy Optimizer</div>
+        <div>© 2026 OFC Optimizer</div>
         <div class="footer-links">
+          <a
+            href="https://app.ofcoptimizer.com/"
+            target="_blank"
+            rel="noopener"
+            data-i18n="nav_webapp"
+          >Web版アプリ ↗</a>
           <a
             href="https://apps.apple.com/app/id6757732173"
             target="_blank"
@@ -300,6 +306,6 @@
       <img id="lightbox-img" alt="" />
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=20261125-2"></script>
   </body>
 </html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page Not Found — OFC Optimizer</title>
+    <link rel="icon" type="image/png" href="/assets/favicon-64.png" />
+    <link rel="stylesheet" href="/styles.css?v=20261125-2" />
+    <script>
+      (function () {
+        var p = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+        if (p === '/app' || p === '/web' || p === '/play' || p === '/solver') {
+          window.location.replace('https://app.ofcoptimizer.com/');
+        } else if (p === '/ja') {
+          window.location.replace('https://ofcoptimizer.com/');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
+      <div class="panel" style="max-width:520px;width:100%;text-align:center;padding:36px 24px;">
+        <div class="eyebrow" style="margin-bottom:14px;">404 · PAGE NOT FOUND</div>
+        <h1 class="section-title" style="margin-bottom:10px;">ページが見つかりません</h1>
+        <p class="section-desc" style="margin:0 auto 24px;">
+          URL が移動したか、入力に誤りがある可能性があります。<br />
+          This page could not be found. Jump directly to the LP or live Web App below.
+        </p>
+        <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+          <a class="btn btn-gold" href="https://app.ofcoptimizer.com/">Web 版アプリを開く →</a>
+          <a class="btn btn-ghost" href="/">日本語トップ</a>
+          <a class="btn btn-ghost" href="/en/">English LP</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

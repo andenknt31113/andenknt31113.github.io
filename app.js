@@ -3,15 +3,14 @@
 
   const APP_STORE_URL = 'https://apps.apple.com/app/id6757732173';
   const WEB_APP_URL = 'https://app.ofcoptimizer.com/';
-  const LANG_STORAGE_KEY = 'ofc_lp_lang_v1';
   const ASSET_BASE = document.documentElement.dataset.assetBase || '';
   const PAGE_DEFAULT_LANG = document.documentElement.dataset.defaultLang || '';
 
   /* ---------------- i18n Static Copy ---------------- */
   const COPY = {
     ja: {
-      page_title: 'OFC Fantasy Optimizer v3.0 — 100% オフライン OFC Pineapple ソルバー＆トレーニング',
-      nav_webapp: 'Web版アプリ',
+      page_title: 'OFC Optimizer v3.0 — 100% オフライン OFC Pineapple ソルバー＆トレーニング',
+      nav_webapp: 'Web版アプリ ↗',
       nav_quiz: '無料クイズ',
       nav_features: '機能',
       nav_data: 'FLデータ',
@@ -72,11 +71,12 @@
       quiz_next_btn: '次の問題へ →',
       quiz_retry_btn: 'もう一度選ぶ',
       quiz_web_cta: 'Web版アプリで今すぐ操作 →',
-      quiz_app_cta: 'iOS アプリで「今日の 1 問」を解く →'
+      quiz_app_cta: 'iOS アプリで「今日の 1 問」を解く →',
+      quiz_share_x: '結果を X でシェア'
     },
     en: {
-      page_title: 'OFC Fantasy Optimizer v3.0 — 100% Offline OFC Pineapple Solver & Trainer',
-      nav_webapp: 'Web App',
+      page_title: 'OFC Optimizer v3.0 — 100% Offline OFC Pineapple Solver & Trainer',
+      nav_webapp: 'Web App ↗',
       nav_quiz: 'Free Quiz',
       nav_features: 'Features',
       nav_data: 'FL Data',
@@ -137,7 +137,8 @@
       quiz_next_btn: 'Next Spot →',
       quiz_retry_btn: 'Try Again',
       quiz_web_cta: 'Try Live Web App →',
-      quiz_app_cta: 'Play Free Daily Spots in the iOS App →'
+      quiz_app_cta: 'Play Free Daily Spots in the iOS App →',
+      quiz_share_x: 'Share on X'
     }
   };
 
@@ -452,7 +453,8 @@
           'CPU 対戦（入門〜標準 AI）無制限',
           '5 秒点数計算＆ 26 枚計算ツール無制限'
         ],
-        cta: '無料で始める'
+        cta: 'App Store で無料ダウンロード',
+        webCta: 'Web 版をブラウザで試す →'
       },
       {
         name: 'Standard',
@@ -510,7 +512,8 @@
           'Unlimited offline CPU battles (Beginner–Standard AI)',
           'Unlimited 5-second & 26-card Score Calculator'
         ],
-        cta: 'Download Free'
+        cta: 'Download Free on App Store',
+        webCta: 'Try Live Web App →'
       },
       {
         name: 'Standard',
@@ -605,13 +608,7 @@
     const params = new URLSearchParams(window.location.search);
     const qLang = params.get('lang');
     if (qLang === 'ja' || qLang === 'en') return qLang;
-    if (PAGE_DEFAULT_LANG === 'en') return 'en';
-    try {
-      const saved = window.localStorage.getItem(LANG_STORAGE_KEY);
-      if (saved === 'ja' || saved === 'en') return saved;
-    } catch (_) {
-      /* ignore storage errors */
-    }
+    if (PAGE_DEFAULT_LANG === 'ja' || PAGE_DEFAULT_LANG === 'en') return PAGE_DEFAULT_LANG;
     return navigator.language && navigator.language.toLowerCase().startsWith('ja') ? 'ja' : 'en';
   }
 
@@ -665,12 +662,17 @@
     ]);
   }
 
-  function signed(n) {
-    return n > 0 ? `+${n}` : String(n);
-  }
-
   function fmtEv(v) {
     return `${v >= 0 ? '+' : ''}${v.toFixed(2)}pt`;
+  }
+
+  function buildShareUrl(solvedCorrect, total, isRight, q) {
+    const pageUrl = lang === 'en' ? 'https://ofcoptimizer.com/en/#quiz' : 'https://ofcoptimizer.com/#quiz';
+    const text =
+      lang === 'en'
+        ? `Scored ${solvedCorrect}/${total} on the OFC Optimizer exact C++20 Pineapple quiz (${isRight ? 'nailed' : 'tested'} ${q.tabEn})! Can you beat the solver?`
+        : `OFC Optimizer の C++20 厳密クイズで ${solvedCorrect}/${total} 問正解！（${q.tabJa}）あなたの直感はソルバーに勝てる？`;
+    return `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(pageUrl)}`;
   }
 
   /* ---------------- Render: Quiz ---------------- */
@@ -848,6 +850,13 @@
           el('span', { className: 'method-note', text: isJa ? q.methodJa : q.methodEn }),
           el('div', { className: 'calc-btn-group' }, [
             el('a', {
+              className: 'btn btn-share btn-sm',
+              href: buildShareUrl(solvedCorrect, QUIZZES.length, isRight, q),
+              target: '_blank',
+              rel: 'noopener noreferrer',
+              text: t.quiz_share_x
+            }),
+            el('a', {
               className: 'btn btn-ghost btn-sm',
               href: WEB_APP_URL,
               target: '_blank',
@@ -932,13 +941,24 @@
             { className: 'price-list' },
             p.items.map((txt) => el('li', null, [el('span', { className: 'chk', text: '✓' }), el('span', { text: txt })]))
           ),
-          el('a', {
-            className: `btn ${p.featured ? 'btn-gold' : 'btn-ghost'}`,
-            href: APP_STORE_URL,
-            target: '_blank',
-            rel: 'noopener',
-            text: p.cta
-          })
+          el('div', { className: 'price-ctas' }, [
+            el('a', {
+              className: `btn ${p.featured ? 'btn-gold' : 'btn-ghost'}`,
+              href: APP_STORE_URL,
+              target: '_blank',
+              rel: 'noopener',
+              text: p.cta
+            }),
+            p.webCta
+              ? el('a', {
+                  className: 'btn btn-webapp-soft',
+                  href: WEB_APP_URL,
+                  target: '_blank',
+                  rel: 'noopener',
+                  text: p.webCta
+                })
+              : null
+          ])
         ]);
       })
     );
@@ -981,11 +1001,6 @@
   function applyLang(nextLang) {
     lang = nextLang === 'en' ? 'en' : 'ja';
     document.documentElement.lang = lang;
-    try {
-      window.localStorage.setItem(LANG_STORAGE_KEY, lang);
-    } catch (_) {
-      /* ignore */
-    }
     const t = COPY[lang];
     document.title = t.page_title;
 
@@ -1019,7 +1034,22 @@
 
   /* ---------------- Init ---------------- */
   document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+    btn.addEventListener('click', (e) => {
+      const targetLang = btn.getAttribute('data-lang');
+      if (btn.tagName === 'A') {
+        if (targetLang === lang) {
+          e.preventDefault();
+          return;
+        }
+        const hash = window.location.hash;
+        if (hash && !btn.getAttribute('href').includes('#')) {
+          e.preventDefault();
+          window.location.href = `${btn.getAttribute('href')}${hash}`;
+        }
+        return;
+      }
+      applyLang(targetLang);
+    });
   });
 
   document.querySelectorAll('.hero-shot, .hero-shot-secondary, .chart-img').forEach((img) => {
