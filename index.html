@@ -6,13 +6,13 @@
     <title>OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver &amp; Trainer</title>
     <meta
       name="description"
-      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）の 100% オフライン C++20 ソルバー＆トレーニングアプリ。54枚/52枚対応・実効スタック別FL価値・AI 1局レビュー・5秒点数計算。無料クイズと点数計算ツールをブラウザで今すぐ体験。"
+      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）の 100% オフライン C++20 ソルバー＆トレーニングアプリ。54枚/52枚対応・実効スタック別FL価値・AI 1局レビュー。PC・Android ブラウザから無料 Web 版＆厳密クイズを今すぐ体験。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver" />
     <meta
       property="og:description"
-      content="100% offline C++20 OFC Pineapple solver for 54-card &amp; 52-card games. Try exact S2–S3 OFC quizzes and the 5-second score calculator free in your browser."
+      content="100% offline C++20 OFC Pineapple solver for 54-card &amp; 52-card games. Try exact S2–S3 OFC quizzes and the live Web App free in your browser."
     />
     <meta property="og:url" content="https://andenknt31113.github.io/" />
     <meta property="og:image" content="https://andenknt31113.github.io/assets/og-v3-ja.jpg" />
@@ -20,12 +20,35 @@
     <meta name="twitter:title" content="OFC Fantasy Optimizer v3.0 — Offline OFC Pineapple Solver" />
     <meta
       name="twitter:description"
-      content="Try 3 exact-enumeration OFC Pineapple spots &amp; 5-second score calculator free in your browser."
+      content="Try 3 exact-enumeration OFC Pineapple spots &amp; the live browser Web App for free."
     />
     <meta name="twitter:image" content="https://andenknt31113.github.io/assets/og-v3-ja.jpg" />
+    <link rel="canonical" href="https://andenknt31113.github.io/" />
+    <link rel="alternate" hreflang="ja" href="https://andenknt31113.github.io/" />
+    <link rel="alternate" hreflang="en" href="https://andenknt31113.github.io/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://andenknt31113.github.io/en/" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
     <link rel="icon" type="image/png" href="assets/favicon-64.png" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "OFC Fantasy Optimizer",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "iOS, Web",
+        "url": "https://andenknt31113.github.io/",
+        "downloadUrl": "https://apps.apple.com/app/id6757732173",
+        "description": "100% offline C++20 Open Face Chinese (OFC) Pineapple Poker solver, AI full-hand review, effective stack Fantasyland value calculator, and 5-second score calculator.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        }
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -38,7 +61,6 @@
         <nav class="nav-links" aria-label="Main navigation">
           <a href="https://ofc-optimizer.pages.dev/" target="_blank" rel="noopener" data-i18n="nav_webapp">Web版アプリ</a>
           <a href="#quiz" data-i18n="nav_quiz">無料クイズ</a>
-          <a href="#calculator" data-i18n="nav_calc">5秒点数計算</a>
           <a href="#features" data-i18n="nav_features">機能</a>
           <a href="#data" data-i18n="nav_data">FLデータ</a>
           <a href="#pricing" data-i18n="nav_pricing">料金</a>
@@ -91,7 +113,7 @@
               <span class="trust-pill" data-i18n="pill_offline">100% オフライン C++20</span>
               <span class="trust-pill" data-i18n="pill_decks">54枚（JK2枚）＆ 52枚（JKなし）</span>
               <span class="trust-pill" data-i18n="pill_stacks">実効スタック 50pt / 100pt / 200pt / ∞</span>
-              <span class="trust-pill" data-i18n="pill_zero_latency">サーバー待ちゼロ</span>
+              <span class="trust-pill" data-i18n="pill_webapp">PC・Android は Web 版で無料体験</span>
             </div>
           </div>
           <div class="hero-visual">
@@ -117,31 +139,17 @@
         </div>
       </section>
 
-      <!-- Free Interactive Tool #1: Exact OFC Quiz -->
+      <!-- Interactive Exact OFC Quiz -->
       <section class="section" id="quiz">
         <div class="container">
           <div class="section-head">
-            <span class="section-kicker" data-i18n="quiz_kicker">FREE INTERACTIVE TOOL #1</span>
+            <span class="section-kicker" data-i18n="quiz_kicker">INTERACTIVE OFC QUIZ</span>
             <h2 class="section-title" data-i18n="quiz_heading">あなたの OFC 直感、厳密計算に勝てるか？</h2>
             <p class="section-desc" data-i18n="quiz_desc">
               実戦から厳選した 3 問をブラウザ上でそのまま解けます。すべて C++20 エンジン＋最新 FL 価値テーブルで検証した期待値（EV）・FL 突入率・ファウル率を即時採点。
             </p>
           </div>
           <div class="panel" id="quiz-root"></div>
-        </div>
-      </section>
-
-      <!-- Free Interactive Tool #2: 5-Second Quick Score Calculator -->
-      <section class="section" id="calculator">
-        <div class="container">
-          <div class="section-head">
-            <span class="section-kicker" data-i18n="calc_kicker">FREE INTERACTIVE TOOL #2</span>
-            <h2 class="section-title" data-i18n="calc_heading">実卓向け 5 秒 OFC 点数計算（無料）</h2>
-            <p class="section-desc" data-i18n="calc_desc">
-              26 枚のカードを入力せずに「各段の勝敗・ロイヤリティ・ファウル有無」だけで行ポイント・スクープ（±3）・ロイヤリティ差・次局ファンタジー（14〜17枚）を即座に清算します。
-            </p>
-          </div>
-          <div class="panel" id="calc-root"></div>
         </div>
       </section>
 
@@ -212,7 +220,7 @@
             <span class="section-kicker" data-i18n="price_kicker">TRANSPARENT PRICING</span>
             <h2 class="section-title" data-i18n="price_heading">まずは無料で体験。本格研究には Pro。</h2>
             <p class="section-desc" data-i18n="price_desc">
-              毎日の「今日の 1 問」・AI 1局レビュー・平場ソルバー・5秒点数計算はすべて無料で試せます。本格研究向けの Pro プランはサブスクと買い切りプランを用意。
+              毎日の「今日の 1 問」・AI 1局レビュー・平場ソルバー・CPU 対戦はすべて無料で試せます。本格研究向けの Pro プランはサブスクと買い切りプランを用意。
             </p>
           </div>
           <div class="pricing-grid" id="pricing-grid"></div>
@@ -239,7 +247,7 @@
           <div class="cta-banner">
             <h2 data-i18n="final_title">今日の 1 問から、期待値ベースの OFC へ。</h2>
             <p data-i18n="final_desc">
-              インストール無料・アカウント登録不要。100% オフラインで今すぐ平場ソルバー・AI 1局レビュー・5秒点数計算を試せます。
+              登録不要・無料で今すぐ開始。iPhone では 100% オフライン C++20 で動作し、PC や Android でも Web 版アプリからそのまま体験できます。
             </p>
             <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
               <a

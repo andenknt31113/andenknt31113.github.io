@@ -4,6 +4,8 @@
   const APP_STORE_URL = 'https://apps.apple.com/app/id6757732173';
   const WEB_APP_URL = 'https://ofc-optimizer.pages.dev/';
   const LANG_STORAGE_KEY = 'ofc_lp_lang_v1';
+  const ASSET_BASE = document.documentElement.dataset.assetBase || '';
+  const PAGE_DEFAULT_LANG = document.documentElement.dataset.defaultLang || '';
 
   /* ---------------- i18n Static Copy ---------------- */
   const COPY = {
@@ -11,7 +13,6 @@
       page_title: 'OFC Fantasy Optimizer v3.0 — 100% オフライン OFC Pineapple ソルバー＆トレーニング',
       nav_webapp: 'Web版アプリ',
       nav_quiz: '無料クイズ',
-      nav_calc: '5秒点数計算',
       nav_features: '機能',
       nav_data: 'FLデータ',
       nav_pricing: '料金',
@@ -19,21 +20,17 @@
       hero_eyebrow: 'v3.0 · 100% OFFLINE NATIVE C++20 ENGINE',
       hero_title: 'OFC Pineapple を、<br />勘から<span class="gold">「期待値」</span>へ。',
       hero_sub:
-        '初手 S0 から最終 S4 までの平場ソルバー、AI 1局レビュー、実効スタック（50pt〜∞）別の最適解、54枚／52枚（ジョーカーなし）完全対応。すべて iPhone 内でオフライン動作。',
+        '初手 S0 から最終 S4 までの平場ソルバー、AI 1局レビュー、実効スタック（50pt〜∞）別の最適解、54枚／52枚（ジョーカーなし）完全対応。iPhone 内オフライン動作＋PC・Android 向け無料 Web 版も公開中。',
       cta_download: 'App Store で無料ダウンロード',
       cta_open_webapp: 'ブラウザで Web 版アプリを操作 →',
       pill_offline: '100% オフライン C++20',
       pill_decks: '54枚（JK2枚）＆ 52枚（JKなし）',
       pill_stacks: '実効スタック 50pt / 100pt / 200pt / ∞',
-      pill_zero_latency: 'サーバー待ちゼロ',
-      quiz_kicker: 'FREE INTERACTIVE TOOL #1',
+      pill_webapp: 'PC・Android は Web 版で無料体験',
+      quiz_kicker: 'INTERACTIVE OFC QUIZ',
       quiz_heading: 'あなたの OFC 直感、厳密計算に勝てるか？',
       quiz_desc:
         '実戦から厳選した 3 問をブラウザ上でそのまま解けます。すべて C++20 エンジン＋最新 FL 価値テーブルで検証した期待値（EV）・FL 突入率・ファウル率を即時採点。',
-      calc_kicker: 'FREE INTERACTIVE TOOL #2',
-      calc_heading: '実卓向け 5 秒 OFC 点数計算（無料）',
-      calc_desc:
-        '26 枚のカードを入力せずに「各段の勝敗・ロイヤリティ・ファウル有無」だけで行ポイント・スクープ（±3）・ロイヤリティ差・次局ファンタジー（14〜17枚）を即座に清算します。',
       feat_kicker: 'INSIDE v3.0',
       feat_heading: '強くなるために必要な道具を、iPhone 1 台に。',
       feat_desc:
@@ -51,13 +48,13 @@
       price_kicker: 'TRANSPARENT PRICING',
       price_heading: 'まずは無料で体験。本格研究には Pro。',
       price_desc:
-        '毎日の「今日の 1 問」・AI 1局レビュー・平場ソルバー・5秒点数計算はすべて無料で試せます。本格研究向けの Pro プランはサブスクと買い切りプランを用意。',
+        '毎日の「今日の 1 問」・AI 1局レビュー・平場ソルバー・CPU 対戦はすべて無料で試せます。本格研究向けの Pro プランはサブスクと買い切りプランを用意。',
       pricing_footnote:
         '※ 表示価格は日本（JPY）／米国（USD）の基準目安です。実際の請求額は App Store の各地域通貨・為替レートに準じます。サブスクリプションは iOS の「設定」からいつでも解約できます。買い切りプランは自動更新されません。',
       faq_heading: 'よくある質問',
       final_title: '今日の 1 問から、期待値ベースの OFC へ。',
       final_desc:
-        'インストール無料・アカウント登録不要。100% オフラインで今すぐ平場ソルバー・AI 1局レビュー・5秒点数計算を試せます。',
+        '登録不要・無料で今すぐ開始。iPhone では 100% オフライン C++20 で動作し、PC や Android でも Web 版アプリからそのまま体験できます。',
       footer_privacy: 'プライバシーポリシー',
       footer_terms: '利用規約（Apple EULA）',
       footer_support: 'お問い合わせ',
@@ -75,32 +72,12 @@
       quiz_next_btn: '次の問題へ →',
       quiz_retry_btn: 'もう一度選ぶ',
       quiz_web_cta: 'Web版アプリで今すぐ操作 →',
-      quiz_app_cta: 'iOS アプリで「今日の 1 問」を解く →',
-      // Calc UI labels
-      calc_player_a: 'プレイヤー A',
-      calc_player_b: 'プレイヤー B',
-      calc_rows: '行',
-      calc_scoop: 'スクープ',
-      calc_royalty: 'ロイヤ差',
-      calc_tie: '引き分け（0 pt）',
-      calc_both_foul: '両者ファウル（0 pt）',
-      calc_step1: '1. 各段の勝敗（ロイヤリティ差があれば自動同期）',
-      calc_foul_note: 'ファウルが発生したため各段の勝敗は自動計算されます（±6pt ＋ 相手のロイヤリティ）。',
-      calc_btn_tie: '分',
-      calc_foul: 'ファウル',
-      calc_top: 'トップ',
-      calc_mid: 'ミドル',
-      calc_bot: 'ボトム',
-      calc_fl_unit: '枚',
-      calc_sample_btn: '実戦サンプルを入力',
-      calc_reset_btn: 'リセット',
-      calc_app_hint: '26 枚カード直接入力・実戦履歴・対戦中の自動清算は iOS アプリに標準搭載 →'
+      quiz_app_cta: 'iOS アプリで「今日の 1 問」を解く →'
     },
     en: {
       page_title: 'OFC Fantasy Optimizer v3.0 — 100% Offline OFC Pineapple Solver & Trainer',
       nav_webapp: 'Web App',
       nav_quiz: 'Free Quiz',
-      nav_calc: '5s Score Calc',
       nav_features: 'Features',
       nav_data: 'FL Data',
       nav_pricing: 'Pricing',
@@ -108,21 +85,17 @@
       hero_eyebrow: 'v3.0 · 100% OFFLINE NATIVE C++20 ENGINE',
       hero_title: 'Solve Every Street of <span class="gold">OFC Pineapple.</span>',
       hero_sub:
-        'Full Street 0–4 Flat-Play Solver, Street-by-Street AI Hand Review, Effective Stack presets (50pt–∞), and both 54-card (2 Jokers) & 52-card (No Jokers)—running 100% offline on iPhone.',
+        'Full Street 0–4 Flat-Play Solver, Street-by-Street AI Hand Review, Effective Stack presets (50pt–∞), and both 54-card (2 Jokers) & 52-card (No Jokers)—100% offline on iPhone, plus a free live Web App for PC & Android.',
       cta_download: 'Download Free on App Store',
       cta_open_webapp: 'Open Web App in Browser →',
       pill_offline: '100% Offline C++20',
       pill_decks: '54-Card (2 Jokers) & 52-Card',
       pill_stacks: 'Effective Stack 50pt / 100pt / 200pt / ∞',
-      pill_zero_latency: 'Zero Server Latency',
-      quiz_kicker: 'FREE INTERACTIVE TOOL #1',
+      pill_webapp: 'Live Web App (PC & Android)',
+      quiz_kicker: 'INTERACTIVE OFC QUIZ',
       quiz_heading: 'Can Your OFC Intuition Beat Exact Enumeration?',
       quiz_desc:
         'Play 3 real solver-mined spots right in your browser. Instant grading with exact EV, Fantasyland %, and Foul % computed by our C++20 engine.',
-      calc_kicker: 'FREE INTERACTIVE TOOL #2',
-      calc_heading: '5-Second OFC Quick Rank Score Calculator',
-      calc_desc:
-        'Skip entering 26 cards—just tap row winners, royalties, and fouls to instantly settle row points, scoop (±3), royalty differential, and next-hand Fantasyland (14–17 cards).',
       feat_kicker: 'INSIDE v3.0',
       feat_heading: 'Every Serious OFC Study Tool, In Your Pocket.',
       feat_desc:
@@ -140,13 +113,13 @@
       price_kicker: 'TRANSPARENT PRICING',
       price_heading: 'Start Free. Upgrade to Pro When You Grind.',
       price_desc:
-        'Try Daily Spot drills, 1 AI Full-Hand Review/day, 1 Flat Solver run/day, and unlimited 5-second score calculation for free. Pro offers flexible subscriptions plus an on-device Lifetime license.',
+        'Try Daily Spot drills, 1 AI Full-Hand Review/day, 1 Flat Solver run/day, and unlimited offline CPU battles for free. Pro offers flexible subscriptions plus a Lifetime license.',
       pricing_footnote:
         'Displayed USD / JPY prices are reference tiers; final billing uses your local App Store currency and tax rules. Subscriptions can be canceled anytime in iOS Settings. Lifetime plans never auto-renew.',
       faq_heading: 'Frequently Asked Questions',
       final_title: 'Stop Guessing. Start Studying EV.',
       final_desc:
-        'Free download, no account required. Run offline Flat-Play solves, AI Hand Reviews, and 5-second live settlements right now.',
+        'Free to start, no account required. Run 100% offline C++20 solves on iPhone, or test the live Web App right now on PC or Android.',
       footer_privacy: 'Privacy Policy',
       footer_terms: 'Terms of Use (Apple EULA)',
       footer_support: 'Contact Support',
@@ -164,26 +137,7 @@
       quiz_next_btn: 'Next Spot →',
       quiz_retry_btn: 'Try Again',
       quiz_web_cta: 'Try Live Web App →',
-      quiz_app_cta: 'Play Free Daily Spots in the iOS App →',
-      // Calc UI labels
-      calc_player_a: 'Player A',
-      calc_player_b: 'Player B',
-      calc_rows: 'Rows',
-      calc_scoop: 'Scoop',
-      calc_royalty: 'Royalty',
-      calc_tie: 'Tie (0 pt)',
-      calc_both_foul: 'Both Foul (0 pt)',
-      calc_step1: '1. Row Winners (auto-syncs when royalty ranks differ)',
-      calc_foul_note: 'Foul active — settlement is automatically calculated (±6pt + opponent royalties).',
-      calc_btn_tie: 'Tie',
-      calc_foul: 'Foul',
-      calc_top: 'Top',
-      calc_mid: 'Middle',
-      calc_bot: 'Bottom',
-      calc_fl_unit: 'c',
-      calc_sample_btn: 'Load Example Hand',
-      calc_reset_btn: 'Reset',
-      calc_app_hint: 'Full 26-card input, history & live CPU battle settlement are built into the iOS app →'
+      quiz_app_cta: 'Play Free Daily Spots in the iOS App →'
     }
   };
 
@@ -422,122 +376,6 @@
     }
   ];
 
-  /* ---------------- Quick Score Calculator Logic (exact port of quickSettlement.ts) ---------------- */
-  const QUICK_TOP_OPTIONS = [
-    { id: 'none', ja: '55以下 (0)', en: '≤55 (0)', royalty: 0, fl: null },
-    { id: '66', ja: '66 (+1)', en: '66 (+1)', royalty: 1, fl: null },
-    { id: '77', ja: '77 (+2)', en: '77 (+2)', royalty: 2, fl: null },
-    { id: '88', ja: '88 (+3)', en: '88 (+3)', royalty: 3, fl: null },
-    { id: '99', ja: '99 (+4)', en: '99 (+4)', royalty: 4, fl: null },
-    { id: 'TT', ja: 'TT (+5)', en: 'TT (+5)', royalty: 5, fl: null },
-    { id: 'JJ', ja: 'JJ (+6)', en: 'JJ (+6)', royalty: 6, fl: null },
-    { id: 'QQ', ja: 'QQ (+7 · FL14)', en: 'QQ (+7 · FL14)', royalty: 7, fl: 14 },
-    { id: 'KK', ja: 'KK (+8 · FL15)', en: 'KK (+8 · FL15)', royalty: 8, fl: 15 },
-    { id: 'AA', ja: 'AA (+9 · FL16)', en: 'AA (+9 · FL16)', royalty: 9, fl: 16 },
-    { id: '222', ja: '222 (+10 · FL17)', en: '222 (+10 · FL17)', royalty: 10, fl: 17 },
-    { id: '333', ja: '333 (+11 · FL17)', en: '333 (+11 · FL17)', royalty: 11, fl: 17 },
-    { id: '444', ja: '444 (+12 · FL17)', en: '444 (+12 · FL17)', royalty: 12, fl: 17 },
-    { id: '555', ja: '555 (+13 · FL17)', en: '555 (+13 · FL17)', royalty: 13, fl: 17 },
-    { id: '666', ja: '666 (+14 · FL17)', en: '666 (+14 · FL17)', royalty: 14, fl: 17 },
-    { id: '777', ja: '777 (+15 · FL17)', en: '777 (+15 · FL17)', royalty: 15, fl: 17 },
-    { id: '888', ja: '888 (+16 · FL17)', en: '888 (+16 · FL17)', royalty: 16, fl: 17 },
-    { id: '999', ja: '999 (+17 · FL17)', en: '999 (+17 · FL17)', royalty: 17, fl: 17 },
-    { id: 'TTT', ja: 'TTT (+18 · FL17)', en: 'TTT (+18 · FL17)', royalty: 18, fl: 17 },
-    { id: 'JJJ', ja: 'JJJ (+19 · FL17)', en: 'JJJ (+19 · FL17)', royalty: 19, fl: 17 },
-    { id: 'QQQ', ja: 'QQQ (+20 · FL17)', en: 'QQQ (+20 · FL17)', royalty: 20, fl: 17 },
-    { id: 'KKK', ja: 'KKK (+21 · FL17)', en: 'KKK (+21 · FL17)', royalty: 21, fl: 17 },
-    { id: 'AAA', ja: 'AAA (+22 · FL17)', en: 'AAA (+22 · FL17)', royalty: 22, fl: 17 }
-  ];
-
-  const QUICK_MIDDLE_OPTIONS = [
-    { id: 'none', ja: '2ペア以下 (0)', en: '≤2 Pair (0)', royalty: 0 },
-    { id: 'trips', ja: '3カード (+2)', en: 'Trips (+2)', royalty: 2 },
-    { id: 'straight', ja: 'ストレート (+4)', en: 'Straight (+4)', royalty: 4 },
-    { id: 'flush', ja: 'フラッシュ (+8)', en: 'Flush (+8)', royalty: 8 },
-    { id: 'full_house', ja: 'フルハウス (+12)', en: 'Full House (+12)', royalty: 12 },
-    { id: 'quads', ja: '4カード (+20)', en: 'Quads (+20)', royalty: 20 },
-    { id: 'straight_flush', ja: 'ストフラ (+30)', en: 'Str Flush (+30)', royalty: 30 },
-    { id: 'royal_flush', ja: 'ロイヤル (+50)', en: 'Royal (+50)', royalty: 50 }
-  ];
-
-  const QUICK_BOTTOM_OPTIONS = [
-    { id: 'none', ja: '3カード以下 (0)', en: '≤Trips (0)', royalty: 0 },
-    { id: 'straight', ja: 'ストレート (+2)', en: 'Straight (+2)', royalty: 2 },
-    { id: 'flush', ja: 'フラッシュ (+4)', en: 'Flush (+4)', royalty: 4 },
-    { id: 'full_house', ja: 'フルハウス (+6)', en: 'Full House (+6)', royalty: 6 },
-    { id: 'quads', ja: '4カード (+10)', en: 'Quads (+10)', royalty: 10 },
-    { id: 'straight_flush', ja: 'ストフラ (+15)', en: 'Str Flush (+15)', royalty: 15 },
-    { id: 'royal_flush', ja: 'ロイヤル (+25)', en: 'Royal (+25)', royalty: 25 }
-  ];
-
-  function findOpt(list, id) {
-    return list.find((o) => o.id === id) || list[0];
-  }
-
-  function lineSign(w) {
-    return w === 'A' ? 1 : w === 'B' ? -1 : 0;
-  }
-
-  function computeQuickSettlement(a, b, winners) {
-    const aTop = findOpt(QUICK_TOP_OPTIONS, a.topId);
-    const aMid = findOpt(QUICK_MIDDLE_OPTIONS, a.middleId);
-    const aBot = findOpt(QUICK_BOTTOM_OPTIONS, a.bottomId);
-    const bTop = findOpt(QUICK_TOP_OPTIONS, b.topId);
-    const bMid = findOpt(QUICK_MIDDLE_OPTIONS, b.middleId);
-    const bBot = findOpt(QUICK_BOTTOM_OPTIONS, b.bottomId);
-
-    const royaltyA = a.foul ? 0 : aTop.royalty + aMid.royalty + aBot.royalty;
-    const royaltyB = b.foul ? 0 : bTop.royalty + bMid.royalty + bBot.royalty;
-    const fantasyA = a.foul ? null : aTop.fl;
-    const fantasyB = b.foul ? null : bTop.fl;
-
-    if (a.foul && b.foul) {
-      return { totalDiff: 0, rowPoints: 0, scoopPoints: 0, royaltyA: 0, royaltyB: 0, royaltyDiff: 0, fantasyA: null, fantasyB: null };
-    }
-    if (a.foul) {
-      return {
-        totalDiff: -6 - royaltyB,
-        rowPoints: -3,
-        scoopPoints: -3,
-        royaltyA: 0,
-        royaltyB,
-        royaltyDiff: -royaltyB,
-        fantasyA: null,
-        fantasyB
-      };
-    }
-    if (b.foul) {
-      return {
-        totalDiff: 6 + royaltyA,
-        rowPoints: 3,
-        scoopPoints: 3,
-        royaltyA,
-        royaltyB: 0,
-        royaltyDiff: royaltyA,
-        fantasyA,
-        fantasyB: null
-      };
-    }
-
-    const sTop = lineSign(winners.top);
-    const sMid = lineSign(winners.middle);
-    const sBot = lineSign(winners.bottom);
-    const rowPoints = sTop + sMid + sBot;
-    const scoopPoints = sTop === 1 && sMid === 1 && sBot === 1 ? 3 : sTop === -1 && sMid === -1 && sBot === -1 ? -3 : 0;
-    const royaltyDiff = royaltyA - royaltyB;
-
-    return {
-      totalDiff: rowPoints + scoopPoints + royaltyDiff,
-      rowPoints,
-      scoopPoints,
-      royaltyA,
-      royaltyB,
-      royaltyDiff,
-      fantasyA,
-      fantasyB
-    };
-  }
-
   /* ---------------- Features, Pricing & FAQ Data ---------------- */
   const FEATURES = [
     {
@@ -626,9 +464,9 @@
         skus: null,
         items: [
           'ファンタジーソルバー無制限（14〜17 枚）',
-          'ファンタジータイムアタック練習無制限',
-          '広告完全非表示',
-          '既存スタンダード購読者はそのまま継続利用可能'
+          'ファンタジートレーニング無制限',
+          '対戦のファンタジー局「最適解」無制限',
+          '広告完全非表示'
         ],
         cta: 'App Store で確認'
       },
@@ -684,9 +522,9 @@
         skus: null,
         items: [
           'Unlimited Exact Fantasy Solver (14–17 cards)',
-          'Unlimited Fantasy speed training',
-          '100% Ad-free experience',
-          'Existing Standard subscribers keep full access'
+          'Unlimited Fantasy Training AI compare',
+          'Unlimited "Optimal" in CPU Battle Fantasyland',
+          '100% Ad-free experience'
         ],
         cta: 'View on App Store'
       },
@@ -718,12 +556,16 @@
   const FAQS = {
     ja: [
       {
+        q: 'PC や Android でも使えますか？',
+        a: 'はい。アカウント登録不要・無料でそのまま操作できる Web 版アプリを公開しています。PC や Android スマホのブラウザから CPU 対戦・平場ソルバー・AI 1局レビュー・ファンタジー解析を試せます（Pro プラン・ネイティブ C++20 高速オフライン動作は現在 iOS アプリ版で提供中です）。'
+      },
+      {
         q: '52 枚（ジョーカーなし）ルールにも対応していますか？',
         a: 'はい。54 枚（ジョーカー 2 枚）と 52 枚（ジョーカーなし）の両方に対応しています。平場ソルバー・FL 価値テーブル・CPU 対戦・ファンタジー解析すべて 1 タップで切替できます。'
       },
       {
         q: 'オフライン環境でもソルバーは動きますか？',
-        a: 'はい、100% オンデバイス（ネイティブ C++20 エンジン）で動作します。通信不要なので機内や海外のポーカールームでも遅延ゼロで解析できます。'
+        a: 'はい、iOS アプリは 100% オンデバイス（ネイティブ C++20 エンジン）で動作します。通信不要なので機内や海外のポーカールームでも遅延ゼロで解析できます。'
       },
       {
         q: 'Pro 買い切りプラン（¥88,000）は何が含まれますか？',
@@ -731,17 +573,21 @@
       },
       {
         q: 'まず無料でどこまで試せますか？',
-        a: '平場ソルバー 1 日 1 回、AI 1 局レビュー 1 日 1 局、今日の 1 問（毎日無料）、CPU 対戦（入門〜標準 AI）、5 秒点数計算ツールをすべて無料で体験してから Pro を検討できます。'
+        a: '平場ソルバー 1 日 1 回、AI 1 局レビュー 1 日 1 局、今日の 1 問（毎日無料）、CPU 対戦（入門〜標準 AI）、ファンタジーソルバー（1 日 3 回）をすべて無料で体験してから Pro を検討できます。'
       }
     ],
     en: [
+      {
+        q: 'Can I use it on PC or Android?',
+        a: 'Yes! You can open our free, no-signup Web App right in your PC or Android browser to play CPU battles, test the Flat-Play Solver, and run AI Full-Hand Reviews. Full Pro plans and ultra-fast offline native C++20 solving are currently available on iOS.'
+      },
       {
         q: 'Does it support 52-card (No Joker) OFC Pineapple?',
         a: 'Yes! Both 54-card (2 Jokers) and 52-card (No Jokers) are supported across the Flat-Play Solver, dedicated FL value tables, AI CPU battles, and the exact Fantasy Solver.'
       },
       {
         q: 'Does the solver work offline without internet?',
-        a: 'Yes—100% offline. Our native C++20 engine and quantized neural networks run directly on your iPhone with zero server wait time.'
+        a: 'Yes—our iOS app runs 100% offline with a native C++20 engine directly on your iPhone, with zero server wait time on flights or in live poker rooms.'
       },
       {
         q: 'What does the Pro Lifetime ($599.99 / ¥88,000) license cover?',
@@ -749,7 +595,7 @@
       },
       {
         q: 'Can I test the solver accuracy before subscribing?',
-        a: 'Absolutely. You get 1 free Flat-Play solve per day (no ad wall), 1 free AI Full-Hand Review per day, the free Daily Spot, offline CPU battles, and unlimited score calculator usage right after download.'
+        a: 'Absolutely. You get 1 free Flat-Play solve per day (no ad wall), 1 free AI Full-Hand Review per day, the free Daily Spot, unlimited offline CPU battles, and 3 Fantasy solves/day right after download.'
       }
     ]
   };
@@ -759,6 +605,7 @@
     const params = new URLSearchParams(window.location.search);
     const qLang = params.get('lang');
     if (qLang === 'ja' || qLang === 'en') return qLang;
+    if (PAGE_DEFAULT_LANG === 'en') return 'en';
     try {
       const saved = window.localStorage.getItem(LANG_STORAGE_KEY);
       if (saved === 'ja' || saved === 'en') return saved;
@@ -771,12 +618,6 @@
   let lang = detectInitialLang();
   let activeQuizIdx = 0;
   const quizAnswers = {}; // { [quizId]: optionIndex }
-
-  const calcState = {
-    a: { foul: false, topId: 'none', middleId: 'none', bottomId: 'none' },
-    b: { foul: false, topId: 'none', middleId: 'none', bottomId: 'none' },
-    winners: { top: 'tie', middle: 'tie', bottom: 'tie' }
-  };
 
   /* ---------------- Helpers ---------------- */
   function el(tag, attrs, children) {
@@ -1029,176 +870,6 @@
     root.replaceChildren(...nodes);
   }
 
-  /* ---------------- Render: 5-Second Quick Score Calculator ---------------- */
-  function updateCalcRowHand(who, row, nextId) {
-    const hand = who === 'A' ? calcState.a : calcState.b;
-    const field = `${row}Id`;
-    hand[field] = nextId;
-    const list = row === 'top' ? QUICK_TOP_OPTIONS : row === 'middle' ? QUICK_MIDDLE_OPTIONS : QUICK_BOTTOM_OPTIONS;
-    const rankA = list.findIndex((o) => o.id === calcState.a[field]);
-    const rankB = list.findIndex((o) => o.id === calcState.b[field]);
-    if (rankA >= 0 && rankB >= 0 && rankA !== rankB) {
-      calcState.winners[row] = rankA > rankB ? 'A' : 'B';
-    }
-    renderCalc();
-  }
-
-  function renderCalc() {
-    const root = document.getElementById('calc-root');
-    if (!root) return;
-    const t = COPY[lang];
-    const isJa = lang === 'ja';
-    const res = computeQuickSettlement(calcState.a, calcState.b, calcState.winners);
-    const anyFoul = calcState.a.foul || calcState.b.foul;
-    const bothFoul = calcState.a.foul && calcState.b.foul;
-
-    const headline = bothFoul
-      ? t.calc_both_foul
-      : res.totalDiff === 0
-        ? t.calc_tie
-        : res.totalDiff > 0
-          ? `${t.calc_player_a} +${res.totalDiff} pt`
-          : `${t.calc_player_b} +${Math.abs(res.totalDiff)} pt`;
-
-    const summaryCls = `calc-summary${res.totalDiff > 0 ? ' win-a' : res.totalDiff < 0 ? ' win-b' : ''}`;
-    const flRow =
-      res.fantasyA || res.fantasyB
-        ? el('div', { className: 'calc-fl-row', 'data-testid': 'calc-fl-row' }, [
-            res.fantasyA
-              ? el('span', { className: 'fl-pill', text: `${t.calc_player_a}: FL ${res.fantasyA}${t.calc_fl_unit}` })
-              : null,
-            res.fantasyB
-              ? el('span', { className: 'fl-pill', text: `${t.calc_player_b}: FL ${res.fantasyB}${t.calc_fl_unit}` })
-              : null
-          ])
-        : null;
-
-    const summary = el('div', { className: summaryCls, 'data-testid': 'calc-summary' }, [
-      el('div', { className: 'calc-headline', 'data-testid': 'calc-headline', text: headline }),
-      el('div', { className: 'calc-breakdown' }, [
-        el('span', { text: `${t.calc_rows} ${signed(res.rowPoints)}` }),
-        el('span', { text: `${t.calc_scoop} ${signed(res.scoopPoints)}` }),
-        el('span', { text: `${t.calc_royalty} ${signed(res.royaltyDiff)} (${res.royaltyA}/${res.royaltyB})` })
-      ]),
-      flRow
-    ]);
-
-    const winnerBoxChildren = [
-      el('div', { className: 'calc-box-head' }, [el('span', { className: 'calc-box-title', text: t.calc_step1 })])
-    ];
-    if (anyFoul) {
-      winnerBoxChildren.push(el('p', { className: 'foul-note', text: t.calc_foul_note }));
-    }
-    [
-      { key: 'top', label: t.calc_top },
-      { key: 'middle', label: t.calc_mid },
-      { key: 'bottom', label: t.calc_bot }
-    ].forEach(({ key, label }) => {
-      const track = el(
-        'div',
-        { className: 'seg-track' },
-        ['A', 'tie', 'B'].map((choice) =>
-          el('button', {
-            type: 'button',
-            disabled: anyFoul,
-            'data-calc-win': `${key}-${choice}`,
-            className: `seg-btn${!anyFoul && calcState.winners[key] === choice ? ' active' : ''}`,
-            text: choice === 'A' ? 'A' : choice === 'B' ? 'B' : t.calc_btn_tie,
-            onClick: () => {
-              calcState.winners[key] = choice;
-              renderCalc();
-            }
-          })
-        )
-      );
-      winnerBoxChildren.push(
-        el('div', { className: 'winner-row' }, [el('span', { className: 'winner-label', text: label }), track])
-      );
-    });
-    const winnerBox = el('div', { className: 'calc-box' }, winnerBoxChildren);
-
-    function buildSelect(who, row, label, options, currentId, disabled) {
-      const sel = el(
-        'select',
-        {
-          disabled,
-          'data-calc-sel': `${who}-${row}`,
-          onChange: (e) => updateCalcRowHand(who, row, e.target.value)
-        },
-        options.map((o) => el('option', { value: o.id, selected: o.id === currentId, text: isJa ? o.ja : o.en }))
-      );
-      sel.value = currentId;
-      return el('label', { className: 'select-field' }, [el('span', { text: label }), sel]);
-    }
-
-    const playersGrid = el(
-      'div',
-      { className: 'players-grid' },
-      [
-        { key: 'A', name: t.calc_player_a, hand: calcState.a },
-        { key: 'B', name: t.calc_player_b, hand: calcState.b }
-      ].map(({ key, name, hand }) =>
-        el('div', { className: 'calc-box' }, [
-          el('div', { className: 'calc-box-head' }, [
-            el('span', { className: 'calc-box-title', text: name }),
-            el('button', {
-              type: 'button',
-              'data-calc-foul': key,
-              className: `foul-btn${hand.foul ? ' active' : ''}`,
-              text: t.calc_foul,
-              onClick: () => {
-                hand.foul = !hand.foul;
-                renderCalc();
-              }
-            })
-          ]),
-          buildSelect(key, 'top', t.calc_top, QUICK_TOP_OPTIONS, hand.topId, hand.foul),
-          buildSelect(key, 'middle', t.calc_mid, QUICK_MIDDLE_OPTIONS, hand.middleId, hand.foul),
-          buildSelect(key, 'bottom', t.calc_bot, QUICK_BOTTOM_OPTIONS, hand.bottomId, hand.foul)
-        ])
-      )
-    );
-
-    const actions = el('div', { className: 'calc-actions' }, [
-      el('div', { className: 'calc-btn-group' }, [
-        el('button', {
-          type: 'button',
-          className: 'btn btn-ghost btn-sm',
-          'data-testid': 'calc-sample-btn',
-          text: t.calc_sample_btn,
-          onClick: () => {
-            calcState.a = { foul: false, topId: 'QQ', middleId: 'flush', bottomId: 'full_house' };
-            calcState.b = { foul: false, topId: 'none', middleId: 'none', bottomId: 'straight' };
-            calcState.winners = { top: 'A', middle: 'A', bottom: 'A' };
-            renderCalc();
-          }
-        }),
-        el('button', {
-          type: 'button',
-          className: 'btn btn-ghost btn-sm',
-          'data-testid': 'calc-reset-btn',
-          text: t.calc_reset_btn,
-          onClick: () => {
-            calcState.a = { foul: false, topId: 'none', middleId: 'none', bottomId: 'none' };
-            calcState.b = { foul: false, topId: 'none', middleId: 'none', bottomId: 'none' };
-            calcState.winners = { top: 'tie', middle: 'tie', bottom: 'tie' };
-            renderCalc();
-          }
-        })
-      ]),
-      el('a', {
-        className: 'method-note',
-        href: APP_STORE_URL,
-        target: '_blank',
-        rel: 'noopener',
-        style: 'color:var(--gold-soft);',
-        text: t.calc_app_hint
-      })
-    ]);
-
-    root.replaceChildren(summary, el('div', { className: 'calc-grid' }, [winnerBox, playersGrid]), actions);
-  }
-
   /* ---------------- Render: Features, Pricing, FAQ ---------------- */
   function renderFeatures() {
     const grid = document.getElementById('features-grid');
@@ -1210,7 +881,7 @@
           el('div', { className: 'feature-img-wrap' }, [
             el('img', {
               className: 'feature-img',
-              src: `assets/${f.shot}-${lang}.webp`,
+              src: `${ASSET_BASE}assets/${f.shot}-${lang}.webp`,
               alt: isJa ? f.titleJa : f.titleEn,
               width: 660,
               height: 1434,
@@ -1329,11 +1000,11 @@
 
     document.querySelectorAll('[data-shot]').forEach((img) => {
       const name = img.getAttribute('data-shot');
-      img.src = `assets/${name}-${lang}.webp`;
+      img.src = `${ASSET_BASE}assets/${name}-${lang}.webp`;
     });
     document.querySelectorAll('[data-chart]').forEach((img) => {
       const name = img.getAttribute('data-chart');
-      img.src = `assets/${name}-${lang}.webp`;
+      img.src = `${ASSET_BASE}assets/${name}-${lang}.webp`;
     });
 
     document.querySelectorAll('.lang-btn').forEach((btn) => {
@@ -1341,7 +1012,6 @@
     });
 
     renderQuiz();
-    renderCalc();
     renderFeatures();
     renderPricing();
     renderFaqs();
