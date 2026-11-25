@@ -1019,7 +1019,7 @@
     });
     document.querySelectorAll('[data-chart]').forEach((img) => {
       const name = img.getAttribute('data-chart');
-      img.src = `${ASSET_BASE}assets/${name}-${lang}.webp`;
+      img.src = `${ASSET_BASE}assets/${name}-${lang}.webp?v=20261125-4`;
     });
 
     document.querySelectorAll('.lang-btn').forEach((btn) => {
