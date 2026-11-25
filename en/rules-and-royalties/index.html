@@ -140,10 +140,93 @@
           <li><strong>No Fouling:</strong> Your final board must satisfy <strong>Bottom ≥ Middle ≥ Top</strong>. Breaking hand order results in a <strong>Foul</strong>, voiding your entire board and royalties.</li>
         </ul>
 
-        <h2>2. Complete Royalties Chart</h2>
+        <h2>2. Complete Royalties Chart &amp; Instant Calculator</h2>
         <p>
           Royalties are bonus points awarded for strong hands on any valid (non-fouled) board, even if your opponent beats you on that row.
         </p>
+
+        <div class="flip-card gold" id="mini-royalty-calc" style="margin:18px 0 24px;">
+          <h3 style="margin-top:0;">⚡ Instant Board Royalty Calculator</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0;">
+            <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text-muted);">
+              <span>Top Row (3 Cards)</span>
+              <select id="rc-top" style="min-height:38px;padding:6px 8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:14px;">
+                <option value="0|">55 or less (0 pt)</option>
+                <option value="1|">66 (+1 pt)</option>
+                <option value="2|">77 (+2 pt)</option>
+                <option value="3|">88 (+3 pt)</option>
+                <option value="4|">99 (+4 pt)</option>
+                <option value="5|">TT (+5 pt)</option>
+                <option value="6|">JJ (+6 pt)</option>
+                <option value="7|fl14" selected>QQ (+7 pt · FL 14c)</option>
+                <option value="8|fl15">KK (+8 pt · FL 15c)</option>
+                <option value="9|fl16">AA (+9 pt · FL 16c)</option>
+                <option value="10|fl17">222 (+10 pt · FL 17c / Repeat)</option>
+                <option value="15|fl17">777 (+15 pt · FL 17c / Repeat)</option>
+                <option value="22|fl17">AAA (+22 pt · FL 17c / Repeat)</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text-muted);">
+              <span>Middle Row (5 Cards)</span>
+              <select id="rc-mid" style="min-height:38px;padding:6px 8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:14px;">
+                <option value="0">Two Pair or less (0 pt)</option>
+                <option value="2">Three of a Kind (+2 pt)</option>
+                <option value="4">Straight (+4 pt)</option>
+                <option value="8" selected>Flush (+8 pt)</option>
+                <option value="12">Full House (+12 pt)</option>
+                <option value="20">Four of a Kind (+20 pt)</option>
+                <option value="30">Straight Flush (+30 pt)</option>
+                <option value="50">Royal Flush (+50 pt)</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text-muted);">
+              <span>Bottom Row (5 Cards)</span>
+              <select id="rc-bot" style="min-height:38px;padding:6px 8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:14px;">
+                <option value="0|">Trips or less (0 pt)</option>
+                <option value="2|">Straight (+2 pt)</option>
+                <option value="4|">Flush (+4 pt)</option>
+                <option value="6|" selected>Full House (+6 pt)</option>
+                <option value="10|rep">Four of a Kind (+10 pt · Repeat)</option>
+                <option value="15|rep">Straight Flush (+15 pt · Repeat)</option>
+                <option value="25|rep">Royal Flush (+25 pt · Repeat)</option>
+              </select>
+            </label>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:8px;border-top:1px solid var(--border);">
+            <div>
+              <span style="font-size:12px;color:var(--text-muted);display:block;">Total Board Royalties</span>
+              <strong id="rc-total" style="font-size:26px;color:var(--gold);font-family:ui-monospace,Menlo,monospace;">+21 pt</strong>
+              <span id="rc-fl" style="margin-left:8px;font-size:12px;font-weight:700;color:#34d399;">★ Fantasyland Entry (14 cards)</span>
+            </div>
+            <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=score&amp;lang=en" target="_blank" rel="noopener">Full 2-Player 5-Sec Calculator ↗</a>
+          </div>
+        </div>
+        <script>
+          (function () {
+            var topEl = document.getElementById('rc-top');
+            var midEl = document.getElementById('rc-mid');
+            var botEl = document.getElementById('rc-bot');
+            var totalEl = document.getElementById('rc-total');
+            var flEl = document.getElementById('rc-fl');
+            function update() {
+              var t = topEl.value.split('|');
+              var b = botEl.value.split('|');
+              var sum = Number(t[0]) + Number(midEl.value) + Number(b[0]);
+              totalEl.textContent = '+' + sum + ' pt';
+              var tags = [];
+              if (t[1] === 'fl14') tags.push('Fantasyland Entry (14 cards)');
+              else if (t[1] === 'fl15') tags.push('Fantasyland Entry (15 cards)');
+              else if (t[1] === 'fl16') tags.push('Fantasyland Entry (16 cards)');
+              else if (t[1] === 'fl17') tags.push('Fantasyland Entry (17c) / Repeat');
+              if (b[1] === 'rep' && t[1] !== 'fl17') tags.push('Bottom FL Repeat Qualified');
+              flEl.textContent = tags.length ? '★ ' + tags.join(' · ') : '';
+            }
+            topEl.addEventListener('change', update);
+            midEl.addEventListener('change', update);
+            botEl.addEventListener('change', update);
+            update();
+          })();
+        </script>
 
         <h3>Top Row (3 Cards) Royalties</h3>
         <p>Only High Card, One Pair, and Three of a Kind exist on the 3-card Top row (no Straights or Flushes).</p>
@@ -257,6 +340,7 @@
         <div class="footer-links">
           <a href="../">Home</a>
           <a href="../opening-strategy/">Strategy Guide</a>
+          <a href="../joker-vs-52card/">Joker vs 52-Card</a>
           <a href="../fantasyland-ev-guide/">FL EV Guide</a>
           <a href="https://app.ofcoptimizer.com/?lang=en" target="_blank" rel="noopener">Web App ↗</a>
           <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">X (@ofcoptimizer)</a>

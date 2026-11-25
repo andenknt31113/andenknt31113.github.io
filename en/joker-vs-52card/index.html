@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070709" />
+    <title>OFC Pineapple Joker Rules: 54-Card vs. 52-Card EV &amp; Strategy Guide — OFC Optimizer</title>
+    <meta
+      name="description"
+      content="Complete guide to Open Face Chinese (OFC) Pineapple Joker rules: duplicate-card wildcards, automatic foul-avoiding downgrade rules, exact 54-card vs. 52-card Fantasyland EV drop (-40% to -54%), and 4 key strategy shifts."
+    />
+    <link rel="canonical" href="https://ofcoptimizer.com/en/joker-vs-52card/" />
+    <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/joker-vs-52card/" />
+    <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/joker-vs-52card/" />
+    <link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/joker-vs-52card/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:title" content="OFC Pineapple Joker Rules: 54-Card vs. 52-Card EV &amp; Strategy" />
+    <meta
+      property="og:description"
+      content="Removing 2 Jokers cuts Fantasyland EV by 40%–54%. Exact solver tables, legal Joker downgrade rules, and how to adjust your game."
+    />
+    <meta property="og:url" content="https://ofcoptimizer.com/en/joker-vs-52card/" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ofcoptimizer" />
+    <meta name="twitter:title" content="OFC Pineapple Joker Rules: 54-Card vs. 52-Card EV &amp; Strategy" />
+    <meta
+      name="twitter:description"
+      content="Exact solver benchmarks comparing 54-card 2-Joker OFC vs. 52-card No-Joker OFC, plus legal Joker downgrade rules."
+    />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../../styles.css?v=20261125-3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "OFC Pineapple Joker Rules: 54-Card vs. 52-Card EV & Strategy Guide",
+        "description": "Exact rules for wild Jokers in 54-card OFC Pineapple, automatic foul-avoiding demotion, and solver-verified EV comparison against 52-card No-Joker OFC.",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "inLanguage": "en",
+        "author": { "@type": "Organization", "name": "OFC Optimizer" },
+        "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
+        "mainEntityOfPage": "https://ofcoptimizer.com/en/joker-vs-52card/",
+        "image": "https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can a Joker duplicate a card already on the board in OFC Pineapple?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. In standard 54-card Joker OFC Pineapple, each Joker is a full wildcard and can represent any rank and suit—even duplicating a card already visible in your hand or on your opponent's board."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a Joker ever force you to foul if its highest value beats the row below?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Under standard OFC rules, a Joker automatically demotes to the strongest legal hand that preserves Bottom >= Middle >= Top, preventing accidental fouls caused by over-evaluating a wildcard."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does Fantasyland EV drop in 52-card (no Joker) OFC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At infinite stacks, Fantasyland EV drops by 40% to 54% without Jokers: QQ (14 cards) falls from 23.2 to 14.0 pts (-40%), KK (15 cards) from 38.0 to 21.1 pts (-44%), AA (16 cards) from 64.5 to 33.0 pts (-49%), and Trips (17 cards) from 126.4 to 58.5 pts (-54%)."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <img class="brand-icon" src="../../assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/?mode=daily&amp;lang=en" target="_blank" rel="noopener">Daily Spot ↗</a>
+          <a href="../rules-and-royalties/">Rules &amp; Royalties</a>
+          <a href="../opening-strategy/">Strategy Guide</a>
+          <a href="../fantasyland-ev-guide/">FL EV Guide</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <a class="lang-btn" href="../../joker-vs-52card/">日本語</a>
+            <a class="lang-btn active" href="./" aria-current="page">EN</a>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section" style="border-top:0;padding-top:36px;">
+      <div class="container article-wrap article-body">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">OFC Optimizer Home</a>
+          <span>/</span>
+          <span>Joker 54-Card vs. 52-Card Guide</span>
+        </nav>
+
+        <div class="eyebrow">DECK RULES &amp; EV COMPARISON</div>
+        <h1 class="hero-title" style="font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:14px;">
+          OFC Pineapple <span class="gold">Joker Rules: 54-Card vs. 52-Card</span> Guide
+        </h1>
+        <p class="lead">
+          Whether you play 54-card Joker OFC online (PPPoker / PokerBros) or classic 52-card OFC live, removing two Jokers fundamentally transforms Fantasyland math. Here are the exact wildcard rules and solver-verified EV differences.
+        </p>
+
+        <div class="hero-ctas" style="margin-bottom:28px;">
+          <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=flat&amp;lang=en" target="_blank" rel="noopener">Compare 54c vs. 52c in Free Solver ↗</a>
+          <a class="btn btn-ghost btn-sm" href="https://app.ofcoptimizer.com/?mode=daily&amp;lang=en" target="_blank" rel="noopener">Play Today's Daily Spot →</a>
+        </div>
+
+        <h2>1. Three Official Wildcard Rules for 54-Card Joker OFC</h2>
+        <ul>
+          <li><strong>Full Wildcard (Duplicates Allowed):</strong> Each Joker can represent any card—even duplicating an exact rank and suit already on your board or your opponent's board.</li>
+          <li><strong>Automatic Legal Downgrade (No Forced Fouls):</strong> If reading a Joker as its highest possible hand would beat the row below it and foul your board, the Joker automatically demotes to the strongest legal hand that satisfies Bottom ≥ Middle ≥ Top.</li>
+          <li><strong>No Five of a Kind:</strong> Quads + a Joker still ranks as Four of a Kind (with an Ace kicker).</li>
+        </ul>
+
+        <h2>2. Exact Fantasyland EV Drop: 54-Card vs. 52-Card (∞ Stack)</h2>
+        <p>
+          Without 2 Jokers, Fantasyland entry values collapse by <strong>40% to 54% across every single tier</strong>:
+        </p>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;font-size:13px;">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;">Entry Tier</th>
+                <th style="padding:10px 8px;white-space:nowrap;">54-Card</th>
+                <th style="padding:10px 8px;white-space:nowrap;">52-Card</th>
+                <th style="padding:10px 8px;white-space:nowrap;">Drop</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px 8px;">QQ (14 cards)</td>
+                <td style="padding:10px 8px;white-space:nowrap;">23.2 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">14.0 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-40%</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">KK (15 cards)</td>
+                <td style="padding:10px 8px;white-space:nowrap;">38.0 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">21.1 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-44%</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">AA (16 cards)</td>
+                <td style="padding:10px 8px;white-space:nowrap;">64.5 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">33.0 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-49%</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">Trips (17 cards)</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">126.4 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">58.5 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-54%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          52-card repeat rates (exact solver + 100,000-chain simulation): QQ 11.5% · KK 19.9% · AA 35.0% · Trips 55.6%.
+        </p>
+
+        <h2>3. Four Key Strategy Shifts for 52-Card (No Joker) Tables</h2>
+        <div class="flip-grid">
+          <div class="flip-card gold">
+            <h3>1. Dial Back High-Foul Top Gambles</h3>
+            <p>
+              Because Fantasyland EV is roughly cut in half without Jokers, reckless Top QQ+/Trips chases that accept 30%+ foul risk quickly turn -EV in 52-card games.
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>2. Value Clean Scoops &amp; Middle Royalties Higher</h3>
+            <p>
+              Fewer infinite FL chains mean standard board scoops (+6 pts), Middle Flushes (+8 pts), and Bottom Full Houses (+6 pts) make up a much larger share of your win rate.
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>3. Don't Force Re-Fantasy in 14-Card 52c FL</h3>
+            <p>
+              With only an <strong>11.5% repeat rate</strong> on 14 cards in 52-card OFC, sacrificing big Middle/Bottom royalties to force a thin repeat rarely pays off.
+            </p>
+          </div>
+          <div class="flip-card gold">
+            <h3>4. Match Your Solver Deck Rule in 1 Tap</h3>
+            <p>
+              OFC Optimizer v3.0 includes dedicated 54-card and 52-card evaluation tables for both Flat-Play (S0–S4) and Fantasyland—toggle directly in the rule chip.
+            </p>
+          </div>
+        </div>
+
+        <section class="section" style="padding-bottom:12px;margin-top:36px;">
+          <div class="cta-banner">
+            <h2>Switch 54-Card &amp; 52-Card Tables in One Tap.</h2>
+            <p>
+              Study exact EV in your browser (free, no signup) or run 100% offline solves anywhere on iPhone.
+            </p>
+            <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+              <a class="btn btn-gold" href="https://app.ofcoptimizer.com/?mode=daily&amp;lang=en" target="_blank" rel="noopener">Play Today's Daily Spot Free →</a>
+              <a class="btn btn-ghost" href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">Download Free on App Store</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Optimizer</div>
+        <div class="footer-links">
+          <a href="../">Home</a>
+          <a href="../rules-and-royalties/">Rules &amp; Royalties</a>
+          <a href="../opening-strategy/">Strategy Guide</a>
+          <a href="../fantasyland-ev-guide/">FL EV Guide</a>
+          <a href="https://app.ofcoptimizer.com/?lang=en" target="_blank" rel="noopener">Web App ↗</a>
+          <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">X (@ofcoptimizer)</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

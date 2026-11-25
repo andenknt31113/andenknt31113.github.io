@@ -140,10 +140,93 @@
           <li><strong>絶対条件（ファウル禁止）：</strong>完成時に <strong>ボトム ≥ ミドル ≥ トップ</strong> の強さ順になっていなければなりません。逆転すると<strong>ファウル（バースト）</strong>となり、自分の役とロイヤリティがすべて無効になります。</li>
         </ul>
 
-        <h2>2. ロイヤリティ点数表（完全版）</h2>
+        <h2>2. ロイヤリティ点数表（完全版）＋ 即時計算ツール</h2>
         <p>
           ロイヤリティは「特定の強い役を作ったときにもらえるボーナス点」です。ファウルしていなければ、その段で負けていても自分のロイヤリティは加算されます。
         </p>
+
+        <div class="flip-card gold" id="mini-royalty-calc" style="margin:18px 0 24px;">
+          <h3 style="margin-top:0;">⚡ 自分のボードのロイヤリティを今すぐ計算</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0;">
+            <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text-muted);">
+              <span>トップ（3 枚）</span>
+              <select id="rc-top" style="min-height:38px;padding:6px 8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:14px;">
+                <option value="0|">55 以下（0 pt）</option>
+                <option value="1|">66（+1 pt）</option>
+                <option value="2|">77（+2 pt）</option>
+                <option value="3|">88（+3 pt）</option>
+                <option value="4|">99（+4 pt）</option>
+                <option value="5|">TT（+5 pt）</option>
+                <option value="6|">JJ（+6 pt）</option>
+                <option value="7|fl14" selected>QQ（+7 pt · FL 14枚）</option>
+                <option value="8|fl15">KK（+8 pt · FL 15枚）</option>
+                <option value="9|fl16">AA（+9 pt · FL 16枚）</option>
+                <option value="10|fl17">222（+10 pt · FL 17枚/継続）</option>
+                <option value="15|fl17">777（+15 pt · FL 17枚/継続）</option>
+                <option value="22|fl17">AAA（+22 pt · FL 17枚/継続）</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text-muted);">
+              <span>ミドル（5 枚）</span>
+              <select id="rc-mid" style="min-height:38px;padding:6px 8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:14px;">
+                <option value="0">ツーペア以下（0 pt）</option>
+                <option value="2">スリーカード（+2 pt）</option>
+                <option value="4">ストレート（+4 pt）</option>
+                <option value="8" selected>フラッシュ（+8 pt）</option>
+                <option value="12">フルハウス（+12 pt）</option>
+                <option value="20">フォーカード（+20 pt）</option>
+                <option value="30">ストレートフラッシュ（+30 pt）</option>
+                <option value="50">ロイヤルフラッシュ（+50 pt）</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text-muted);">
+              <span>ボトム（5 枚）</span>
+              <select id="rc-bot" style="min-height:38px;padding:6px 8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:14px;">
+                <option value="0|">スリーカード以下（0 pt）</option>
+                <option value="2|">ストレート（+2 pt）</option>
+                <option value="4|">フラッシュ（+4 pt）</option>
+                <option value="6|" selected>フルハウス（+6 pt）</option>
+                <option value="10|rep">フォーカード（+10 pt · 継続）</option>
+                <option value="15|rep">ストレートフラッシュ（+15 pt · 継続）</option>
+                <option value="25|rep">ロイヤルフラッシュ（+25 pt · 継続）</option>
+              </select>
+            </label>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:8px;border-top:1px solid var(--border);">
+            <div>
+              <span style="font-size:12px;color:var(--text-muted);display:block;">合計ロイヤリティ</span>
+              <strong id="rc-total" style="font-size:26px;color:var(--gold);font-family:ui-monospace,Menlo,monospace;">+21 pt</strong>
+              <span id="rc-fl" style="margin-left:8px;font-size:12px;font-weight:700;color:#34d399;">★ 次局 FL 14 枚突入</span>
+            </div>
+            <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=score" target="_blank" rel="noopener">2 人の点数清算を 5 秒で計算 ↗</a>
+          </div>
+        </div>
+        <script>
+          (function () {
+            var topEl = document.getElementById('rc-top');
+            var midEl = document.getElementById('rc-mid');
+            var botEl = document.getElementById('rc-bot');
+            var totalEl = document.getElementById('rc-total');
+            var flEl = document.getElementById('rc-fl');
+            function update() {
+              var t = topEl.value.split('|');
+              var b = botEl.value.split('|');
+              var sum = Number(t[0]) + Number(midEl.value) + Number(b[0]);
+              totalEl.textContent = '+' + sum + ' pt';
+              var tags = [];
+              if (t[1] === 'fl14') tags.push('次局 FL 14 枚突入');
+              else if (t[1] === 'fl15') tags.push('次局 FL 15 枚突入');
+              else if (t[1] === 'fl16') tags.push('次局 FL 16 枚突入');
+              else if (t[1] === 'fl17') tags.push('次局 FL 17 枚突入 / 継続');
+              if (b[1] === 'rep' && t[1] !== 'fl17') tags.push('ボトム FL 継続条件達成');
+              flEl.textContent = tags.length ? '★ ' + tags.join(' · ') : '';
+            }
+            topEl.addEventListener('change', update);
+            midEl.addEventListener('change', update);
+            botEl.addEventListener('change', update);
+            update();
+          })();
+        </script>
 
         <h3>トップ（3 枚）のロイヤリティ</h3>
         <p>※トップは 3 枚のためストレート・フラッシュは成立せず、ハイカード・ワンペア・スリーカードの 3 種のみです。</p>
@@ -257,6 +340,7 @@
         <div class="footer-links">
           <a href="../">トップページ</a>
           <a href="../opening-strategy/">初手5枚戦略</a>
+          <a href="../joker-vs-52card/">54枚 vs 52枚</a>
           <a href="../fantasyland-ev-guide/">FL期待値表</a>
           <a href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener">Web版アプリ ↗</a>
           <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">公式 X (@ofcoptimizer)</a>

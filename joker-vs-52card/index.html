@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070709" />
+    <title>チャイポ（OFC パイナップル）ジョーカー 54 枚 vs 52 枚ルール＆戦略の違い — OFC Optimizer</title>
+    <meta
+      name="description"
+      content="OFC パイナップル（チャイポ）のジョーカー 2 枚入り（54 枚）とジョーカーなし（52 枚）のルール・自動降格・ファンタジーランド期待値の差（-40%〜-54%）と戦略変更ポイントをソルバー実測データで完全解説。"
+    />
+    <link rel="canonical" href="https://ofcoptimizer.com/joker-vs-52card/" />
+    <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/joker-vs-52card/" />
+    <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/joker-vs-52card/" />
+    <link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/joker-vs-52card/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="チャイポ（OFC パイナップル）ジョーカー 54 枚 vs 52 枚ルール＆戦略の違い" />
+    <meta
+      property="og:description"
+      content="ジョーカー自動降格・重複カード可否の公式ルールから、54枚 vs 52枚のファンタジー期待値・継続率の実測比較までを 1 ページで完全網羅。"
+    />
+    <meta property="og:url" content="https://ofcoptimizer.com/joker-vs-52card/" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ofcoptimizer" />
+    <meta name="twitter:title" content="チャイポ ジョーカー 54 枚 vs 52 枚ルール＆戦略比較" />
+    <meta
+      name="twitter:description"
+      content="ジョーカーを抜くとファンタジー期待値は最大 -54% 低下。ルール細則と 52 枚卓での勝ち方をソルバー数値で解説。"
+    />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
+    <link rel="icon" type="image/png" href="../assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../styles.css?v=20261125-3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "チャイポ（OFC パイナップル）ジョーカー 54 枚 vs 52 枚ルール＆戦略の違い",
+        "description": "OFC パイナップルの 54 枚（ジョーカー 2 枚）ルールと 52 枚（ジョーカーなし）ルールの細則、自動降格、ファンタジーランド期待値・継続率の差をソルバーデータで解説。",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "inLanguage": "ja",
+        "author": { "@type": "Organization", "name": "OFC Optimizer" },
+        "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
+        "mainEntityOfPage": "https://ofcoptimizer.com/joker-vs-52card/",
+        "image": "https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "OFC のジョーカーはすでに場に出ているカードと同じ札として使えますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい、標準の 54 枚ワイルドカードルールではすでに盤面に出ているカードと同じスート・ランクとしても機能します（例：手元の A♠ と同じ A♠ に化けてロイヤルフラッシュやフォーカードを構成できます）。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ジョーカーが強すぎて上の段より強くなるとファウルになりますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "いいえ。標準ルールでは「ボトム >= ミドル >= トップ」を満たす範囲で最も強い合法役へ自動的に降格します（例：トップのジョーカーを AAA に読むとミドルより強くなってしまう場合、ミドル以下に収まる最強のペア等として評価されます）。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "52 枚（ジョーカーなし）だとファンタジーランドの価値はどれくらい下がりますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "スタック無限時で QQ（14枚）が 23.2pt → 14.0pt（-40%）、KK（15枚）が 38.0pt → 21.1pt（-44%）、AA（16枚）が 64.5pt → 33.0pt（-49%）、Trips（17枚）が 126.4pt → 58.5pt（-54%）と約半分まで低下します。"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <img class="brand-icon" src="../assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/?mode=daily" target="_blank" rel="noopener">今日の 1 問 ↗</a>
+          <a href="../rules-and-royalties/">ルール＆点数表</a>
+          <a href="../opening-strategy/">初手5枚戦略</a>
+          <a href="../fantasyland-ev-guide/">FL期待値表</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <a class="lang-btn active" href="./" aria-current="page">日本語</a>
+            <a class="lang-btn" href="../en/joker-vs-52card/">EN</a>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section" style="border-top:0;padding-top:36px;">
+      <div class="container article-wrap article-body">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">OFC Optimizer トップ</a>
+          <span>/</span>
+          <span>ジョーカー 54 枚 vs 52 枚ガイド</span>
+        </nav>
+
+        <div class="eyebrow">DECK RULES &amp; EV COMPARISON</div>
+        <h1 class="hero-title" style="font-size:clamp(1.5rem,4vw,2.55rem);margin-bottom:14px;">
+          チャイポ（OFC パイナップル）<br /><span class="gold">ジョーカー 54 枚 vs 52 枚比較</span>
+        </h1>
+        <p class="lead">
+          リアル卓やオンラインアプリ（PPPoker / PokerBros 等）で最も意見が割れやすい<strong>ジョーカー（ワイルドカード）の細則</strong>と、ジョーカー 2 枚を外した <strong>52 枚ルールでの期待値・戦略の違い</strong>をソルバー実測データで整理しました。
+        </p>
+
+        <div class="hero-ctas" style="margin-bottom:28px;">
+          <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=flat" target="_blank" rel="noopener">54枚 / 52枚を 1 タップ比較（無料ソルバー）↗</a>
+          <a class="btn btn-ghost btn-sm" href="https://app.ofcoptimizer.com/?mode=daily" target="_blank" rel="noopener">今日の 1 問に挑戦 →</a>
+        </div>
+
+        <h2>1. リアル卓で揉めないためのジョーカー 3 原則（54 枚ルール）</h2>
+        <ul>
+          <li><strong>① 完全ワイルドカード（重複 OK）：</strong>ジョーカー 2 枚は、すでに自分の盤面や相手ボードに出ているカードと同じスート・ランクとしても機能します。</li>
+          <li><strong>② 自動降格（ファウル回避）：</strong>たとえばトップにジョーカーを置いて最強解釈（AAA 等）をするとミドルより強くなってファウルしてしまう場合、<strong>「ボトム ≥ ミドル ≥ トップ」を満たす範囲で最も強い合法役へ自動降格</strong>して評価されます。</li>
+          <li><strong>③ ファイブカードは存在しない：</strong>フォーカード＋ジョーカーの組み合わせでも、最高役はフォーカード（キッカー A）止まりです。</li>
+        </ul>
+
+        <h2>2. 54 枚 vs 52 枚：ファンタジーランド期待値＆継続率の実測差</h2>
+        <p>
+          ジョーカー 2 枚を抜くだけで、ファンタジーランドの期待値は<strong>全ティアで -40%〜-54%（ほぼ半減）</strong>します。
+        </p>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;font-size:13px;">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;">突入ティア</th>
+                <th style="padding:10px 8px;white-space:nowrap;">54枚 (∞)</th>
+                <th style="padding:10px 8px;white-space:nowrap;">52枚 (∞)</th>
+                <th style="padding:10px 8px;white-space:nowrap;">低下率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px 8px;">QQ（14 枚）</td>
+                <td style="padding:10px 8px;white-space:nowrap;">23.2 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">14.0 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-40%</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">KK（15 枚）</td>
+                <td style="padding:10px 8px;white-space:nowrap;">38.0 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">21.1 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-44%</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">AA（16 枚）</td>
+                <td style="padding:10px 8px;white-space:nowrap;">64.5 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">33.0 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-49%</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">Trips（17 枚）</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">126.4 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">58.5 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-54%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          ※ 52 枚ルールのリファンタジー（継続）率：QQ 11.5% / KK 19.9% / AA 35.0% / Trips 55.6%（OFC Optimizer 厳密ソルバー＋100,000 回連鎖シミュレーション実測）。
+        </p>
+
+        <h2>3. 54 枚から 52 枚へ切り替わるときに変えるべき 4 つの戦略</h2>
+        <div class="flip-grid">
+          <div class="flip-card gold">
+            <h3>① 無理なトップ FL 攻めを減らし、ファウル率を下げる</h3>
+            <p>
+              54 枚では 126.4 pt の Trips FL を追うために 30% 前後のファウルを許容しますが、52 枚では報酬が半減するため、同じリスクを取るほど期待値がマイナスに傾きます。
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>② ボトム・ミドルの「手堅いロイヤリティ」の比重が上がる</h3>
+            <p>
+              FL 連鎖による爆発が減るぶん、通常局でのスクープ（+6 pt）やミドルフラッシュ（+8 pt）・ボトムフルハウス（+6 pt）の積み上げが勝敗に直結します。
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>③ 14 枚（QQ）FL での無理なリファンタジー狙いは禁物</h3>
+            <p>
+              52 枚の 14 枚 FL の継続率はわずか <strong>11.5%</strong>。14 枚で強引にトップ Trips やボトム Quads を狙ってミドルを犠牲にするより、素直にロイヤリティ最大化を優先するケースが増えます。
+            </p>
+          </div>
+          <div class="flip-card gold">
+            <h3>④ アプリのルールチップを 1 タップで「52 枚」へ切替</h3>
+            <p>
+              OFC Optimizer v3.0 は 54 枚・52 枚それぞれ専用の平場＆ファンタジー評価テーブルを搭載。打っている卓に合わせて 1 タップで最適解を切り替えられます。
+            </p>
+          </div>
+        </div>
+
+        <section class="section" style="padding-bottom:12px;margin-top:36px;">
+          <div class="cta-banner">
+            <h2>54 枚も 52 枚も、卓条件どおりの最適解を 1 タップで。</h2>
+            <p>
+              登録不要・無料の Web 版または 100% オフライン動作の iPhone アプリで、今打っている卓のルールをそのまま解析できます。
+            </p>
+            <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+              <a class="btn btn-gold" href="https://app.ofcoptimizer.com/?mode=daily" target="_blank" rel="noopener">今日の 1 問をブラウザで解く（無料）→</a>
+              <a class="btn btn-ghost" href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">App Store で無料ダウンロード</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Optimizer</div>
+        <div class="footer-links">
+          <a href="../">トップページ</a>
+          <a href="../rules-and-royalties/">ルール＆点数表</a>
+          <a href="../opening-strategy/">初手5枚戦略</a>
+          <a href="../fantasyland-ev-guide/">FL期待値表</a>
+          <a href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener">Web版アプリ ↗</a>
+          <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">公式 X (@ofcoptimizer)</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
