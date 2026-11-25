@@ -45,11 +45,11 @@
       chart2_cap:
         '54枚 vs 52枚（JKなし）：ジョーカー 2 枚が抜けると継続率が急落し、QQ 14.0pt（-40%）／Trips 58.5pt（-54%）まで半減。',
       methodology_note:
-        '計測条件（再現性注記）：C++20 厳密分枝限定 FL ソルバー（1,200 局／ティア）＋ 100,000 連鎖マルコフ計算、同枚数リファンタジー（RULES §5.1 / §6）。既存の参照ソルバーと同様「自分の FL 連鎖のみ」を積算した定義値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。',
+        '計測条件（再現性注記）：C++20 厳密分枝限定 FL ソルバー（1,200 局／ティア）＋ 100,000 連鎖マルコフ計算（同枚数リファンタジー採用）。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。',
       price_kicker: 'TRANSPARENT PRICING',
       price_heading: 'まずは無料で体験。本格研究には Pro。',
       price_desc:
-        '毎日の「今日の 1 問」・AI 1局レビュー・平場ソルバー・5秒点数計算はすべて無料で試せます。ガチ勢向けの Pro プランはサブスクとオンデバイス永久買い切りを用意。',
+        '毎日の「今日の 1 問」・AI 1局レビュー・平場ソルバー・5秒点数計算はすべて無料で試せます。本格研究向けの Pro プランはサブスクと買い切りプランを用意。',
       pricing_footnote:
         '※ 表示価格は日本（JPY）／米国（USD）の基準目安です。実際の請求額は App Store の各地域通貨・為替レートに準じます。サブスクリプションは iOS の「設定」からいつでも解約できます。買い切りプランは自動更新されません。',
       faq_heading: 'よくある質問',
@@ -104,7 +104,7 @@
       hero_eyebrow: 'v3.0 · 100% OFFLINE NATIVE C++20 ENGINE',
       hero_title: 'Solve Every Street of <span class="gold">OFC Pineapple.</span>',
       hero_sub:
-        'Full Street 0–4 Flat-Play Solver, Chess.com-style AI Hand Review, Effective Stack presets (50pt–∞), and both 54-card (2 Jokers) & 52-card (No Jokers)—running 100% offline on iPhone.',
+        'Full Street 0–4 Flat-Play Solver, Street-by-Street AI Hand Review, Effective Stack presets (50pt–∞), and both 54-card (2 Jokers) & 52-card (No Jokers)—running 100% offline on iPhone.',
       cta_download: 'Download Free on App Store',
       cta_try_tools: 'Try Free Exact Quiz & 5s Calc',
       pill_offline: '100% Offline C++20',
@@ -132,7 +132,7 @@
       chart2_cap:
         '54-Card vs 52-Card (No Jokers): Removing 2 Jokers slashes repeat rates—cutting QQ to 14.0pt (-40%) and Trips to 58.5pt (-54%).',
       methodology_note:
-        'Methodology: Exact C++20 branch-and-bound FL solver (1,200 hands/tier) + 100,000-chain Markov simulation with same-card Re-Fantasy (RULES §5.1 / §6). Matches standard reference definitions by counting own FL chains only (subtracting opponent counter-FL lowers values substantially). Standard error at ∞: QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt.',
+        'Methodology: Exact C++20 branch-and-bound FL solver (1,200 hands/tier) + 100,000-chain Markov simulation with same-card Re-Fantasy. Counts own FL chains only (subtracting opponent counter-FL lowers values substantially). Standard error at ∞: QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt.',
       price_kicker: 'TRANSPARENT PRICING',
       price_heading: 'Start Free. Upgrade to Pro When You Grind.',
       price_desc:
@@ -190,7 +190,7 @@
       tabEn: 'Q1 · S3 Exact (QQ Trap)',
       pillJa: '54枚 (JK2枚) · S3 厳密全列挙 · スタック無限',
       pillEn: '54-Card · Exact S3 Enumeration · ∞ Stack',
-      titleJa: '残り 1 街！「100% QQ FL 確定」を蹴って Q♦ を捨てるべきか？',
+      titleJa: '残り 1 ストリート！「100% QQ FL 確定」を蹴って Q♦ を捨てるべきか？',
       titleEn: 'One Street Left! Should You Reject 100% QQ FL and Discard Q♦?',
       subJa: 'ミドル 8 トリップス完成済み。Q♦ でトップ QQ を確定させるか、Q♦ を捨ててボトム 9 フルハウスを完成させるか。',
       subEn: 'Middle 8-trips is locked. Take guaranteed QQ Fantasyland on Top, or discard Q♦ to complete a Bottom Full House?',
@@ -251,7 +251,7 @@
       flipNoteJa: '実効 50pt 卓では？ AA FL 価値が 64.5pt → 35.5pt に下がるため、[B] +39.68pt vs [A] +38.78pt と大差がわずか +0.90pt 差まで急接近します。',
       flipNoteEn: 'At 50pt Effective Stack: AA FL drops from 64.5pt to 35.5pt, shrinking this massive +11.37pt gap down to just +0.90pt (+39.68 vs +38.78)!',
       explainJa:
-        '[A] は QQ FL（23.2pt）が 100% 確定しますが、AA FL（64.5pt）の権利とボトムフルハウス（+6pt）を同時に放棄します。[B] はファウル率 0.0% のままフルハウスを確定させつつ、最終 S4 の 3 枚で残り A 3枚・JK 2枚・Q 1枚を引けば 44.6% で AA・13.2% で QQ に入るため +11.37pt もの大差で圧勝します。',
+        '[A] は QQ FL（23.2pt）が 100% 確定しますが、AA FL（64.5pt）の権利とボトムフルハウス（+6pt）を同時に放棄します。[B] はファウル率 0.0% のままフルハウスを確定させつつ、最終 S4 の 3 枚で残り A 3枚・JK 2枚・Q 2枚を引けば 44.6% で AA・13.2% で QQ に入るため +11.37pt もの大差で圧勝します。',
       explainEn:
         '[A] guarantees QQ FL (23.2pt) but throws away both AA FL (64.5pt) and a +6pt Bottom Full House. [B] locks the Full House with 0.0% foul risk while keeping 44.6% AA FL + 13.2% QQ FL outs on the final 3-card pull—crushing [A] by +11.37pt!',
       methodJa: 'C++20 厳密全列挙 (Exact S3) · 54枚 · 最新 100k 連鎖 FL テーブル',
@@ -327,8 +327,8 @@
         'ファウル率は [A][B] どちらも 16.2% で完全一致しますが、ミドルが 33 で止まった局面で「JK を 22 にダウングレードして相手のトップ A♥K♠ を抜ける」 [B] が +0.85pt の厳密優位。ファウル率を 7.5% に半減させる [C] もミドル 33 を捨てる損が大きく -1.50pt 劣ります。',
       explainEn:
         'Both [A] and [B] share the exact same 16.2% foul rate, yet [B] gains +0.85pt because Joker + 2♠ creates a legal Pair of 2s underneath Middle 33—stealing Top from Opponent’s A♥ K♠. Even halving foul risk in [C] (7.5%) loses -1.50pt by giving up Middle 33.',
-      methodJa: 'C++20 厳密全列挙 (Exact S3) · 54枚 · 実戦プロ局面 pro-d3-s3-02',
-      methodEn: 'C++20 Exact S3 Enumeration · 54-Card · Curated Pro Spot pro-d3-s3-02'
+      methodJa: 'C++20 厳密全列挙 (Exact S3) · 54枚 · 上級実戦スポット',
+      methodEn: 'C++20 Exact S3 Enumeration · 54-Card · Master Spot'
     },
     {
       id: 'pro-d3-s2-11',
@@ -400,8 +400,8 @@
         'スタック無限では AA（64.5pt）と QQ（23.2pt）に 41pt 超の大差があるため、Q♣ を捨てて S3/S4 の A・K 受けを最大化する [B]（AA 32.4%・KK 22.2%）が最善。一方 50pt 卓では AA が 35.5pt に縮むのに対し QQ は 20.3pt とほぼ落ちないため、FL 率を +10.2% 上乗せする [A] が逆転します。',
       explainEn:
         'At infinite stack, AA FL (64.5pt) towers over QQ FL (23.2pt), so tossing Q♣ to keep 2 Top slots open for A/K draws [B] (AA 32.4%, KK 22.2%) leads. At 50pt stack, AA shrinks to 35.5pt while QQ stays 20.3pt—making [A]’s +10.2% extra FL frequency win easily.',
-      methodJa: 'solver3 量子化 NN + 終盤厳密評価 · スタック無限 vs 実効 50pt',
-      methodEn: 'solver3 Quantized NN + Exact Endgame · ∞ Stack vs 50pt Stack'
+      methodJa: 'オンデバイス AI 評価 + 終盤厳密計算 · スタック無限 vs 実効 50pt',
+      methodEn: 'On-Device AI + Exact Endgame · ∞ Stack vs 50pt Stack'
     }
   ];
 
@@ -527,8 +527,8 @@
       shot: '01-game-review',
       tagJa: 'AI GAME REVIEW',
       tagEn: 'AI GAME REVIEW',
-      titleJa: 'Chess.com 式の AI 1 局レビュー',
-      titleEn: 'Chess.com-Style AI Hand Review',
+      titleJa: '1 局まるごと AI レビュー',
+      titleEn: 'Full-Hand AI Game Review',
       descJa: '対局直後に S0〜S4 の全ストリートを自動採点。精度スコア・総 EV 損失・悪手ハイライトを 1 画面で確認し、弱点をそのまま再挑戦できます。',
       descEn: 'Grade every street S0–S4 right after a hand with Accuracy %, total EV loss, blunder highlights, and instant mistake replay.'
     },
@@ -543,11 +543,11 @@
     },
     {
       shot: '03-daily-spot-drills',
-      tagJa: 'DAILY SPOT & 180+ DRILLS',
-      tagEn: 'DAILY SPOT & 180+ DRILLS',
-      titleJa: '今日の 1 問＆厳選 180 問プロドリル',
-      titleEn: 'Free Daily Spot & 180+ Pro Drills',
-      descJa: 'solver3 同士の強対局から抽出した勝負所だけを収録。初級・中級・上級と実戦ミスの自動復習デッキで短時間トレーニング。',
+      tagJa: 'DAILY SPOT & PRO DRILLS',
+      tagEn: 'DAILY SPOT & PRO DRILLS',
+      titleJa: '今日の 1 問＆平場プロドリル',
+      titleEn: 'Free Daily Spot & Pro Drills',
+      descJa: 'AI 同士の対局から抽出した勝負所だけを収録。初級・中級・上級と実戦ミスの自動復習デッキで短時間トレーニング。',
       descEn: 'Curated high-leverage spots mined from solver-vs-solver play across Basic, Standard, and Master tiers—plus automatic mistake decks.'
     },
     {
@@ -620,19 +620,19 @@
         badge: 'おすすめ · 本格研究',
         price: '¥5,980',
         unit: '/ 月',
-        sub: 'GTO Wizard Starter 級をオフラインで',
+        sub: '全ストリート解析・AIレビュー・Pro AI を無制限で',
         featured: true,
         skus: [
           { label: 'Pro 週間', val: '¥1,980 / 週' },
           { label: 'Pro 月額', val: '¥5,980 / 月' },
           { label: 'Pro 年額（約19% OFF）', val: '¥58,000 / 年' },
-          { label: 'Pro 買い切り（端末内永久）', val: '¥88,000' }
+          { label: 'Pro 買い切り', val: '¥88,000' }
         ],
         items: [
           '平場ソルバー（S0〜S4・54枚/52枚・全スタック）無制限',
           'AI 1 局レビュー＆実戦ミス自動復習無制限',
-          'Pro 限定「Pro AI」C++20 ネイティブ AI 対戦',
-          '厳選 180 問プロドリル無制限',
+          'Pro 限定「Pro AI」ネイティブ AI 対戦',
+          '平場プロドリル無制限',
           'Standard の全機能（ファンタジー無制限・広告なし）込み'
         ],
         cta: 'App Store で Pro を試す'
@@ -678,19 +678,19 @@
         badge: 'POPULAR · FULL SOLVER',
         price: '$39.99',
         unit: '/ mo',
-        sub: 'GTO Wizard Starter-tier power, 100% offline',
+        sub: 'Unlimited full-street solving, AI review & Pro AI',
         featured: true,
         skus: [
           { label: 'Pro Weekly', val: '$14.99 / wk' },
           { label: 'Pro Monthly', val: '$39.99 / mo' },
           { label: 'Pro Annual (~19% off)', val: '$389.99 / yr' },
-          { label: 'Pro Lifetime (On-Device)', val: '$599.99 once' }
+          { label: 'Pro Lifetime', val: '$599.99 once' }
         ],
         items: [
           'Unlimited Flat-Play Solver (S0–S4, 54c & 52c, 50pt–∞)',
           'Unlimited AI Full-Hand Reviews & mistake replay',
-          'Pro-exclusive "Pro AI" native C++20 CPU',
-          'Unlimited 180+ curated Pro Spot Drills',
+          'Pro-exclusive "Pro AI" native CPU',
+          'Unlimited curated Pro Spot Drills',
           'Includes all Standard features & zero ads'
         ],
         cta: 'Get Pro on App Store'
@@ -710,7 +710,7 @@
       },
       {
         q: 'Pro 買い切りプラン（¥88,000）は何が含まれますか？',
-        a: 'アプリ内の全 Pro 機能（平場ソルバー・AI 1局レビュー・Pro AI 対戦・180 問ドリル・ファンタジー無制限・広告なし）を端末内で追加課金なく永久に利用できます。サーバー維持費に依存しないため安心です。'
+        a: 'アプリ内の全 Pro 機能（平場ソルバー・AI 1局レビュー・Pro AI 対戦・平場プロドリル・ファンタジー無制限・広告なし）を追加課金や自動更新なくずっと利用できます。すべて端末内で完結するため、オフライン環境でもそのまま使えます。'
       },
       {
         q: 'まず無料でどこまで試せますか？',
@@ -728,7 +728,7 @@
       },
       {
         q: 'What does the Pro Lifetime ($599.99 / ¥88,000) license cover?',
-        a: 'One-time purchase for lifetime access to all on-device Pro features (unlimited Flat Solver, AI Hand Review, Pro AI battles, 180+ Pro Drills, Fantasy Solver, no ads) with zero recurring fees.'
+        a: 'One-time purchase for lifetime access to all Pro features (unlimited Flat Solver, AI Hand Review, Pro AI battles, Pro Spot Drills, Fantasy Solver, no ads) with zero recurring fees.'
       },
       {
         q: 'Can I test the solver accuracy before subscribing?',
