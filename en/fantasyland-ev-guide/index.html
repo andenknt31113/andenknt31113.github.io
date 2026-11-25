@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OFC Pineapple Fantasyland EV Chart: Effective Stack (50pt–∞) &amp; 54-Card vs 52-Card — OFC Optimizer</title>
+    <meta
+      name="description"
+      content="Exact C++20 Fantasyland (FL) EV benchmark tables for Open Face Chinese (OFC) Pineapple Poker across 50pt, 100pt, 200pt, and infinite effective stacks, plus 54-card (2 Jokers) vs 52-card (No Jokers) repeat rates."
+    />
+    <link rel="canonical" href="https://ofcoptimizer.com/en/fantasyland-ev-guide/" />
+    <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/fantasyland-ev-guide/" />
+    <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/fantasyland-ev-guide/" />
+    <link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/fantasyland-ev-guide/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:title" content="OFC Pineapple Fantasyland EV Chart: Effective Stack &amp; 54-Card vs 52-Card" />
+    <meta
+      property="og:description"
+      content="Why 50pt effective stacks slash 17-card Trips FL value by -67% and removing 2 Jokers cuts it by -54%—with exact tables and a real Street-2 spot that flips #1."
+    />
+    <meta property="og:url" content="https://ofcoptimizer.com/en/fantasyland-ev-guide/" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OFC Pineapple Fantasyland EV Chart (50pt–∞ &amp; 54c vs 52c)" />
+    <meta
+      name="twitter:description"
+      content="Reproducible C++20 branch-and-bound FL benchmarks + 100k-chain Markov simulation."
+    />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../../styles.css?v=20261125-3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "OFC Pineapple Fantasyland EV Chart: Effective Stack (50pt–∞) & 54-Card vs 52-Card",
+        "description": "Quantitative Fantasyland expected value benchmarks for Open Face Chinese Pineapple Poker across stack depths and 54-card vs 52-card deck rules.",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "inLanguage": "en",
+        "author": { "@type": "Organization", "name": "OFC Optimizer" },
+        "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
+        "mainEntityOfPage": "https://ofcoptimizer.com/en/fantasyland-ev-guide/",
+        "image": "https://ofcoptimizer.com/assets/chart-stack-fl-en.webp"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much is Fantasyland worth in 54-card OFC Pineapple?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At infinite effective stack (54-card deck with 2 Jokers, same-card Re-Fantasy, own FL chains only), QQ (14 cards) averages 23.2pt, KK (15 cards) 38.0pt, AA (16 cards) 64.5pt, and Trips (17 cards) 126.4pt."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does a 50pt effective stack change OFC Fantasyland strategy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At a 50pt effective stack cap, 17-card Trips FL drops 67% (from 126.4pt to 42.0pt) and AA drops 45% (64.5pt to 35.5pt), while 14-card QQ only drops 12% (23.2pt to 20.3pt). Locking safe QQ/KK and avoiding fouls becomes far more valuable than chasing high-variance Trips."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How different is 52-card (No Jokers) Fantasyland EV from 54-card?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Removing the 2 Jokers drastically reduces Re-Fantasy repeat rates. At infinite stack, QQ drops 40% to 14.0pt (11.5% repeat), KK drops 44% to 21.1pt (19.9% repeat), AA drops 49% to 33.0pt (35.0% repeat), and Trips drops 54% to 58.5pt (55.6% repeat)."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <img class="brand-icon" src="../../assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener">Web App ↗</a>
+          <a href="../#quiz">Free Quiz</a>
+          <a href="../#features">Features</a>
+          <a href="../#pricing">Pricing</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <a class="lang-btn" href="../../fantasyland-ev-guide/">日本語</a>
+            <a class="lang-btn active" href="./" aria-current="page">EN</a>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section" style="border-top:0;padding-top:36px;">
+      <div class="container article-wrap article-body">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">OFC Optimizer (EN)</a>
+          <span>/</span>
+          <span>Fantasyland EV Guide</span>
+        </nav>
+
+        <div class="eyebrow">REPRODUCIBLE C++20 BENCHMARKS · 2026</div>
+        <h1 class="hero-title" style="margin-bottom:14px;">
+          OFC Pineapple Fantasyland EV Chart: <span class="gold">Effective Stack &amp; 54-Card vs 52-Card</span>
+        </h1>
+        <p class="hero-sub" style="max-width:740px;">
+          Most published Open Face Chinese (OFC) Pineapple Fantasyland values assume an infinite stack and a 54-card deck (2 Jokers). On real 50pt–100pt app club tables or 52-card (No Joker) games, infinite-stack intuition severely overvalues Trips chases and undervalues locking QQ.
+        </p>
+
+        <div class="kpi-strip">
+          <div class="kpi-card">
+            <div class="kpi-val">-67%</div>
+            <div class="kpi-lbl">17-card Trips FL drop at 50pt stack (126.4 → 42.0 pt)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-val">-54%</div>
+            <div class="kpi-lbl">17-card Trips FL drop without Jokers (126.4 → 58.5 pt)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-val">-2%</div>
+            <div class="kpi-lbl">14-card QQ FL drop down to 100pt (23.2 → 22.8 pt)</div>
+          </div>
+        </div>
+
+        <h2>1. 54-Card (2 Jokers) Fantasyland EV by Effective Stack</h2>
+        <p>
+          Effective stack caps how many total points you can win from a single Fantasyland chain (including Re-Fantasy loops). Because 14-card QQ rarely chains long enough to hit a 100pt cap, its value barely moves—whereas 17-card Trips depends heavily on deep multi-hand chains and collapses on shallow stacks.
+        </p>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>FL Entry Tier</th>
+                <th>∞ Stack</th>
+                <th>200pt Stack</th>
+                <th>100pt Stack</th>
+                <th>50pt Stack</th>
+                <th>Drop (∞ → 50pt)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>QQ (14 cards)</td>
+                <td>23.2 pt</td>
+                <td>23.2 pt</td>
+                <td>22.8 pt</td>
+                <td>20.3 pt</td>
+                <td class="neg">-12%</td>
+              </tr>
+              <tr>
+                <td>KK (15 cards)</td>
+                <td>38.0 pt</td>
+                <td>37.9 pt</td>
+                <td>35.4 pt</td>
+                <td>28.0 pt</td>
+                <td class="neg">-26%</td>
+              </tr>
+              <tr>
+                <td>AA (16 cards)</td>
+                <td>64.5 pt</td>
+                <td>61.9 pt</td>
+                <td>51.3 pt</td>
+                <td>35.5 pt</td>
+                <td class="neg">-45%</td>
+              </tr>
+              <tr>
+                <td>Trips (17 cards)</td>
+                <td class="hi">126.4 pt</td>
+                <td>100.7 pt</td>
+                <td>69.8 pt</td>
+                <td>42.0 pt</td>
+                <td class="neg">-67%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure class="chart-card" style="margin:0 0 24px;">
+          <img
+            class="chart-img"
+            src="../../assets/chart-stack-fl-en.webp"
+            alt="54-card OFC Pineapple Fantasyland EV by effective stack (50pt to infinity)"
+            width="1400"
+            height="788"
+          />
+          <figcaption class="chart-caption">
+            Click image to zoom. At 50pt effective stack, the gap between AA (35.5pt) and QQ (20.3pt) shrinks from 41.3pt down to just 15.2pt.
+          </figcaption>
+        </figure>
+
+        <h2>2. 54-Card (2 Jokers) vs 52-Card (No Jokers, ∞ Stack)</h2>
+        <p>
+          In 52-card Pineapple OFC (no Jokers), hitting a Top-row Trips or Bottom-row Quads to re-enter Fantasyland becomes dramatically harder. That drop in repeat probability compounds across chains and cuts every Fantasyland tier nearly in half.
+        </p>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>FL Entry Tier</th>
+                <th>54-Card (2 Jokers)</th>
+                <th>52-Card (No Jokers)</th>
+                <th>EV Drop</th>
+                <th>52-Card Repeat %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>QQ (14 cards)</td>
+                <td>23.2 pt</td>
+                <td>14.0 pt</td>
+                <td class="neg">-40%</td>
+                <td>11.5%</td>
+              </tr>
+              <tr>
+                <td>KK (15 cards)</td>
+                <td>38.0 pt</td>
+                <td>21.1 pt</td>
+                <td class="neg">-44%</td>
+                <td>19.9%</td>
+              </tr>
+              <tr>
+                <td>AA (16 cards)</td>
+                <td>64.5 pt</td>
+                <td>33.0 pt</td>
+                <td class="neg">-49%</td>
+                <td>35.0%</td>
+              </tr>
+              <tr>
+                <td>Trips (17 cards)</td>
+                <td class="hi">126.4 pt</td>
+                <td>58.5 pt</td>
+                <td class="neg">-54%</td>
+                <td>55.6%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure class="chart-card" style="margin:0 0 24px;">
+          <img
+            class="chart-img"
+            src="../../assets/chart-54-vs-52-en.webp"
+            alt="54-card vs 52-card OFC Pineapple Fantasyland EV comparison chart"
+            width="1400"
+            height="788"
+            loading="lazy"
+          />
+          <figcaption class="chart-caption">
+            Click image to zoom. Without the two Jokers, 17-card Trips drops from 126.4pt to 58.5pt—lower than 54-card AA!
+          </figcaption>
+        </figure>
+
+        <h2>3. Real Street-2 Spot That Flips at 50pt Effective Stack</h2>
+        <p>
+          Here is a real solver-mined Street-2 spot (54-card deck) where changing only the effective stack cap completely reverses the #1 optimal play:
+        </p>
+
+        <div class="panel" style="margin-bottom:20px;">
+          <div class="boards-grid">
+            <div class="board-box">
+              <div class="board-box-title"><span>Your Board</span><span>7/13</span></div>
+              <div class="board-row">
+                <span class="row-lbl">Top</span>
+                <div class="card-strip">
+                  <span class="pcard suit-jk">JK</span><span class="pcard-slot">·</span><span class="pcard-slot">·</span>
+                </div>
+              </div>
+              <div class="board-row">
+                <span class="row-lbl">Middle</span>
+                <div class="card-strip">
+                  <span class="pcard suit-c">6♣</span><span class="pcard suit-s">3♠</span><span class="pcard-slot">·</span><span class="pcard-slot">·</span><span class="pcard-slot">·</span>
+                </div>
+              </div>
+              <div class="board-row">
+                <span class="row-lbl">Bottom</span>
+                <div class="card-strip">
+                  <span class="pcard suit-d">9♦</span><span class="pcard suit-s">9♠</span><span class="pcard suit-c">7♣</span><span class="pcard suit-s">7♠</span><span class="pcard-slot">·</span>
+                </div>
+              </div>
+            </div>
+            <div class="board-box">
+              <div class="board-box-title"><span>Opponent Visible</span><span>9/13</span></div>
+              <div class="board-row">
+                <span class="row-lbl">Top</span>
+                <div class="card-strip">
+                  <span class="pcard suit-h">A♥</span><span class="pcard suit-d">Q♦</span><span class="pcard-slot">·</span>
+                </div>
+              </div>
+              <div class="board-row">
+                <span class="row-lbl">Middle</span>
+                <div class="card-strip">
+                  <span class="pcard suit-c">4♣</span><span class="pcard suit-s">4♠</span><span class="pcard suit-h">3♥</span><span class="pcard suit-s">2♠</span><span class="pcard-slot">·</span>
+                </div>
+              </div>
+              <div class="board-row">
+                <span class="row-lbl">Bottom</span>
+                <div class="card-strip">
+                  <span class="pcard suit-d">T♦</span><span class="pcard suit-c">T♣</span><span class="pcard suit-d">8♦</span><span class="pcard-slot">·</span><span class="pcard-slot">·</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="draw-bar">
+            <span class="draw-label">Street-2 Draw (Place 2 · Discard 1)</span>
+            <div class="card-strip">
+              <span class="pcard suit-c pcard-lg">Q♣</span>
+              <span class="pcard suit-d pcard-lg">6♦</span>
+              <span class="pcard suit-h pcard-lg">2♥</span>
+            </div>
+          </div>
+          <div class="flip-grid">
+            <div class="flip-card">
+              <h3>∞ Stack Winner: Discard Q♣ (+29.10 pt)</h3>
+              <p>
+                Placing <strong>6♦ + 2♥ in Middle</strong> and discarding Q♣ beats locking Q♣→Top (+28.40pt) by <strong>+0.70pt</strong>. Keeping two open Top slots next to the Joker hits AA 32.4% and KK 22.2%—where AA (64.5pt) towers over QQ (23.2pt).
+              </p>
+            </div>
+            <div class="flip-card gold">
+              <h3>50pt Stack Winner: Q♣ → Top (+22.93 pt)</h3>
+              <p>
+                On a 50pt cap table, AA FL shrinks to 35.5pt while QQ stays 20.3pt. Locking <strong>6♦→MID, Q♣→TOP</strong> (69.7% FL) flips to #1 and beats discarding Q♣ (+21.72pt) by <strong>+1.21pt</strong>.
+              </p>
+            </div>
+          </div>
+          <div class="hero-ctas" style="margin-bottom:0;">
+            <a class="btn btn-gold btn-sm" href="../#quiz">Play All 3 Interactive Spots →</a>
+            <a class="btn btn-ghost btn-sm" href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener">Open Free Web Solver ↗</a>
+          </div>
+        </div>
+
+        <h2>4. Methodology &amp; Reproducibility</h2>
+        <div class="methodology-box" style="margin-top:0;">
+          All values above were computed using OFC Optimizer’s exact C++20 branch-and-bound Fantasyland solver (1,200 randomly dealt hands per entry tier) coupled with a 100,000-chain Markov simulation using same-card Re-Fantasy rules. Figures represent own-chain expected value only (matching standard OFC reference conventions; subtracting opponent counter-Fantasyland lowers absolute values further). Standard errors at ∞ stack: QQ ±0.7pt, KK ±1.2pt, AA ±2.5pt, Trips ±6.8pt.
+        </div>
+
+        <section class="section" style="padding-bottom:12px;margin-top:36px;">
+          <div class="cta-banner">
+            <h2>Solve Any Stack Depth or 52-Card Spot Instantly.</h2>
+            <p>
+              Switch 50pt / 100pt / 200pt / ∞ effective stacks and 54-card / 52-card rules in one tap. Try the free live Web App right now on PC or Android, or get 100% offline C++20 speed on iPhone.
+            </p>
+            <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+              <a class="btn btn-gold" href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">Download Free on App Store</a>
+              <a class="btn btn-ghost" href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener">Open Web App in Browser →</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Optimizer</div>
+        <div class="footer-links">
+          <a href="../">Overview</a>
+          <a href="https://app.ofcoptimizer.com/" target="_blank" rel="noopener">Web App ↗</a>
+          <a href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">App Store</a>
+          <a href="https://ofcoptimizer.com/ofc-fantasy-optimizer-legal/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+          <a href="mailto:andenk31113@icloud.com">Contact Support</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+      <img id="lightbox-img" alt="" />
+    </div>
+    <script>
+      (function () {
+        var lb = document.getElementById('lightbox');
+        var lbImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.chart-img').forEach(function (img) {
+          img.addEventListener('click', function () {
+            lbImg.src = img.src;
+            lbImg.alt = img.alt;
+            lb.classList.add('open');
+          });
+        });
+        lb.addEventListener('click', function () { lb.classList.remove('open'); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
+      })();
+    </script>
+  </body>
+</html>

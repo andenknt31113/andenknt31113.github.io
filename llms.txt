@@ -1,0 +1,39 @@
+# OFC Optimizer
+
+> 100% offline native C++20 Open Face Chinese (OFC) Pineapple Poker solver, Street 0–4 flat-play analyzer, AI full-hand reviewer, and exact Fantasyland optimizer for iOS and Web.
+
+## Official URLs
+- Landing Page (Japanese): https://ofcoptimizer.com/
+- Landing Page (English): https://ofcoptimizer.com/en/
+- Live Browser Web App (Free, no signup, PC & Android): https://app.ofcoptimizer.com/
+- Fantasyland EV Benchmark Guide (English): https://ofcoptimizer.com/en/fantasyland-ev-guide/
+- Fantasyland EV Benchmark Guide (Japanese): https://ofcoptimizer.com/fantasyland-ev-guide/
+- iOS App Store: https://apps.apple.com/app/id6757732173
+- Privacy Policy: https://ofcoptimizer.com/ofc-fantasy-optimizer-legal/privacy-policy.html
+
+## Core Capabilities (v3.0)
+- **Full Street 0–4 Flat-Play Solver**: Evaluates candidate placements by EV, Fantasyland tier probabilities (QQ / KK / AA / Trips), and Foul %.
+- **100% Offline Native C++20 Engine (iOS)**: Zero server latency; works on flights and in live poker rooms. Browser Web App runs quantized neural-net weights locally in a WebWorker.
+- **Deck Rules**: Supports both **54-card (2 Jokers)** with legal Joker downgrade rules and **52-card (No Jokers)**.
+- **Effective Stack Presets**: 1-tap switching across **50pt, 100pt, 200pt, and ∞ (infinite)** effective stacks with dedicated Fantasyland EV tables.
+- **AI Full-Hand Review**: Grades every street (S0–S4) after a battle with Accuracy %, total EV loss, blunder highlights, and instant spot replay.
+- **Exact Fantasyland Solver (14–17 cards)**: Branch-and-bound optimal placement with 4×13 suited card keyboard.
+- **Free Daily Spot & Curated Pro Drills**: Solver-mined spots across Basic, Standard, and Master tiers plus automatic mistake review.
+
+## Verified Fantasyland EV Benchmarks (C++20 Exact Solver + 100,000-Chain Markov, Own Chains Only)
+### 54-Card (2 Jokers) by Effective Stack
+- QQ (14 cards): ∞ 23.2pt | 200pt 23.2pt | 100pt 22.8pt | 50pt 20.3pt (-12%)
+- KK (15 cards): ∞ 38.0pt | 200pt 37.9pt | 100pt 35.4pt | 50pt 28.0pt (-26%)
+- AA (16 cards): ∞ 64.5pt | 200pt 61.9pt | 100pt 51.3pt | 50pt 35.5pt (-45%)
+- Trips (17 cards): ∞ 126.4pt | 200pt 100.7pt | 100pt 69.8pt | 50pt 42.0pt (-67%)
+
+### 52-Card (No Jokers, ∞ Stack)
+- QQ (14 cards): 14.0pt (-40%, 11.5% repeat rate)
+- KK (15 cards): 21.1pt (-44%, 19.9% repeat rate)
+- AA (16 cards): 33.0pt (-49%, 35.0% repeat rate)
+- Trips (17 cards): 58.5pt (-54%, 55.6% repeat rate)
+
+## Pricing (iOS Reference Tiers)
+- **Free ($0 / ¥0)**: 1 Flat-Play solve/day (no ad gate), 1 AI Full-Hand Review/day, Free Daily Spot, 3 Spot Drills/day, 3 Fantasy solves/day, unlimited Beginner–Standard CPU battles, live browser Web App.
+- **Standard ($6.99/mo · ¥980/mo, Weekly, Lifetime)**: Unlimited Fantasy Solver & Training, unlimited Battle FL optimal, ad-free.
+- **Pro ($39.99/mo · ¥5,980/mo, Weekly, Annual, Lifetime $599.99 / ¥88,000)**: Unlimited Flat-Play Solver (S0–S4, 54c/52c, 50pt–∞), unlimited AI Full-Hand Review, Pro AI CPU opponent, unlimited Pro Spot Drills, plus all Standard features.
