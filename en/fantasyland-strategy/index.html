@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070709" />
+    <title>How to Set OFC Pineapple Fantasyland (14–17 Cards) &amp; Repeat Strategy — OFC Optimizer</title>
+    <meta
+      name="description"
+      content="Master Open Face Chinese (OFC) Pineapple Fantasyland (14–17 cards): when to sacrifice royalties to stay in Fantasyland, how to place Jokers, exact stack-depth thresholds, plus clickable live solver hands."
+    />
+    <link rel="canonical" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+    <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+    <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/fantasyland-strategy/" />
+    <link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:title" content="How to Set OFC Pineapple Fantasyland (14–17 Cards) &amp; Repeat Strategy" />
+    <meta
+      property="og:description"
+      content="Exact repeat vs. royalty trade-off thresholds by card count, stack depth, and deck rules—plus 1-click live solver hands."
+    />
+    <meta property="og:url" content="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ofcoptimizer" />
+    <meta name="twitter:title" content="How to Set OFC Pineapple Fantasyland (14–17 Cards)" />
+    <meta
+      name="twitter:description"
+      content="4-step Fantasyland checklist, exact repeat EV thresholds, and clickable live solver example hands."
+    />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../../styles.css?v=20261125-3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Set OFC Pineapple Fantasyland (14–17 Cards) & Repeat Strategy",
+        "description": "Practical 4-step guide to arranging 14–17 card Fantasyland hands in OFC Pineapple, balancing immediate royalties against Re-Fantasy value across stack depths and deck rules.",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "inLanguage": "en",
+        "author": { "@type": "Organization", "name": "OFC Optimizer" },
+        "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
+        "mainEntityOfPage": "https://ofcoptimizer.com/en/fantasyland-strategy/",
+        "image": "https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Should you always prioritize staying in Fantasyland over immediate royalties?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not always. Re-Fantasy value depends heavily on your card count, deck rules, and effective stack. Staying in 17-card 54-card Fantasyland at deep stacks is worth ~126 pts (so sacrificing 20+ royalties is easily profitable), whereas 14-card 52-card Fantasyland is only worth ~14 pts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where should you place a Joker in a Fantasyland hand?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "First check whether the Joker unlocks Re-Fantasy via Top Three of a Kind or Bottom Quads+. If no repeat exists, place the Joker where it creates the largest royalty jump—typically upgrading Middle to a Full House (+12), Quads (+20), or Top to AA (+9)."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <img class="brand-icon" src="../../assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/?mode=solver&amp;lang=en" target="_blank" rel="noopener">FL Solver ↗</a>
+          <a href="../fantasyland-ev-guide/">FL EV Tables</a>
+          <a href="../opening-strategy/">Strategy</a>
+          <a href="../rules-and-royalties/">Royalties</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <a class="lang-btn" href="../../fantasyland-strategy/">日本語</a>
+            <a class="lang-btn active" href="./" aria-current="page">EN</a>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section" style="border-top:0;padding-top:36px;">
+      <div class="container article-wrap article-body">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">OFC Optimizer Home</a>
+          <span>/</span>
+          <span>Fantasyland 14–17 Card Strategy</span>
+        </nav>
+
+        <div class="eyebrow">FANTASYLAND MASTERY · 14–17 CARDS</div>
+        <h1 class="hero-title" style="font-size:clamp(1.68rem,4vw,2.6rem);margin-bottom:14px;">
+          How to Set <span class="gold">OFC Fantasyland (14–17 Cards)</span> &amp; Repeat
+        </h1>
+        <p class="lead">
+          Getting dealt 14 to 17 cards at once creates the biggest swings in Open Face Chinese (OFC) Pineapple. Here is the exact 4-step workflow to balance immediate royalties against Re-Fantasy—plus clickable sample hands that load straight into our free browser solver.
+        </p>
+
+        <div class="hero-ctas" style="margin-bottom:28px;">
+          <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=solver&amp;lang=en" target="_blank" rel="noopener">Open Free Exact FL Solver ↗</a>
+          <a class="btn btn-ghost btn-sm" href="../fantasyland-ev-guide/">See Full FL EV Benchmarks →</a>
+        </div>
+
+        <h2>1. Know Your Exact Re-Fantasy Break-Even Point</h2>
+        <p>
+          You repeat Fantasyland by completing <strong>Three of a Kind on Top</strong> OR <strong>Four of a Kind+ on Bottom</strong>. How many immediate royalties should you sacrifice to lock in a repeat? Match your table's next-hand Fantasyland value:
+        </p>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;font-size:13px;">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;">Your FL Cards</th>
+                <th style="padding:10px 8px;white-space:nowrap;">54c (∞)</th>
+                <th style="padding:10px 8px;white-space:nowrap;">54c (50pt)</th>
+                <th style="padding:10px 8px;white-space:nowrap;">52c (∞)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px 8px;">14 cards (QQ)</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~23 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~20 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~14 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">15 cards (KK)</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~38 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~28 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~21 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">16 cards (AA)</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">~64 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~35 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~33 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">17 cards (Trips)</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">~126 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~42 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~58 pt</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>2. The 4-Step Fantasyland Arrangement Checklist</h2>
+        <div class="flip-grid">
+          <div class="flip-card gold">
+            <h3>Step 1: Scan for Repeat Routes First</h3>
+            <p>
+              Sort by rank immediately and check whether <strong>Bottom Quads+</strong> or <strong>Top Trips (222+)</strong> is legally achievable without fouling. In 54-card 15–17 card hands, locking in the repeat almost always dominates.
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>Step 2: Abuse the 2× Middle Royalty Multiplier</h3>
+            <p>
+              Middle pays <strong>double</strong> Bottom (Flush +8 vs. +4, Full House +12 vs. +6). Whenever you can make two strong 5-card hands, push the highest legal one into Middle rather than burying it in Bottom.
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>Step 3: Climb the Top Pair Ladder (66 → AA)</h3>
+            <p>
+              Once Middle and Bottom are set, maximize your Top pair among the remaining cards—jumping from High Card (0) to AA (+9) is worth 9 pure points before even winning the row.
+            </p>
+          </div>
+          <div class="flip-card gold">
+            <h3>Step 4: Joker Priority: Repeat &gt; Middle Monster &gt; Top Pair</h3>
+            <p>
+              Use Jokers first to secure Re-Fantasy. If no repeat is reachable, deploy Jokers where they add the biggest single royalty leap (Middle Full House +12 / Quads +20 / Top AA +9).
+            </p>
+          </div>
+        </div>
+
+        <h2>3. Clickable Live Solver Practice Hands (Zero Signup)</h2>
+        <p>Click either example below to load the exact cards straight into our browser Fantasyland Solver:</p>
+        <div class="flip-grid">
+          <div class="flip-card">
+            <h3>Hand 1: 14 Cards (Double Full House vs. Top AA)</h3>
+            <p>
+              <code>A♥ A♦ K♣ Q♥ Q♣ Q♠ 8♦ 2♥ 9♥ 9♣ 9♠ 4♦ 4♥ 3♥</code><br />
+              Compare double Full House vs. Top AA + Middle Trips!
+            </p>
+            <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=solver&amp;lang=en&amp;cards=Ah,Ad,Kc,Qh,Qc,Qs,8d,2h,9h,9c,9s,4d,4h,3h" target="_blank" rel="noopener">Load These 14 Cards in Solver ↗</a>
+          </div>
+          <div class="flip-card gold">
+            <h3>Hand 2: 15 Cards + Joker (Royal Flush vs. Top KKK Repeat)</h3>
+            <p>
+              <code>JK1 A♠ K♠ Q♠ J♠ 9♠ K♥ K♦ 8♥ 8♦ 8♣ 5♣ 5♦ 2♠ 3♣</code><br />
+              Bottom Royal Flush (+25 &amp; Repeat) or Top KKK (+21 &amp; Repeat)?
+            </p>
+            <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=solver&amp;lang=en&amp;cards=JK1,As,Ks,Qs,Js,9s,Kh,Kd,8h,8d,8c,5c,5d,2s,3c" target="_blank" rel="noopener">Load These 15 Cards in Solver ↗</a>
+          </div>
+        </div>
+
+        <section class="section" style="padding-bottom:12px;margin-top:36px;">
+          <div class="cta-banner">
+            <h2>Practice Timed 14–17 Card Fantasyland Free.</h2>
+            <p>
+              Drill real Fantasyland hands against exact branch-and-bound optimal answers in your browser or 100% offline on iPhone.
+            </p>
+            <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+              <a class="btn btn-gold" href="https://app.ofcoptimizer.com/?mode=solver&amp;lang=en" target="_blank" rel="noopener">Open Free Browser FL Solver ↗</a>
+              <a class="btn btn-ghost" href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">Download Free on App Store</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Optimizer</div>
+        <div class="footer-links">
+          <a href="../">Home</a>
+          <a href="../rules-and-royalties/">Rules &amp; Royalties</a>
+          <a href="../scoring-examples/">Scoring Examples</a>
+          <a href="../opening-strategy/">Strategy Guide</a>
+          <a href="../joker-vs-52card/">Joker vs 52-Card</a>
+          <a href="../fantasyland-ev-guide/">FL EV Guide</a>
+          <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">X (@ofcoptimizer)</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

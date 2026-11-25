@@ -109,4 +109,22 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/scoring-examples/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/scoring-examples/" />
   </url>
+  <url>
+    <loc>https://ofcoptimizer.com/fantasyland-strategy/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/fantasyland-strategy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+  </url>
+  <url>
+    <loc>https://ofcoptimizer.com/en/fantasyland-strategy/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/fantasyland-strategy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+  </url>
 </urlset>

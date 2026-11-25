@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070709" />
+    <title>チャイポ（OFC パイナップル）ファンタジーランド 14〜17 枚の置き方コツ＆継続戦略 — OFC Optimizer</title>
+    <meta
+      name="description"
+      content="OFC パイナップルのファンタジーランド（14〜17 枚）でロイヤリティ最大化とリファンタジー（継続）を両立する 5 つの実践セオリー、スタック別・54枚 vs 52枚の判断基準、そのままソルバーで試せる実戦例題を解説。"
+    />
+    <link rel="canonical" href="https://ofcoptimizer.com/fantasyland-strategy/" />
+    <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/fantasyland-strategy/" />
+    <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+    <link rel="alternate" hreflang="x-default" href="https://ofcoptimizer.com/en/fantasyland-strategy/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="チャイポ ファンタジーランド 14〜17 枚の置き方コツ＆継続戦略" />
+    <meta
+      property="og:description"
+      content="「継続を優先すべきか、ロイヤリティを優先すべきか？」をスタック深さと枚数別に明快整理。ワンクリックでソルバー実演できる例題付き。"
+    />
+    <meta property="og:url" content="https://ofcoptimizer.com/fantasyland-strategy/" />
+    <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ofcoptimizer" />
+    <meta name="twitter:title" content="チャイポ ファンタジーランド 14〜17 枚の置き方コツ＆継続戦略" />
+    <meta
+      name="twitter:description"
+      content="14〜17 枚ファンタジーランドの優先順位・ジョーカー配置・継続 vs ロイヤリティの損益分岐点を完全解説。"
+    />
+    <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
+    <link rel="icon" type="image/png" href="../assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../styles.css?v=20261125-3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "チャイポ（OFC パイナップル）ファンタジーランド 14〜17 枚の置き方コツ＆継続戦略",
+        "description": "OFC パイナップルのファンタジーランド（14〜17 枚）における継続 vs ロイヤリティの判断基準、ジョーカー配置の原則、スタック別の最適戦略を解説。",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "inLanguage": "ja",
+        "author": { "@type": "Organization", "name": "OFC Optimizer" },
+        "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
+        "mainEntityOfPage": "https://ofcoptimizer.com/fantasyland-strategy/",
+        "image": "https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "ファンタジーランドでは必ず継続（リファンタジー）を最優先すべきですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "いいえ。継続の価値は「自分の枚数・54枚 vs 52枚・実効スタック」で大きく変わります。たとえば 54 枚・スタック無限の 17 枚 FL なら継続価値が非常に高いため多少のロイヤリティを削っても継続優先ですが、52 枚・14 枚 FL の継続価値は 14.0 pt 程度のため、15 pt 以上のロイヤリティを捨てて継続を狙うのは損になります。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ファンタジーランドでジョーカーを引いたらトップとボトムどちらに置くべき？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "まず「ジョーカーを使ってトップ Trips またはボトム Quads 以上の継続ルートが作れるか」を最優先で確認します。継続できるなら 54 枚ルールでは莫大な次局期待値が得られます。継続できない手札なら、ミドルフルハウス（+12pt）やトップ AA（+9pt）など最もロイヤリティ増分が大きい段へ置きます。"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <img class="brand-icon" src="../assets/logo-128.webp" alt="OFC Optimizer" width="34" height="34" />
+          <span class="brand-name">OFC Optimizer</span>
+          <span class="brand-ver">v3.0</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-webapp" href="https://app.ofcoptimizer.com/?mode=solver" target="_blank" rel="noopener">FLソルバー ↗</a>
+          <a href="../fantasyland-ev-guide/">FL期待値表</a>
+          <a href="../opening-strategy/">初手5枚戦略</a>
+          <a href="../rules-and-royalties/">点数表</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <a class="lang-btn active" href="./" aria-current="page">日本語</a>
+            <a class="lang-btn" href="../en/fantasyland-strategy/">EN</a>
+          </div>
+          <a
+            class="btn btn-gold btn-sm header-cta"
+            href="https://apps.apple.com/app/id6757732173"
+            target="_blank"
+            rel="noopener"
+          >App Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section" style="border-top:0;padding-top:36px;">
+      <div class="container article-wrap article-body">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">OFC Optimizer トップ</a>
+          <span>/</span>
+          <span>ファンタジーランド 14〜17 枚戦略</span>
+        </nav>
+
+        <div class="eyebrow">FANTASYLAND MASTERY · 14–17 CARDS</div>
+        <h1 class="hero-title" style="font-size:clamp(1.5rem,4vw,2.55rem);margin-bottom:14px;">
+          チャイポ（OFC パイナップル）<br /><span class="gold">FL 14〜17 枚の置き方＆継続戦略</span>
+        </h1>
+        <p class="lead">
+          14〜17 枚を一気に配られるファンタジーランド（FL）は、1 局で 20〜60 点が動く最大の勝負所です。「継続（リファンタジー）を取るか、ロイヤリティを取るか」を迷わず決めるための 4 ステップと、ブラウザでそのまま解ける実戦例題をまとめました。
+        </p>
+
+        <div class="hero-ctas" style="margin-bottom:28px;">
+          <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=solver" target="_blank" rel="noopener">無料 FL 厳密ソルバーを開く ↗</a>
+          <a class="btn btn-ghost btn-sm" href="../fantasyland-ev-guide/">スタック別 FL 期待値表を見る →</a>
+        </div>
+
+        <h2>1. まず決めるべき「継続（リファンタジー）の損益分岐点」</h2>
+        <p>
+          FL 中に<strong>「トップでスリーカード（222〜AAA）」</strong>または<strong>「ボトムでフォーカード以上」</strong>を作ると次局も FL が継続します。では「ロイヤリティを何点まで削って継続を狙うべきか？」の答えは、あなたの卓の <strong>次局 FL 期待値そのもの</strong> です。
+        </p>
+        <div class="data-table-wrap">
+          <table class="data-table" style="min-width:0;font-size:13px;">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;">あなたの FL 枚数</th>
+                <th style="padding:10px 8px;white-space:nowrap;">54枚 (∞)</th>
+                <th style="padding:10px 8px;white-space:nowrap;">54枚 (50pt)</th>
+                <th style="padding:10px 8px;white-space:nowrap;">52枚 (∞)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px 8px;">14 枚（QQ 突入）</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~23 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~20 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~14 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">15 枚（KK 突入）</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~38 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~28 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~21 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">16 枚（AA 突入）</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">~64 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~35 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~33 pt</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">17 枚（Trips 突入）</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">~126 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~42 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">~58 pt</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          ※ 例：54 枚・スタック無限の 16〜17 枚 FL なら継続価値が 64〜126 pt あるため、今局のロイヤリティを 15〜25 pt 落としてでも継続ルートを選ぶ方が圧倒的に得です。一方 52 枚・14 枚 FL なら継続価値は 14 pt 前後なので、ミドルフルハウス（+12pt）等を壊して無理に継続させると逆転することがあります。
+        </p>
+
+        <h2>2. 制限時間内に最善手を見つける 4 ステップ</h2>
+        <div class="flip-grid">
+          <div class="flip-card gold">
+            <h3>Step 1：ランク別に並べて「継続ルート」を真っ先に探す</h3>
+            <p>
+              まず同じ数字（ペア・Trips・Quads）とジョーカーをすべて確認し、<strong>ボトム Quads 以上</strong> または <strong>トップ Trips（222+）</strong> がファウルせずに成立するかを最初にチェックします。
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>Step 2：「ミドルはボトムの 2 倍」の法則で高得点役を上げる</h3>
+            <p>
+              フラッシュはボトム +4pt ですがミドルなら <strong>+8pt</strong>、フルハウスはボトム +6pt ですがミドルなら <strong>+12pt</strong>。強い役が 2 つ作れるときは、ギリギリ成立する方をボトムではなくミドルへ押し上げるのが鉄則です。
+            </p>
+          </div>
+          <div class="flip-card">
+            <h3>Step 3：トップは「66（+1）〜AA（+9）」の階段を 1 段でも上げる</h3>
+            <p>
+              ミドルとボトムが確定したら、残った 4〜5 枚の中から一番強いペアをトップへ置きます。ハイカード（0 pt）と AA（+9 pt）の差はそのまま 9 点差になります。
+            </p>
+          </div>
+          <div class="flip-card gold">
+            <h3>Step 4：ジョーカーは「継続 ＞ ミドル大役 ＞ トップ高ペア」の順</h3>
+            <p>
+              ジョーカー 1 枚で Quads やトップ Trips に届いて継続できるなら最優先。継続できない手札なら、ミドルをフルハウス（+12）やフォーカード（+20）に化けさせるのが最も点数が伸びます。
+            </p>
+          </div>
+        </div>
+
+        <h2>3. ブラウザで即チェックできる実戦例題（ワンクリック解析）</h2>
+        <p>以下のリンクをタップすると、そのまま 14〜16 枚の手札が無料 FL ソルバーにセットされた状態で開きます（登録不要）。</p>
+        <div class="flip-grid">
+          <div class="flip-card">
+            <h3>例題 ①：14 枚（継続なし・ダブルフラッシュ vs フルハウス）</h3>
+            <p>
+              <code>A♥ A♦ K♣ Q♥ Q♣ Q♠ 8♦ 2♥ 9♥ 9♣ 9♠ 4♦ 4♥ 3♥</code><br />
+              ダブルフルハウスか、トップ AA＋ミドル Trips か？
+            </p>
+            <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=solver&amp;cards=Ah,Ad,Kc,Qh,Qc,Qs,8d,2h,9h,9c,9s,4d,4h,3h" target="_blank" rel="noopener">この 14 枚をソルバーで開く ↗</a>
+          </div>
+          <div class="flip-card gold">
+            <h3>例題 ②：15 枚（ジョーカー入り・継続 vs ミドル大役）</h3>
+            <p>
+              <code>JK1 A♠ K♠ Q♠ J♠ 9♠ K♥ K♦ 8♥ 8♦ 8♣ 5♣ 5♦ 2♠ 3♣</code><br />
+              ジョーカーをボトムロイヤル（継続）に使うか、トップ KKK（+21＆継続）に使うか？
+            </p>
+            <a class="btn btn-gold btn-sm" href="https://app.ofcoptimizer.com/?mode=solver&amp;cards=JK1,As,Ks,Qs,Js,9s,Kh,Kd,8h,8d,8c,5c,5d,2s,3c" target="_blank" rel="noopener">この 15 枚をソルバーで開く ↗</a>
+          </div>
+        </div>
+
+        <section class="section" style="padding-bottom:12px;margin-top:36px;">
+          <div class="cta-banner">
+            <h2>14〜17 枚の最適配置を、オフラインで瞬時に。</h2>
+            <p>
+              OFC Optimizer のファンタジーソルバー＆トレーニングなら、制限時間付きの 14〜17 枚練習で最善手との差を毎回チェックできます。
+            </p>
+            <div class="hero-ctas" style="justify-content:center;margin-bottom:0;">
+              <a class="btn btn-gold" href="https://app.ofcoptimizer.com/?mode=solver" target="_blank" rel="noopener">無料 FL ソルバーをブラウザで使う ↗</a>
+              <a class="btn btn-ghost" href="https://apps.apple.com/app/id6757732173" target="_blank" rel="noopener">App Store で無料ダウンロード</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 OFC Optimizer</div>
+        <div class="footer-links">
+          <a href="../">トップページ</a>
+          <a href="../rules-and-royalties/">ルール＆点数表</a>
+          <a href="../scoring-examples/">点数計算の実例</a>
+          <a href="../opening-strategy/">初手5枚戦略</a>
+          <a href="../joker-vs-52card/">54枚 vs 52枚</a>
+          <a href="../fantasyland-ev-guide/">FL期待値表</a>
+          <a href="https://x.com/ofcoptimizer" target="_blank" rel="noopener">公式 X (@ofcoptimizer)</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
