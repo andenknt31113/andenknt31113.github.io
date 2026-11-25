@@ -2,12 +2,14 @@
   'use strict';
 
   const APP_STORE_URL = 'https://apps.apple.com/app/id6757732173';
+  const WEB_APP_URL = 'https://ofc-optimizer.pages.dev/';
   const LANG_STORAGE_KEY = 'ofc_lp_lang_v1';
 
   /* ---------------- i18n Static Copy ---------------- */
   const COPY = {
     ja: {
       page_title: 'OFC Fantasy Optimizer v3.0 — 100% オフライン OFC Pineapple ソルバー＆トレーニング',
+      nav_webapp: 'Web版アプリ',
       nav_quiz: '無料クイズ',
       nav_calc: '5秒点数計算',
       nav_features: '機能',
@@ -19,7 +21,7 @@
       hero_sub:
         '初手 S0 から最終 S4 までの平場ソルバー、AI 1局レビュー、実効スタック（50pt〜∞）別の最適解、54枚／52枚（ジョーカーなし）完全対応。すべて iPhone 内でオフライン動作。',
       cta_download: 'App Store で無料ダウンロード',
-      cta_try_tools: 'ブラウザで無料クイズ＆5秒計算を試す',
+      cta_open_webapp: 'ブラウザで Web 版アプリを操作 →',
       pill_offline: '100% オフライン C++20',
       pill_decks: '54枚（JK2枚）＆ 52枚（JKなし）',
       pill_stacks: '実効スタック 50pt / 100pt / 200pt / ∞',
@@ -72,7 +74,8 @@
       quiz_best_tag: '#1 最善',
       quiz_next_btn: '次の問題へ →',
       quiz_retry_btn: 'もう一度選ぶ',
-      quiz_app_cta: 'アプリ内の「今日の 1 問」で毎日無料挑戦 →',
+      quiz_web_cta: 'Web版アプリで今すぐ操作 →',
+      quiz_app_cta: 'iOS アプリで「今日の 1 問」を解く →',
       // Calc UI labels
       calc_player_a: 'プレイヤー A',
       calc_player_b: 'プレイヤー B',
@@ -95,6 +98,7 @@
     },
     en: {
       page_title: 'OFC Fantasy Optimizer v3.0 — 100% Offline OFC Pineapple Solver & Trainer',
+      nav_webapp: 'Web App',
       nav_quiz: 'Free Quiz',
       nav_calc: '5s Score Calc',
       nav_features: 'Features',
@@ -106,7 +110,7 @@
       hero_sub:
         'Full Street 0–4 Flat-Play Solver, Street-by-Street AI Hand Review, Effective Stack presets (50pt–∞), and both 54-card (2 Jokers) & 52-card (No Jokers)—running 100% offline on iPhone.',
       cta_download: 'Download Free on App Store',
-      cta_try_tools: 'Try Free Exact Quiz & 5s Calc',
+      cta_open_webapp: 'Open Web App in Browser →',
       pill_offline: '100% Offline C++20',
       pill_decks: '54-Card (2 Jokers) & 52-Card',
       pill_stacks: 'Effective Stack 50pt / 100pt / 200pt / ∞',
@@ -159,6 +163,7 @@
       quiz_best_tag: '#1 BEST',
       quiz_next_btn: 'Next Spot →',
       quiz_retry_btn: 'Try Again',
+      quiz_web_cta: 'Try Live Web App →',
       quiz_app_cta: 'Play Free Daily Spots in the iOS App →',
       // Calc UI labels
       calc_player_a: 'Player A',
@@ -186,14 +191,18 @@
   const QUIZZES = [
     {
       id: 'pro-d1-s3-08',
-      tabJa: 'Q1 · S3 厳密 (QQ100%)',
-      tabEn: 'Q1 · S3 Exact (QQ Trap)',
-      pillJa: '54枚 (JK2枚) · S3 厳密全列挙 · スタック無限',
-      pillEn: '54-Card · Exact S3 Enumeration · ∞ Stack',
+      tabJa: 'Q1 · S3（QQ 確定 vs FH）',
+      tabEn: 'Q1 · S3 (QQ Lock vs FH)',
+      deckJa: '54枚（JK2枚）',
+      deckEn: '54-Card (2 Jokers)',
+      stackJa: '実効スタック：無限（∞）',
+      stackEn: 'Effective Stack: ∞',
+      streetJa: 'ストリート 3（残り 1 ストリート）',
+      streetEn: 'Street 3 (1 Street Left)',
       titleJa: '残り 1 ストリート！「100% QQ FL 確定」を蹴って Q♦ を捨てるべきか？',
       titleEn: 'One Street Left! Should You Reject 100% QQ FL and Discard Q♦?',
-      subJa: 'ミドル 8 トリップス完成済み。Q♦ でトップ QQ を確定させるか、Q♦ を捨ててボトム 9 フルハウスを完成させるか。',
-      subEn: 'Middle 8-trips is locked. Take guaranteed QQ Fantasyland on Top, or discard Q♦ to complete a Bottom Full House?',
+      subJa: '【実効スタック：無限の卓】ミドル 8 トリップス完成済み。Q♦ でトップ QQ を確定させるか、Q♦ を捨ててボトム 9 フルハウスを完成させるか。',
+      subEn: '[∞ Stack Table] Middle 8-trips is locked. Take guaranteed QQ Fantasyland on Top, or discard Q♦ to complete a Bottom Full House?',
       myBoard: {
         top: ['Ac', 'Qh'],
         mid: ['8s', '8d', '8c', '4d'],
@@ -259,14 +268,18 @@
     },
     {
       id: 'pro-d3-s3-02',
-      tabJa: 'Q2 · S3 厳密 (JK 2♠ vs 4♦)',
-      tabEn: 'Q2 · S3 Exact (JK 2♠ vs 4♦)',
-      pillJa: '54枚 (JK2枚) · S3 厳密全列挙 · 上級',
-      pillEn: '54-Card · Exact S3 Enumeration · Master',
-      titleJa: 'トップ「JK 9♦」に置くべきは 4♦？ それとも小さい 2♠？',
-      titleEn: 'Top Has "JK 9♦": Place 4♦ or the Smaller 2♠?',
-      subJa: 'ミドルは 3♥ で 33 ペア完成、ボトムは 4 フラッシュ待ち。キッカーの大きい 4♦ をトップに置きたくなるが……',
-      subEn: '3♥ completes Pair of 3s in Middle; Bottom holds a 4-card club draw. Instinct says put the higher 4♦ on Top—right?',
+      tabJa: 'Q2 · S3（JK の横に 2♠ vs 4♦）',
+      tabEn: 'Q2 · S3 (JK + 2♠ vs 4♦)',
+      deckJa: '54枚（JK2枚）',
+      deckEn: '54-Card (2 Jokers)',
+      stackJa: '実効スタック：無限（∞）',
+      stackEn: 'Effective Stack: ∞',
+      streetJa: 'ストリート 3（残り 1 ストリート）',
+      streetEn: 'Street 3 (1 Street Left)',
+      titleJa: 'トップ「JK・9♦」に置くべきは 4♦？ それとも小さい 2♠？',
+      titleEn: 'Top Has "JK + 9♦": Place 4♦ or the Smaller 2♠?',
+      subJa: '【実効スタック：無限の卓】ボトムはクラブ 4 枚でフラッシュ待ち。今回の 3♥ でミドルに 33 ワンペアを作ったあと、トップの「JK・9♦」には大きい 4♦ と小さい 2♠ のどちらを置くべきか？',
+      subEn: '[∞ Stack Table] Bottom holds a 4-card club flush draw. After placing 3♥ in Middle for Pair of 3s, should you put the higher 4♦ or the smaller 2♠ next to JK 9♦ on Top?',
       myBoard: {
         top: ['JK', '9d'],
         mid: ['Qd', '3s', 'Jd'],
@@ -332,14 +345,18 @@
     },
     {
       id: 'pro-d3-s2-11',
-      tabJa: 'Q3 · S2 スタック逆転',
-      tabEn: 'Q3 · S2 Stack Flip',
-      pillJa: '54枚 (JK2枚) · S2 · 無限 vs 50pt 逆転スポット',
-      pillEn: '54-Card · S2 · ∞ vs 50pt Stack Flip',
+      tabJa: 'Q3 · S2（トップ JK ＋ Q♣）',
+      tabEn: 'Q3 · S2 (Top JK + Q♣)',
+      deckJa: '54枚（JK2枚）',
+      deckEn: '54-Card (2 Jokers)',
+      stackJa: '実効スタック：無限（∞）',
+      stackEn: 'Effective Stack: ∞',
+      streetJa: 'ストリート 2（残り 2 ストリート）',
+      streetEn: 'Street 2 (2 Streets Left)',
       titleJa: 'トップ「JK」に Q♣ を引いた！ 即 QQ FL 確定にする？ 捨てる？',
-      titleEn: 'Top Has "JK" and You Draw Q♣! Lock QQ FL or Throw Q♣ Away?',
-      subJa: 'ボトムはすでに 9-7 ツーペアで安泰。人間なら 9 割が Q♣ をトップに置いて QQ 以上を確定させるが、スタック次第で答えが真逆に。',
-      subEn: 'Bottom is safe with 9-7 two pair. 90% of players instantly snap Q♣ onto Top—yet effective stack depth completely flips the optimal play.',
+      titleEn: 'Top Has "JK" and You Draw Q♣! Lock QQ FL or Discard Q♣?',
+      subJa: '【実効スタック：無限の卓】ボトムはすでに 9-7 ツーペアで安泰。トップの「JK」に Q♣ を置いて QQ 以上を確定させるか、あえて Q♣ を捨てて A・K を待つか？',
+      subEn: '[∞ Stack Table] Bottom is safe with 9-7 two pair. Should you snap Q♣ onto Top next to your Joker to lock QQ+, or discard Q♣ to draw for K/A?',
       myBoard: {
         top: ['JK'],
         mid: ['6c', '3s'],
@@ -394,8 +411,8 @@
           noteEn: '-9.15pt Blunder'
         }
       ],
-      flipNoteJa: '【スタック深さで #1 が完全逆転】 スタック無限では [B] Q♣捨て（+29.10pt）が [A] に +0.70pt 勝利。ところが 実効 50pt 卓では [A] Q♣→TOP（+22.93pt）が [B]（+21.72pt）を +1.21pt 逆転して #1 になります！',
-      flipNoteEn: 'FULL STACK-DEPTH FLIP: At ∞ stack, discarding Q♣ [B] (+29.10pt) beats [A] by +0.70pt. On a 50pt table, locking Q♣→TOP [A] (+22.93pt) flips to #1—beating [B] (+21.72pt) by +1.21pt!',
+      flipNoteJa: '【補足：浅い 50pt 卓なら答えが逆転！】 この問題の前提（スタック無限）では [B] Q♣捨て（+29.10pt）が [A] に +0.70pt 勝利します。一方、実効 50pt 卓では [A] Q♣→TOP（+22.93pt）が [B]（+21.72pt）を +1.21pt 逆転して #1 になります。',
+      flipNoteEn: 'BONUS — Shallow 50pt Stack Flips the Answer: Under this spot’s ∞ stack rule, discarding Q♣ [B] (+29.10pt) beats [A] by +0.70pt. On a 50pt table, locking Q♣→TOP [A] (+22.93pt) flips to #1—beating [B] (+21.72pt) by +1.21pt!',
       explainJa:
         'スタック無限では AA（64.5pt）と QQ（23.2pt）に 41pt 超の大差があるため、Q♣ を捨てて S3/S4 の A・K 受けを最大化する [B]（AA 32.4%・KK 22.2%）が最善。一方 50pt 卓では AA が 35.5pt に縮むのに対し QQ は 20.3pt とほぼ落ちないため、FL 率を +10.2% 上乗せする [A] が逆転します。',
       explainEn:
@@ -925,7 +942,9 @@
     const nodes = [
       headerBar,
       el('div', { className: 'quiz-meta-row' }, [
-        el('span', { className: 'pill-tag pill-tag-gold', text: isJa ? q.pillJa : q.pillEn })
+        el('span', { className: 'pill-tag pill-tag-gold', text: isJa ? q.stackJa : q.stackEn }),
+        el('span', { className: 'pill-tag', text: isJa ? q.deckJa : q.deckEn }),
+        el('span', { className: 'pill-tag', text: isJa ? q.streetJa : q.streetEn })
       ]),
       el('h3', { className: 'quiz-q-title', text: isJa ? q.titleJa : q.titleEn }),
       el('p', { className: 'quiz-q-sub', text: isJa ? q.subJa : q.subEn }),
@@ -986,13 +1005,22 @@
         el('p', { className: 'quiz-explain', text: isJa ? q.explainJa : q.explainEn }),
         el('div', { className: 'result-footer' }, [
           el('span', { className: 'method-note', text: isJa ? q.methodJa : q.methodEn }),
-          el('a', {
-            className: 'btn btn-gold btn-sm',
-            href: APP_STORE_URL,
-            target: '_blank',
-            rel: 'noopener',
-            text: t.quiz_app_cta
-          })
+          el('div', { className: 'calc-btn-group' }, [
+            el('a', {
+              className: 'btn btn-ghost btn-sm',
+              href: WEB_APP_URL,
+              target: '_blank',
+              rel: 'noopener',
+              text: t.quiz_web_cta
+            }),
+            el('a', {
+              className: 'btn btn-gold btn-sm',
+              href: APP_STORE_URL,
+              target: '_blank',
+              rel: 'noopener',
+              text: t.quiz_app_cta
+            })
+          ])
         ])
       ]);
       nodes.push(resultBox);
