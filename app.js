@@ -590,7 +590,7 @@
       },
       {
         q: 'Does the solver work offline without internet?',
-        a: 'Yes—our iOS app runs 100% offline with a offline engine directly on your iPhone, with zero server wait time on flights or in live poker rooms.'
+        a: 'Yes—our iOS app runs 100% offline with an offline engine directly on your iPhone, with zero server wait time on flights or in live poker rooms.'
       },
       {
         q: 'What does the Pro Lifetime ($599.99 / ¥88,000) license cover?',
@@ -1019,7 +1019,7 @@
     });
     document.querySelectorAll('[data-chart]').forEach((img) => {
       const name = img.getAttribute('data-chart');
-      img.src = `${ASSET_BASE}assets/${name}-${lang}.webp?v=20261125-5`;
+      img.src = `${ASSET_BASE}assets/${name}-${lang}.webp?v=20261126-1`;
     });
 
     document.querySelectorAll('.lang-btn').forEach((btn) => {
