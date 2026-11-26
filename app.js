@@ -39,11 +39,11 @@
       data_desc:
         '「スタック無限・54枚」の感覚のまま 50pt 卓や 52 枚（ジョーカーなし）卓を打つと、Trips 特攻で大きく期待値を落とします。アプリ内では 1 タップで卓条件を切替可能。',
       chart1_cap:
-        '54枚（JK2枚）実効スタック別 FL 価値：Trips（17枚）は ∞ 126.4pt → 50pt 42.0pt（-67%）。一方 QQ（14枚）は 100pt でも 22.8pt とほぼ不変。',
+        '54枚（JK2枚）1対1実戦 FL 価値：Trips（17枚）は ∞ 80.9pt → 50pt 33.1pt（-59%）。一方、相手の反撃FLが減るため QQ（14枚）は 3.3pt → 6.0pt へ上昇。',
       chart2_cap:
-        '54枚 vs 52枚（JKなし）：ジョーカー 2 枚が抜けると継続率が急落し、QQ 14.0pt（-40%）／Trips 58.5pt（-54%）まで半減。',
+        '54枚 vs 52枚（JKなし）：ジョーカーが抜けると Trips は 80.9pt → 45.9pt（-43%）へ急落。一方、相手の反撃FLも減るため QQ は 52枚（8.2pt）の方が高くなります。',
       methodology_note:
-        '計測条件（再現性注記）：厳密 FL ソルバー（各ティア 1,200 局解析）＋ 100,000 回連鎖シミュレーション（同枚数リファンタジー採用）。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。',
+        '計測条件（v3.0 1対1実戦モデル）：C++20 厳密 FL ソルバー＋1対1対局シミュレーション（同枚数リファンタジー：トップ Trips / ボトム Quads+ のみ継続）。自分の FL 中に相手が平場から FL に入り返す「反撃 FL」と実効スタック上限まで正確に差し引いた実戦純期待値です。誤差目安（∞）：54枚 QQ ±0.4 / KK ±0.6 / AA ±0.8 / Trips ±2.5 pt。',
       price_kicker: 'TRANSPARENT PRICING',
       price_heading: 'まずは無料で体験。本格研究には Pro。',
       price_desc:
@@ -105,11 +105,11 @@
       data_desc:
         'Playing 50pt tables or 52-card (No Joker) games with infinite-stack 54-card intuition bleeds EV on high-risk Trips chases. Switch presets in one tap inside the app.',
       chart1_cap:
-        '54-Card (2 Jokers) FL value by effective stack: 17-card Trips drops from 126.4pt (∞) to 42.0pt (50pt, -67%), while 14-card QQ holds steady at 22.8pt down to 100pt.',
+        '54-Card (2 Jokers) 1-on-1 FL EV by effective stack: 17-card Trips drops from 80.9pt (∞) to 33.1pt (50pt, -59%), while 14-card QQ actually rises from 3.3pt to 6.0pt as caps limit opponent counter-FL.',
       chart2_cap:
-        '54-Card vs 52-Card (No Jokers): Removing 2 Jokers slashes repeat rates—cutting QQ to 14.0pt (-40%) and Trips to 58.5pt (-54%).',
+        '54-Card vs 52-Card (No Jokers): Removing 2 Jokers cuts 17-card Trips from 80.9pt to 45.9pt (-43%)—yet boosts 14-card QQ from 3.3pt to 8.2pt because opponents rarely counter-FL without Jokers.',
       methodology_note:
-        'Methodology: Exact FL solver (1,200 hands/tier) + 100,000-chain simulation with same-card Re-Fantasy. Counts own FL chains only (subtracting opponent counter-FL lowers values substantially). Standard error at ∞: QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt.',
+        'Methodology (v3.0 True 1-on-1 Model): Exact C++20 FL branch-and-bound solver + heads-up equilibrium with same-card Re-Fantasy (Top Trips / Bottom Quads+). Accounts for both stack caps and opponent counter-FL from flat play. Standard error at ∞ (54c): QQ ±0.4 / KK ±0.6 / AA ±0.8 / Trips ±2.5 pt.',
       price_kicker: 'TRANSPARENT PRICING',
       price_heading: 'Start Free. Upgrade to Pro When You Grind.',
       price_desc:
@@ -142,7 +142,7 @@
     }
   };
 
-  /* ---------------- Verified Quiz Data (2026-11-23 FL Table) ---------------- */
+  /* ---------------- Verified Quiz Data (v3.0 True 1-on-1 FL Table) ---------------- */
   const QUIZZES = [
     {
       id: 'pro-d1-s3-08',
@@ -178,7 +178,7 @@
           nameEn: 'Lock 100% QQ Fantasyland',
           moveJa: 'Q♦→TOP, 9♠→BOT（捨て J♥）',
           moveEn: 'Q♦→TOP, 9♠→BOT (disc J♥)',
-          ev: 41.6,
+          ev: 21.96,
           fl: 100.0,
           foul: 0.0,
           rank: 5,
@@ -191,12 +191,12 @@
           nameEn: 'Discard Q♦ & Complete 9s Full of Jacks!',
           moveJa: '9♠→BOT, J♥→BOT（捨て Q♦）',
           moveEn: '9♠→BOT, J♥→BOT (disc Q♦)',
-          ev: 52.97,
-          fl: 57.9,
+          ev: 36.9,
+          fl: 55.0,
           foul: 0.0,
           rank: 1,
-          noteJa: 'AA 44.6% · FH +6pt',
-          noteEn: 'AA 44.6% · FH +6pt'
+          noteJa: 'AA 42.2% · FH +6pt',
+          noteEn: 'AA 42.2% · FH +6pt'
         },
         {
           label: 'C',
@@ -204,22 +204,22 @@
           nameEn: 'Keep 9-Trips Bottom, J♥ Middle (disc Q♦)',
           moveJa: '9♠→BOT, J♥→MID（捨て Q♦）',
           moveEn: '9♠→BOT, J♥→MID (disc Q♦)',
-          ev: 45.79,
-          fl: 57.9,
+          ev: 29.22,
+          fl: 55.0,
           foul: 0.0,
           rank: 2,
-          noteJa: 'AA 44.6% · FH 逃す',
-          noteEn: 'AA 44.6% · Misses FH'
+          noteJa: 'AA 42.2% · FH 逃す',
+          noteEn: 'AA 42.2% · Misses FH'
         }
       ],
-      flipNoteJa: '実効 50pt 卓では？ AA FL 価値が 64.5pt → 35.5pt に下がるため、[B] +39.68pt vs [A] +38.78pt と大差がわずか +0.90pt 差まで急接近します。',
-      flipNoteEn: 'At 50pt Effective Stack: AA FL drops from 64.5pt to 35.5pt, shrinking this massive +11.37pt gap down to just +0.90pt (+39.68 vs +38.78)!',
+      flipNoteJa: '実効 50pt 卓では？ AA FL 価値が 35.2pt → 23.2pt に下がり QQ が 3.3pt → 6.0pt に上がるため、[A] が 5位→2位（+24.66pt）へ急浮上し、[B]（+32.22pt）との差は +14.94pt → +7.56pt まで半減します。',
+      flipNoteEn: 'At 50pt Effective Stack: AA FL drops from 35.2pt to 23.2pt while QQ rises from 3.3pt to 6.0pt—jumping [A] from #5 to #2 (+24.66pt) and cutting [B]’s lead (+32.22pt) in half from +14.94pt to +7.56pt!',
       explainJa:
-        '[A] は QQ FL（23.2pt）が 100% 確定しますが、AA FL（64.5pt）の権利とボトムフルハウス（+6pt）を同時に放棄します。[B] はファウル率 0.0% のままフルハウスを確定させつつ、最終 S4 の 3 枚で残り A 3枚・JK 2枚・Q 2枚を引けば 44.6% で AA・13.2% で QQ に入るため +11.37pt もの大差で圧勝します。',
+        '1対1の実戦価値では QQ FL（3.3pt）と AA FL（35.2pt）に 10 倍以上の差があります。[A] は QQ を 100% 確定させる代わりに AA の権利とボトムフルハウス（+6pt）を両方捨ててしまいます。[B] はファウル率 0.0% のままフルハウスを完成させつつ、最終 S4 で 42.2% の AA・12.8% の QQ を引けるため +14.94pt 差で圧勝します。',
       explainEn:
-        '[A] guarantees QQ FL (23.2pt) but throws away both AA FL (64.5pt) and a +6pt Bottom Full House. [B] locks the Full House with 0.0% foul risk while keeping 44.6% AA FL + 13.2% QQ FL outs on the final 3-card pull—crushing [A] by +11.37pt!',
-      methodJa: '終盤厳密計算 (Exact S3) · 54枚 · 最新 100k 連鎖 FL テーブル',
-      methodEn: 'Exact S3 Solver · 54-Card · 100k-Chain FL Table'
+        'In true 1-on-1 play, AA FL (35.2pt) is worth over 10× more than QQ FL (3.3pt). [A] locks QQ but surrenders both AA FL equity and a +6pt Bottom Full House. [B] secures the Full House with 0.0% foul risk while keeping 42.2% AA + 12.8% QQ outs on Street 4—crushing [A] by +14.94pt!',
+      methodJa: '終盤厳密計算 (Exact S3) · 54枚 · v3.0 1対1実戦 FL テーブル',
+      methodEn: 'Exact S3 Solver · 54-Card · v3.0 True 1-on-1 FL Table'
     },
     {
       id: 'pro-d3-s3-02',
@@ -255,12 +255,12 @@
           nameEn: 'Put Higher 4♦ on Top + 33 in Middle',
           moveJa: '4♦→TOP, 3♥→MID（捨て 2♠）',
           moveEn: '4♦→TOP, 3♥→MID (disc 2♠)',
-          ev: -24.99,
+          ev: -17.3,
           fl: 0.0,
-          foul: 16.2,
+          foul: 16.1,
           rank: 2,
-          noteJa: 'Foul 16.2%',
-          noteEn: 'Foul 16.2%'
+          noteJa: 'Foul 16.1%',
+          noteEn: 'Foul 16.1%'
         },
         {
           label: 'B',
@@ -268,33 +268,33 @@
           nameEn: 'Put the Smaller 2♠ on Top + 33 in Middle!',
           moveJa: '2♠→TOP, 3♥→MID（捨て 4♦）',
           moveEn: '2♠→TOP, 3♥→MID (disc 4♦)',
-          ev: -24.14,
+          ev: -16.38,
           fl: 0.0,
-          foul: 16.2,
+          foul: 16.1,
           rank: 1,
           noteJa: 'JK が 22 を作れる！',
           noteEn: 'JK forms 22 < 33!'
         },
         {
           label: 'C',
-          nameJa: 'ファウル半減（7.5%）の超安全ライン',
-          nameEn: 'Cut Foul Risk in Half (7.5% Ultra-Safe)',
+          nameJa: 'ファウル半減（8.1%）の超安全ライン',
+          nameEn: 'Cut Foul Risk in Half (8.1% Ultra-Safe)',
           moveJa: '2♠→TOP, 4♦→MID（捨て 3♥）',
           moveEn: '2♠→TOP, 4♦→MID (disc 3♥)',
-          ev: -25.64,
+          ev: -17.86,
           fl: 0.0,
-          foul: 7.5,
+          foul: 8.1,
           rank: 3,
-          noteJa: 'Foul 7.5% · EV -1.50pt 損',
-          noteEn: 'Foul 7.5% · -1.50pt EV'
+          noteJa: 'Foul 8.1% · EV -1.48pt 損',
+          noteEn: 'Foul 8.1% · -1.48pt EV'
         }
       ],
       flipNoteJa: 'なぜ 2♠ が 4♦ に勝つ？ ミドルが 33 止まりのとき、JK 9♦ 4♦ は 44 にするとファウルするため A ハイ止まり（相手の A♥K♠ に負け）。一方 JK 9♦ 2♠ なら JK が「2」に化けて 22 ワンペアになり、ミドル 33 未満を保ったまま相手の A♥K♠ を撃破できます！',
       flipNoteEn: 'Why does 2♠ beat 4♦? When Middle stays Pair of 3s, JK 9♦ 4♦ CANNOT make 44 (foul!) and drops to A-high—losing to Opponent’s A♥ K♠. With 2♠, the Joker becomes a 2 to form Pair of 2s (22 < 33), legally beating A♥ K♠!',
       explainJa:
-        'ファウル率は [A][B] どちらも 16.2% で完全一致しますが、ミドルが 33 で止まった局面で「JK を 22 にダウングレードして相手のトップ A♥K♠ を抜ける」 [B] が +0.85pt の厳密優位。ファウル率を 7.5% に半減させる [C] もミドル 33 を捨てる損が大きく -1.50pt 劣ります。',
+        'ファウル率は [A][B] どちらも 16.1% で完全一致しますが、ミドルが 33 で止まった局面で「JK を 22 にダウングレードして相手のトップ A♥K♠ を抜ける」 [B] が +0.92pt の厳密優位。ファウル率を 8.1% に半減させる [C] もミドル 33 を捨てる損が大きく -1.48pt 劣ります。',
       explainEn:
-        'Both [A] and [B] share the exact same 16.2% foul rate, yet [B] gains +0.85pt because Joker + 2♠ creates a legal Pair of 2s underneath Middle 33—stealing Top from Opponent’s A♥ K♠. Even halving foul risk in [C] (7.5%) loses -1.50pt by giving up Middle 33.',
+        'Both [A] and [B] share the exact same 16.1% foul rate, yet [B] gains +0.92pt because Joker + 2♠ creates a legal Pair of 2s underneath Middle 33—stealing Top from Opponent’s A♥ K♠. Even halving foul risk in [C] (8.1%) loses -1.48pt by giving up Middle 33.',
       methodJa: '終盤厳密計算 (Exact S3) · 54枚 · 上級実戦スポット',
       methodEn: 'Exact S3 Solver · 54-Card · Master Spot'
     },
@@ -328,16 +328,16 @@
       options: [
         {
           label: 'A',
-          nameJa: 'Q♣ をトップへ（QQ 以上 FL 69.7% 確保）',
-          nameEn: 'Snap Q♣ to Top (69.7% FL Lock)',
+          nameJa: 'Q♣ をトップへ（QQ 以上 FL 64.7% 確保）',
+          nameEn: 'Snap Q♣ to Top (64.7% FL Lock)',
           moveJa: '6♦→MID, Q♣→TOP（捨て 2♥）',
           moveEn: '6♦→MID, Q♣→TOP (disc 2♥)',
-          ev: 28.4,
-          fl: 69.7,
-          foul: 4.8,
-          rank: 2,
-          noteJa: '50pt卓なら #1 (+22.93pt)!',
-          noteEn: '#1 at 50pt Stack (+22.93pt)!'
+          ev: 13.71,
+          fl: 64.7,
+          foul: 4.9,
+          rank: 3,
+          noteJa: '50pt卓では #2 (+13.03pt) へ急接近',
+          noteEn: 'Jumps to #2 at 50pt (+13.03pt)'
         },
         {
           label: 'B',
@@ -345,12 +345,12 @@
           nameEn: 'Discard Q♣! Keep 2 Top Slots Open for KK/AA',
           moveJa: '6♦→MID, 2♥→MID（捨て Q♣）',
           moveEn: '6♦→MID, 2♥→MID (disc Q♣)',
-          ev: 29.1,
-          fl: 59.5,
-          foul: 4.6,
+          ev: 15.64,
+          fl: 57.6,
+          foul: 4.0,
           rank: 1,
-          noteJa: 'AA 32.4% · KK 22.2%',
-          noteEn: 'AA 32.4% · KK 22.2%'
+          noteJa: 'AA 30.4% · KK 20.7%',
+          noteEn: 'AA 30.4% · KK 20.7%'
         },
         {
           label: 'C',
@@ -358,22 +358,22 @@
           nameEn: 'Place Q♣ in Middle for Safety',
           moveJa: '6♦→MID, Q♣→MID（捨て 2♥）',
           moveEn: '6♦→MID, Q♣→MID (disc 2♥)',
-          ev: 19.95,
-          fl: 45.4,
-          foul: 5.5,
+          ev: 12.12,
+          fl: 46.0,
+          foul: 11.2,
           rank: 4,
-          noteJa: '-9.15pt 大悪手',
-          noteEn: '-9.15pt Blunder'
+          noteJa: '-3.52pt 悪手（Foul 11.2%）',
+          noteEn: '-3.52pt Blunder (11.2% Foul)'
         }
       ],
-      flipNoteJa: '【補足：浅い 50pt 卓なら答えが逆転！】 この問題の前提（スタック無限）では [B] Q♣捨て（+29.10pt）が [A] に +0.70pt 勝利します。一方、実効 50pt 卓では [A] Q♣→TOP（+22.93pt）が [B]（+21.72pt）を +1.21pt 逆転して #1 になります。',
-      flipNoteEn: 'BONUS — Shallow 50pt Stack Flips the Answer: Under this spot’s ∞ stack rule, discarding Q♣ [B] (+29.10pt) beats [A] by +0.70pt. On a 50pt table, locking Q♣→TOP [A] (+22.93pt) flips to #1—beating [B] (+21.72pt) by +1.21pt!',
+      flipNoteJa: '【スタック別比較】無限スタックでは [B] Q♣捨て（+15.64pt）が [A]（+13.71pt・3位）に +1.93pt 圧勝します。一方、実効 50pt 卓では AA 価値が 35.2→23.2pt に縮み QQ が 3.3→6.0pt に上がるため、[A] が 2 位（+13.03pt）へ浮上し [B]（+13.66pt）との差が +0.63pt まで急接近します。',
+      flipNoteEn: 'Stack Comparison: At ∞ stack, discarding Q♣ [B] (+15.64pt) beats [A] (+13.71pt, #3) by +1.93pt. On a 50pt table, AA shrinks (35.2→23.2pt) while QQ rises (3.3→6.0pt)—lifting [A] to #2 (+13.03pt) and slashing the gap to [B] (+13.66pt) down to just +0.63pt!',
       explainJa:
-        'スタック無限では AA（64.5pt）と QQ（23.2pt）に 41pt 超の大差があるため、Q♣ を捨てて S3/S4 の A・K 受けを最大化する [B]（AA 32.4%・KK 22.2%）が最善。一方 50pt 卓では AA が 35.5pt に縮むのに対し QQ は 20.3pt とほぼ落ちないため、FL 率を +10.2% 上乗せする [A] が逆転します。',
+        '1対1の実戦価値では AA FL（35.2pt）と QQ FL（3.3pt）に 31.9pt もの大差があるため、Q♣ を捨てて S3/S4 の A・K 受けを最大化する [B]（AA 30.4%・KK 20.7%）が [A] を +1.93pt 上回ります。ミドルに Q♣ を置く [C] はボトム 9-7 ツーペアを超えやすくファウル率が 11.2% に跳ね上がり -3.52pt 損します。',
       explainEn:
-        'At infinite stack, AA FL (64.5pt) towers over QQ FL (23.2pt), so tossing Q♣ to keep 2 Top slots open for A/K draws [B] (AA 32.4%, KK 22.2%) leads. At 50pt stack, AA shrinks to 35.5pt while QQ stays 20.3pt—making [A]’s +10.2% extra FL frequency win easily.',
-      methodJa: 'オンデバイス AI 評価 + 終盤厳密計算 · スタック無限 vs 実効 50pt',
-      methodEn: 'On-Device AI + Exact Endgame · ∞ Stack vs 50pt Stack'
+        'In true 1-on-1 EV, AA FL (35.2pt) dwarfs QQ FL (3.3pt) by 31.9pt, so tossing Q♣ to keep 2 Top slots open for A/K draws [B] (AA 30.4%, KK 20.7%) beats [A] by +1.93pt. Putting Q♣ in Middle [C] increases foul risk to 11.2% underneath Bottom 9-7 two pair, costing -3.52pt.',
+      methodJa: 'S2–S4 厳密計算 (Exact S2) · スタック無限 vs 実効 50pt',
+      methodEn: 'Exact S2–S4 Solver · ∞ Stack vs 50pt Stack'
     }
   ];
 

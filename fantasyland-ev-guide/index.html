@@ -7,7 +7,7 @@
     <title>OFC パイナップル ファンタジーランド（FL）期待値表：実効スタック別（50pt〜∞）＆ 54枚 vs 52枚 — OFC Optimizer</title>
     <meta
       name="description"
-      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）のファンタジーランド（FL）期待値表。厳密 FL ソルバー＋10万回連鎖シミュレーションによる実効スタック別（50pt/100pt/200pt/∞）と 54枚 vs 52枚（ジョーカーなし）比較、最善手が逆転する実戦スポットを解説。"
+      content="OFC Pineapple（オープンフェイスチャイニーズポーカー）の1対1実戦ファンタジーランド（FL）期待値表。相手の反撃FLまで差し引いた実効スタック別（50pt/100pt/200pt/∞）と 54枚 vs 52枚（ジョーカーなし）比較、実戦スポットの変化を解説。"
     />
     <link rel="canonical" href="https://ofcoptimizer.com/fantasyland-ev-guide/" />
     <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/fantasyland-ev-guide/" />
@@ -16,18 +16,18 @@
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:title" content="OFC パイナップル ファンタジーランド期待値表：実効スタック別＆54枚 vs 52枚" />
+    <meta property="og:title" content="OFC パイナップル ファンタジーランド期待値表：1対1実戦・実効スタック別＆54枚 vs 52枚" />
     <meta
       property="og:description"
-      content="実効 50pt 卓では Trips（17枚）FL の価値が -67% 急落し、52枚（JKなし）では -54% 半減。厳密計算データと最善手が逆転する実戦スポットを公開。"
+      content="相手の反撃FL込みで計算すると、50pt卓では Trips（17枚）FLが 80.9→33.1pt（-59%）へ急落する一方、QQ（14枚）は 3.3→6.0pt へ上昇。54枚 vs 52枚の全数値を公開。"
     />
     <meta property="og:url" content="https://ofcoptimizer.com/fantasyland-ev-guide/" />
     <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="OFC パイナップル FL 期待値表（実効スタック別＆54枚 vs 52枚）" />
+    <meta name="twitter:title" content="OFC パイナップル 1対1 FL 期待値表（実効スタック別＆54枚 vs 52枚）" />
     <meta
       name="twitter:description"
-      content="厳密ソルバー＋10万回連鎖シミュレーションで検証した実測 FL 価値テーブル。"
+      content="相手の反撃FL・スタック上限まで織り込んだ C++20 厳密ソルバーの 1対1 FL 価値テーブル。"
     />
     <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
     <link rel="icon" type="image/png" href="../assets/favicon-64.png" />
@@ -38,9 +38,9 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "OFC パイナップル ファンタジーランド（FL）期待値表：実効スタック別（50pt〜∞）＆ 54枚 vs 52枚",
-        "description": "OFC Pineapple のファンタジーランド期待値を実効スタック別および 54枚・52枚別に 厳密計算したベンチマークガイド。",
+        "description": "OFC Pineapple の1対1実戦ファンタジーランド期待値を実効スタック別および 54枚・52枚別に厳密計算したベンチマークガイド。",
         "datePublished": "2026-11-25",
-        "dateModified": "2026-11-25",
+        "dateModified": "2026-11-26",
         "inLanguage": "ja",
         "author": { "@type": "Organization", "name": "OFC Optimizer" },
         "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
@@ -55,10 +55,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "54枚（ジョーカー2枚）OFC パイナップルのファンタジーランド期待値はどれくらい？",
+            "name": "54枚（ジョーカー2枚）OFC パイナップルの1対1ファンタジーランド期待値はどれくらい？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "実効スタック無限・同枚数リファンタジー（自分の連鎖のみ積算）の基準値では、QQ（14枚）23.2pt、KK（15枚）38.0pt、AA（16枚）64.5pt、Trips（17枚）126.4pt です。"
+              "text": "相手の反撃FLまで計算に入れた1対1（ヘッズアップ）の実戦純期待値（スタック無限・同枚数リファンタジー）は、QQ（14枚）3.3pt、KK（15枚）14.0pt、AA（16枚）35.2pt、Trips（17枚）80.9pt です。"
             }
           },
           {
@@ -66,15 +66,15 @@
             "name": "実効スタック 50pt の浅い卓では戦略はどう変わりますか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "実効 50pt 上限では Trips（17枚）FL が 126.4pt から 42.0pt（-67%）、AA（16枚）が 64.5pt から 35.5pt（-45%）へ大きく低下する一方、QQ（14枚）は 23.2pt から 20.3pt（-12%）とほぼ保たれます。リスクを取って Trips を追うより、堅実に QQ/KK を確定させてファウルを避ける価値が相対的に大きく上がります。"
+              "text": "実効 50pt 上限では Trips（17枚）FL が 80.9pt から 33.1pt（-59%）、AA（16枚）が 35.2pt から 23.2pt（-34%）へ大きく下がる一方、QQ（14枚）は相手の反撃FL連鎖がキャップで抑えられるため 3.3pt から 6.0pt（+83%）へ上がります。無理に Trips を追うより、堅実な QQ/KK とファウル回避の価値が上がります。"
             }
           },
           {
             "@type": "Question",
-            "name": "52枚（ジョーカーなし）だとファンタジーランド価値はどれくらい下がりますか？",
+            "name": "52枚（ジョーカーなし）だとファンタジーランド価値はどう変わりますか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "ジョーカー 2 枚が抜けると継続率が急落し、スタック無限でも QQ は 14.0pt（-40%・継続率 11.5%）、KK は 21.1pt（-44%・19.9%）、AA は 33.0pt（-49%・35.0%）、Trips は 58.5pt（-54%・55.6%）まで半減します。"
+              "text": "ジョーカー 2 枚が抜けるとスタック無限の 1対1 実戦価値は Trips が 80.9pt → 45.9pt（-43%）、AA が 35.2pt → 25.2pt（-28%）と急落する一方、相手も平場から反撃FLに入りにくくなるため QQ（14枚）は 3.3pt → 8.2pt へ逆転上昇します。"
             }
           }
         ]
@@ -128,22 +128,22 @@
 
         <div class="kpi-strip">
           <div class="kpi-card">
-            <div class="kpi-val">-67%</div>
-            <div class="kpi-lbl">50pt 卓での Trips（17枚）FL 低下（126.4 → 42.0 pt）</div>
+            <div class="kpi-val">-59%</div>
+            <div class="kpi-lbl">50pt 卓での Trips（17枚）FL 低下（80.9 → 33.1 pt）</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-val">-54%</div>
-            <div class="kpi-lbl">52枚（JKなし）での Trips FL 低下（126.4 → 58.5 pt）</div>
+            <div class="kpi-val">-43%</div>
+            <div class="kpi-lbl">52枚（JKなし）での Trips FL 低下（80.9 → 45.9 pt）</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-val">-2%</div>
-            <div class="kpi-lbl">100pt 卓での QQ（14枚）FL 変化（23.2 → 22.8 pt）</div>
+            <div class="kpi-val">+83%</div>
+            <div class="kpi-lbl">50pt 卓での QQ（14枚）FL 上昇（3.3 → 6.0 pt）</div>
           </div>
         </div>
 
-        <h2>1. 54枚（ジョーカー2枚）実効スタック別 FL 期待値表</h2>
+        <h2>1. 54枚（ジョーカー2枚）1対1実戦 FL 期待値表（実効スタック別）</h2>
         <p>
-          実効スタックは「1 回の FL 連鎖（リファンタジー含む）で相手から取り切れる最大点数」に上限をかけます。QQ（14枚）は 100pt に届くほど長く連鎖するケースが稀なため価値がほぼ変わりませんが、長い連鎖が収益源の Trips（17枚）は浅い卓ほど急激に価値が削られます。
+          OFC Optimizer v3.0 では、従来の「自分の FL 連鎖だけ足す計算」ではなく、<strong>自分が FL を打っている裏で相手も平場から FL に入り返す「反撃 FL」</strong>と<strong>実効スタック上限</strong>の両方を織り込んだ 1 対 1（ヘッズアップ）の実戦純期待値を使います。そのため、14 枚 QQ は意外と薄く（+3.3pt）、浅い 50pt 卓では Trips（17 枚）の上振れが大きく削られる一方で、相手の反撃連鎖も止まるため QQ の価値が逆に上がります。
         </p>
 
         <div class="data-table-wrap">
@@ -155,41 +155,41 @@
                 <th>200pt 卓</th>
                 <th>100pt 卓</th>
                 <th>50pt 卓</th>
-                <th>低下率（∞→50pt）</th>
+                <th>変化（∞→50pt）</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>QQ（14枚）</td>
-                <td>23.2 pt</td>
-                <td>23.2 pt</td>
-                <td>22.8 pt</td>
-                <td>20.3 pt</td>
-                <td class="neg">-12%</td>
+                <td>3.3 pt</td>
+                <td>3.6 pt</td>
+                <td>4.5 pt</td>
+                <td>6.0 pt</td>
+                <td class="hi">+83%</td>
               </tr>
               <tr>
                 <td>KK（15枚）</td>
-                <td>38.0 pt</td>
-                <td>37.9 pt</td>
-                <td>35.4 pt</td>
-                <td>28.0 pt</td>
-                <td class="neg">-26%</td>
+                <td>14.0 pt</td>
+                <td>14.1 pt</td>
+                <td>14.3 pt</td>
+                <td>13.5 pt</td>
+                <td>-3%</td>
               </tr>
               <tr>
                 <td>AA（16枚）</td>
-                <td>64.5 pt</td>
-                <td>61.9 pt</td>
-                <td>51.3 pt</td>
-                <td>35.5 pt</td>
-                <td class="neg">-45%</td>
+                <td>35.2 pt</td>
+                <td>34.5 pt</td>
+                <td>30.3 pt</td>
+                <td>23.2 pt</td>
+                <td class="neg">-34%</td>
               </tr>
               <tr>
                 <td>Trips（17枚）</td>
-                <td class="hi">126.4 pt</td>
-                <td>100.7 pt</td>
-                <td>69.8 pt</td>
-                <td>42.0 pt</td>
-                <td class="neg">-67%</td>
+                <td class="hi">80.9 pt</td>
+                <td>69.3 pt</td>
+                <td>51.1 pt</td>
+                <td>33.1 pt</td>
+                <td class="neg">-59%</td>
               </tr>
             </tbody>
           </table>
@@ -198,19 +198,19 @@
         <figure class="chart-card" style="margin:0 0 24px;">
           <img
             class="chart-img"
-            src="../assets/chart-stack-fl-ja.webp?v=20261125-5"
-            alt="54枚 OFC パイナップル 実効スタック別ファンタジーランド期待値グラフ"
+            src="../assets/chart-stack-fl-ja.webp?v=20261126-1"
+            alt="54枚 OFC パイナップル 実効スタック別1対1ファンタジーランド期待値グラフ"
             width="1400"
             height="788"
           />
           <figcaption class="chart-caption">
-            画像タップで拡大できます。50pt 卓では AA（35.5pt）と QQ（20.3pt）の差が、無限卓の 41.3pt 差からわずか 15.2pt 差まで縮みます。
+            画像タップで拡大できます。50pt 卓では AA（23.2pt）と QQ（6.0pt）の差が、無限卓の 31.9pt 差から 17.2pt 差までほぼ半減します。
           </figcaption>
         </figure>
 
-        <h2>2. 54枚（JK2枚）vs 52枚（JKなし・スタック無限）比較表</h2>
+        <h2>2. 54枚（JK2枚）vs 52枚（JKなし）1対1実戦 FL 比較表</h2>
         <p>
-          ジョーカー 2 枚が抜けた 52 枚ルールでは、トップ Trips やボトム Quads によるリファンタジー継続率が大きく下がります。継続の複利が弱まるため、すべてのティアで FL 価値が約半分まで圧縮されます。
+          ジョーカー 2 枚が抜けた 52 枚ルールでは、トップ Trips やボトム Quads による長い連鎖が減るため、<strong>Trips（17 枚）は 80.9pt → 45.9pt（-43%）</strong>、<strong>AA（16 枚）は 35.2pt → 25.2pt（-28%）</strong>へ大きく低下します。一方で相手も平場から反撃 FL を引きにくくなるため、<strong>14 枚 QQ は 54 枚（3.3pt）より 52 枚（8.2pt）の方が価値が高い</strong>という逆転現象が起きます。
         </p>
 
         <div class="data-table-wrap">
@@ -218,40 +218,45 @@
             <thead>
               <tr>
                 <th>FL 突入ティア</th>
-                <th>54枚（JK2枚）</th>
-                <th>52枚（JKなし）</th>
-                <th>変化率</th>
-                <th>52枚継続率</th>
+                <th>54枚 (∞)</th>
+                <th>52枚 (∞)</th>
+                <th>52枚 (100pt)</th>
+                <th>52枚 (50pt)</th>
+                <th>54→52 (∞)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>QQ（14枚）</td>
-                <td>23.2 pt</td>
-                <td>14.0 pt</td>
-                <td class="neg">-40%</td>
-                <td>11.5%</td>
+                <td>3.3 pt</td>
+                <td class="hi">8.2 pt</td>
+                <td>8.4 pt</td>
+                <td>8.5 pt</td>
+                <td class="hi">+153%</td>
               </tr>
               <tr>
                 <td>KK（15枚）</td>
-                <td>38.0 pt</td>
-                <td>21.1 pt</td>
-                <td class="neg">-44%</td>
-                <td>19.9%</td>
+                <td>14.0 pt</td>
+                <td>14.6 pt</td>
+                <td>14.7 pt</td>
+                <td>14.3 pt</td>
+                <td>+5%</td>
               </tr>
               <tr>
                 <td>AA（16枚）</td>
-                <td>64.5 pt</td>
-                <td>33.0 pt</td>
-                <td class="neg">-49%</td>
-                <td>35.0%</td>
+                <td>35.2 pt</td>
+                <td>25.2 pt</td>
+                <td>24.8 pt</td>
+                <td>21.8 pt</td>
+                <td class="neg">-28%</td>
               </tr>
               <tr>
                 <td>Trips（17枚）</td>
-                <td class="hi">126.4 pt</td>
-                <td>58.5 pt</td>
-                <td class="neg">-54%</td>
-                <td>55.6%</td>
+                <td class="hi">80.9 pt</td>
+                <td>45.9 pt</td>
+                <td>40.9 pt</td>
+                <td>30.6 pt</td>
+                <td class="neg">-43%</td>
               </tr>
             </tbody>
           </table>
@@ -260,20 +265,20 @@
         <figure class="chart-card" style="margin:0 0 24px;">
           <img
             class="chart-img"
-            src="../assets/chart-54-vs-52-ja.webp?v=20261125-5"
-            alt="54枚 vs 52枚（ジョーカーなし）OFC ファンタジーランド期待値比較グラフ"
+            src="../assets/chart-54-vs-52-ja.webp?v=20261126-1"
+            alt="54枚 vs 52枚（ジョーカーなし）OFC 1対1ファンタジーランド期待値比較グラフ"
             width="1400"
             height="788"
             loading="lazy"
           />
           <figcaption class="chart-caption">
-            画像タップで拡大できます。52 枚ルールの Trips（58.5pt）は、54 枚ルールの AA（64.5pt）を下回ります。
+            画像タップで拡大できます。52 枚ルールの Trips（45.9pt）は 54 枚の半分近くまで落ちますが、QQ（8.2pt）は逆に 54 枚（3.3pt）を上回ります。
           </figcaption>
         </figure>
 
-        <h2>3. 実効 50pt 卓で最善手が逆転する実戦スポット（ストリート 2）</h2>
+        <h2>3. 実効スタックで EV 差が急接近する実戦スポット（ストリート 2）</h2>
         <p>
-          同じ盤面・同じドロー（54枚）でも、実効スタック条件が変わるだけで #1 最善手が入れ替わる具体例です。
+          同じ盤面・同じドロー（54枚）でも、実効スタックが変わると QQ 確定ラインの評価が大きく跳ね上がる実戦スポットです。
         </p>
 
         <div class="panel" style="margin-bottom:20px;">
@@ -331,15 +336,15 @@
           </div>
           <div class="flip-grid">
             <div class="flip-card">
-              <h3>スタック無限の #1：あえて Q♣ を捨てる（+29.10 pt）</h3>
+              <h3>スタック無限の #1：あえて Q♣ を捨てる（+15.64 pt）</h3>
               <p>
-                <strong>6♦＋2♥ をミドル</strong>へ置いてトップ 2 枠を空けたままにすると、AA 32.4%・KK 22.2% を引けるため、Q♣→トップ（+28.40pt）を <strong>+0.70pt</strong> 上回ります。
+                <strong>6♦＋2♥ をミドル</strong>へ置いてトップ 2 枠を空けたままにすると、AA 30.4%・KK 20.7% を引けるため、Q♣→トップ（+13.71pt・3位）を <strong>+1.93pt</strong> 上回ります。
               </p>
             </div>
             <div class="flip-card gold">
-              <h3>実効 50pt 卓の #1：Q♣ → トップで確定（+22.93 pt）</h3>
+              <h3>実効 50pt 卓：Q♣ → トップが 2 位（+13.03 pt）へ急浮上</h3>
               <p>
-                50pt 卓では AA FL が 35.5pt まで縮む一方、QQ は 20.3pt を維持。<strong>6♦→ミドル・Q♣→トップ</strong>（FL 率 69.7%）が Q♣捨て（+21.72pt）を <strong>+1.21pt</strong> 逆転して #1 になります。
+                50pt 卓では AA FL が 35.2→23.2pt へ縮む一方、QQ は 3.3→6.0pt へ上昇。<strong>6♦→ミドル・Q♣→トップ</strong>（FL 率 64.8%）が 2 位へ跳ね上がり、Q♣捨て（+13.66pt）との差が <strong>+0.63pt</strong> まで急接近します。
               </p>
             </div>
           </div>
@@ -349,9 +354,9 @@
           </div>
         </div>
 
-        <h2>4. 計測条件（再現性注記）</h2>
+        <h2>4. 計測条件（なぜ他サイトより値が低いのか？）</h2>
         <div class="methodology-box" style="margin-top:0;">
-          OFC Optimizer の 厳密 FL ソルバー（各ティア 1,200 局解析）と 100,000 回連鎖シミュレーション（同枚数リファンタジー採用）で算出。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。
+          他記事で見かける「QQ 23pt / Trips 126pt 以上」は、<strong>自分が FL に入っている間に相手が平場から FL に入り返す分を無視した片側計算</strong>です。OFC Optimizer v3.0 は C++20 の厳密 FL 分枝限定ソルバーと 1対1 対局シミュレーション（同枚数リファンタジー：トップ Trips / ボトム Quads+ のみ継続）で、相手の反撃 FL と実効スタック上限まで差し引いた実戦純期待値を採用しています。誤差目安（∞）：54枚 QQ ±0.4 / KK ±0.6 / AA ±0.8 / Trips ±2.5 pt、52枚 QQ ±0.2 / KK ±0.3 / AA ±0.4 / Trips ±1.0 pt。
         </div>
 
         <section class="section" style="padding-bottom:12px;margin-top:36px;">

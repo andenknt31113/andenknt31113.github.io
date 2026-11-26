@@ -7,7 +7,7 @@
     <title>チャイポ（OFC パイナップル）ジョーカー 54 枚 vs 52 枚ルール＆戦略の違い — OFC Optimizer</title>
     <meta
       name="description"
-      content="OFC パイナップル（チャイポ）のジョーカー 2 枚入り（54 枚）とジョーカーなし（52 枚）のルール・自動降格・ファンタジーランド期待値の差（-40%〜-54%）と戦略変更ポイントをソルバー実測データで完全解説。"
+      content="OFC パイナップル（チャイポ）のジョーカー 2 枚入り（54 枚）とジョーカーなし（52 枚）のルール・自動降格・1対1実戦ファンタジーランド期待値の差（Trips -43% / QQ 逆転上昇）と戦略変更ポイントをソルバーデータで完全解説。"
     />
     <link rel="canonical" href="https://ofcoptimizer.com/joker-vs-52card/" />
     <link rel="alternate" hreflang="ja" href="https://ofcoptimizer.com/joker-vs-52card/" />
@@ -19,7 +19,7 @@
     <meta property="og:title" content="チャイポ（OFC パイナップル）ジョーカー 54 枚 vs 52 枚ルール＆戦略の違い" />
     <meta
       property="og:description"
-      content="ジョーカー自動降格・重複カード可否の公式ルールから、54枚 vs 52枚のファンタジー期待値・継続率の実測比較までを 1 ページで完全網羅。"
+      content="ジョーカー自動降格・重複カード可否の公式ルールから、54枚 vs 52枚の1対1実戦ファンタジー期待値の比較までを 1 ページで完全網羅。"
     />
     <meta property="og:url" content="https://ofcoptimizer.com/joker-vs-52card/" />
     <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
@@ -28,7 +28,7 @@
     <meta name="twitter:title" content="チャイポ ジョーカー 54 枚 vs 52 枚ルール＆戦略比較" />
     <meta
       name="twitter:description"
-      content="ジョーカーを抜くとファンタジー期待値は最大 -54% 低下。ルール細則と 52 枚卓での勝ち方をソルバー数値で解説。"
+      content="ジョーカーを抜くと Trips FL 価値は -43% 低下する一方、相手の反撃FLが減るため QQ は逆転上昇。ルール細則と 52 枚卓での勝ち方を解説。"
     />
     <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-ja.jpg?v=20261125-2" />
     <link rel="icon" type="image/png" href="../assets/favicon-64.png" />
@@ -39,9 +39,9 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "チャイポ（OFC パイナップル）ジョーカー 54 枚 vs 52 枚ルール＆戦略の違い",
-        "description": "OFC パイナップルの 54 枚（ジョーカー 2 枚）ルールと 52 枚（ジョーカーなし）ルールの細則、自動降格、ファンタジーランド期待値・継続率の差をソルバーデータで解説。",
+        "description": "OFC パイナップルの 54 枚（ジョーカー 2 枚）ルールと 52 枚（ジョーカーなし）ルールの細則、自動降格、1対1実戦ファンタジーランド期待値の差をソルバーデータで解説。",
         "datePublished": "2026-11-25",
-        "dateModified": "2026-11-25",
+        "dateModified": "2026-11-26",
         "inLanguage": "ja",
         "author": { "@type": "Organization", "name": "OFC Optimizer" },
         "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
@@ -72,10 +72,10 @@
           },
           {
             "@type": "Question",
-            "name": "52 枚（ジョーカーなし）だとファンタジーランドの価値はどれくらい下がりますか？",
+            "name": "52 枚（ジョーカーなし）だとファンタジーランドの価値はどう変わりますか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "スタック無限時で QQ（14枚）が 23.2pt → 14.0pt（-40%）、KK（15枚）が 38.0pt → 21.1pt（-44%）、AA（16枚）が 64.5pt → 33.0pt（-49%）、Trips（17枚）が 126.4pt → 58.5pt（-54%）と約半分まで低下します。"
+              "text": "相手の反撃FL込みの1対1実戦値（スタック無限）では、Trips（17枚）が 80.9pt → 45.9pt（-43%）、AA（16枚）が 35.2pt → 25.2pt（-28%）へ大きく低下する一方、相手も反撃FLしにくくなるため QQ（14枚）は 3.3pt → 8.2pt へ逆転上昇します。"
             }
           }
         ]
@@ -139,9 +139,9 @@
           <li><strong>③ ファイブカードは存在しない：</strong>フォーカード＋ジョーカーの組み合わせでも、最高役はフォーカード（キッカー A）止まりです。</li>
         </ul>
 
-        <h2>2. 54 枚 vs 52 枚：ファンタジーランド期待値＆継続率の実測差</h2>
+        <h2>2. 54 枚 vs 52 枚：1対1実戦ファンタジーランド期待値の実測差</h2>
         <p>
-          ジョーカー 2 枚を抜くだけで、ファンタジーランドの期待値は<strong>全ティアで -40%〜-54%（ほぼ半減）</strong>します。
+          相手の反撃 FL まで織り込んだ 1 対 1 の実戦純期待値（スタック無限）で比べると、ジョーカー 2 枚を抜くことで <strong>Trips（17 枚）は -43%、AA（16 枚）は -28% 急落</strong>する一方、相手も反撃 FL を引きにくくなるため <strong>QQ（14 枚）は 52 枚の方が高く逆転</strong>します。
         </p>
         <div class="data-table-wrap">
           <table class="data-table" style="min-width:0;font-size:13px;">
@@ -150,47 +150,47 @@
                 <th style="padding:10px 8px;">突入ティア</th>
                 <th style="padding:10px 8px;white-space:nowrap;">54枚 (∞)</th>
                 <th style="padding:10px 8px;white-space:nowrap;">52枚 (∞)</th>
-                <th style="padding:10px 8px;white-space:nowrap;">低下率</th>
+                <th style="padding:10px 8px;white-space:nowrap;">変化率</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style="padding:10px 8px;">QQ（14 枚）</td>
-                <td style="padding:10px 8px;white-space:nowrap;">23.2 pt</td>
-                <td style="padding:10px 8px;white-space:nowrap;">14.0 pt</td>
-                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-40%</td>
+                <td style="padding:10px 8px;white-space:nowrap;">3.3 pt</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">8.2 pt</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">+153%</td>
               </tr>
               <tr>
                 <td style="padding:10px 8px;">KK（15 枚）</td>
-                <td style="padding:10px 8px;white-space:nowrap;">38.0 pt</td>
-                <td style="padding:10px 8px;white-space:nowrap;">21.1 pt</td>
-                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-44%</td>
+                <td style="padding:10px 8px;white-space:nowrap;">14.0 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">14.6 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">+5%</td>
               </tr>
               <tr>
                 <td style="padding:10px 8px;">AA（16 枚）</td>
-                <td style="padding:10px 8px;white-space:nowrap;">64.5 pt</td>
-                <td style="padding:10px 8px;white-space:nowrap;">33.0 pt</td>
-                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-49%</td>
+                <td style="padding:10px 8px;white-space:nowrap;">35.2 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">25.2 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-28%</td>
               </tr>
               <tr>
                 <td style="padding:10px 8px;">Trips（17 枚）</td>
-                <td class="hi" style="padding:10px 8px;white-space:nowrap;">126.4 pt</td>
-                <td style="padding:10px 8px;white-space:nowrap;">58.5 pt</td>
-                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-54%</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">80.9 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">45.9 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-43%</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p class="table-note">
-          ※ 52 枚ルールのリファンタジー（継続）率：QQ 11.5% / KK 19.9% / AA 35.0% / Trips 55.6%（OFC Optimizer 厳密ソルバー＋100,000 回連鎖シミュレーション実測）。
+          ※ OFC Optimizer v3.0 厳密 C++20 ソルバーによる 1対1 実戦純期待値（同枚数リファンタジー・相手の反撃 FL 込み）。52 枚・50pt 卓では QQ 8.5 / KK 14.3 / AA 21.8 / Trips 30.6 pt。
         </p>
 
         <h2>3. 54 枚から 52 枚へ切り替わるときに変えるべき 4 つの戦略</h2>
         <div class="flip-grid">
           <div class="flip-card gold">
-            <h3>① 無理なトップ FL 攻めを減らし、ファウル率を下げる</h3>
+            <h3>① 無理な上位 FL（AA/Trips）特攻を減らし、ファウル率を下げる</h3>
             <p>
-              54 枚では 126.4 pt の Trips FL を追うために 30% 前後のファウルを許容しますが、52 枚では報酬が半減するため、同じリスクを取るほど期待値がマイナスに傾きます。
+              54 枚では 80.9 pt の Trips FL を追うために高いファウル率を許容しますが、52 枚では Trips の価値が 45.9 pt まで落ちるため、無理な特攻は期待値マイナスに傾きます。
             </p>
           </div>
           <div class="flip-card">

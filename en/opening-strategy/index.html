@@ -41,7 +41,7 @@
         "headline": "OFC Pineapple Opening 5-Card Strategy & Foul Rate Guide",
         "description": "Solver-backed guide to setting the first 5 cards in Open Face Chinese (OFC) Pineapple Poker, covering stack-depth flips, optimal foul rate vs Fantasyland EV, and Joker placement.",
         "datePublished": "2026-11-25",
-        "dateModified": "2026-11-25",
+        "dateModified": "2026-11-26",
         "inLanguage": "en",
         "author": { "@type": "Organization", "name": "OFC Optimizer" },
         "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
@@ -67,7 +67,7 @@
             "name": "Should you try to avoid fouling at all costs in OFC?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. In 54-card Joker OFC with Progressive Fantasyland, Top QQ–AAA chains are worth 23–126 pts in deep stacks. Across our 66 curated Street 0 spots, the #1 solver line accepts an average 30.0% foul rate in exchange for a 39.1% Fantasyland entry rate."
+              "text": "No. Even in true 1-on-1 play (accounting for opponent counter-FL), 54-card deep-stack KK (14.0 pts), AA (35.2 pts), and Trips (80.9 pts) Fantasyland rewards are huge—so optimal #1 solver lines regularly accept substantial foul risk to unlock AA/Trips Top routes."
             }
           },
           {
@@ -75,7 +75,7 @@
             "name": "How does effective stack depth change OFC opening strategy?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "In a 50pt effective stack, 17-card Trips Fantasyland drops from 126.4 pts to 42.0 pts (-67%). Because Fantasyland upside shrinks dramatically, 71.2% (47 of 66) of curated Street 0 spots actually flip their #1 optimal placement between 50pt cap and deep stacks."
+              "text": "In a 50pt effective stack, 17-card Trips Fantasyland drops from 80.9 pts to 33.1 pts (-59%) and AA drops from 35.2 to 23.2 pts (-34%). Because deep FL upside shrinks sharply, shallow stacks shift opening strategy toward cleaner, lower-foul boards."
             }
           }
         ]
@@ -176,7 +176,7 @@
           The most common leak among improving OFC players is treating every foul as a catastrophe and hiding Q, K, and A in Middle or Bottom instead of shooting for Fantasyland on Top.
         </p>
         <p>
-          In 54-card Progressive Fantasyland at deep stacks, entering Fantasyland is worth <strong>23.2 pts (QQ)</strong>, <strong>38.0 pts (KK)</strong>, <strong>64.5 pts (AA)</strong>, and <strong>126.4 pts (Trips)</strong>. Accepting an extra 10% foul risk (~1.2 pts EV cost) to gain +10% Fantasyland equity (+2.3 to +6.5 pts) is a huge net win.
+          In 54-card Progressive Fantasyland at deep stacks (true 1-on-1 net EV including opponent counter-FL), entering Fantasyland is worth <strong>3.3 pts (QQ)</strong>, <strong>14.0 pts (KK)</strong>, <strong>35.2 pts (AA)</strong>, and <strong>80.9 pts (Trips)</strong>. Accepting an extra 10% foul risk (~1.2 pts EV cost) to gain +10% AA/Trips Fantasyland equity (+3.5 to +8.1 pts) is a huge net win—while reckless gambles solely for thin 14-card QQ (+3.3 pts) often bleed EV.
         </p>
         <div class="methodology-box" style="margin-top:0;">
           <strong>Rule of thumb:</strong> In deep-stack Joker OFC, optimal #1 lines regularly carry a <strong>25%–38% foul rate</strong>. If your long-run foul rate is under 12%, you are almost certainly leaving huge Fantasyland EV on the table.
@@ -200,7 +200,7 @@
           <div class="flip-card">
             <h3>Rule 3: Tighten Up When Playing 50pt–100pt Effective Stacks</h3>
             <p>
-              At a 50pt cap, Trips FL falls from <strong>126.4 pts to 42.0 pts (-67%)</strong> and AA FL drops <strong>-45%</strong>. That's why 71.2% of our curated Street 0 spots flip—short stacks reward cleaner, lower-foul boards over wild Top gambles.
+              At a 50pt cap, true 1-on-1 Trips FL falls from <strong>80.9 pts to 33.1 pts (-59%)</strong> and AA FL drops <strong>-34% (35.2 → 23.2 pts)</strong>—so short stacks reward cleaner, lower-foul boards over wild Trips gambles.
             </p>
           </div>
           <div class="flip-card gold">

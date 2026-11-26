@@ -7,7 +7,7 @@
     <title>OFC Pineapple Joker Rules: 54-Card vs. 52-Card EV &amp; Strategy Guide — OFC Optimizer</title>
     <meta
       name="description"
-      content="Complete guide to Open Face Chinese (OFC) Pineapple Joker rules: duplicate-card wildcards, automatic foul-avoiding downgrade rules, exact 54-card vs. 52-card Fantasyland EV drop (-40% to -54%), and 4 key strategy shifts."
+      content="Complete guide to Open Face Chinese (OFC) Pineapple Joker rules: duplicate-card wildcards, automatic foul-avoiding downgrade rules, true 1-on-1 54-card vs. 52-card Fantasyland EV (Trips -43%, QQ flips higher), and 4 key strategy shifts."
     />
     <link rel="canonical" href="https://ofcoptimizer.com/en/joker-vs-52card/" />
     <link rel="alternate" hreflang="en" href="https://ofcoptimizer.com/en/joker-vs-52card/" />
@@ -19,7 +19,7 @@
     <meta property="og:title" content="OFC Pineapple Joker Rules: 54-Card vs. 52-Card EV &amp; Strategy" />
     <meta
       property="og:description"
-      content="Removing 2 Jokers cuts Fantasyland EV by 40%–54%. Exact solver tables, legal Joker downgrade rules, and how to adjust your game."
+      content="Removing 2 Jokers cuts 1-on-1 Trips FL EV by 43% (80.9→45.9pt) while lifting 14c QQ from 3.3 to 8.2pt. Exact solver tables, legal Joker downgrade rules, and strategy shifts."
     />
     <meta property="og:url" content="https://ofcoptimizer.com/en/joker-vs-52card/" />
     <meta property="og:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
@@ -28,7 +28,7 @@
     <meta name="twitter:title" content="OFC Pineapple Joker Rules: 54-Card vs. 52-Card EV &amp; Strategy" />
     <meta
       name="twitter:description"
-      content="Exact solver benchmarks comparing 54-card 2-Joker OFC vs. 52-card No-Joker OFC, plus legal Joker downgrade rules."
+      content="Exact solver benchmarks comparing 54-card 2-Joker OFC vs. 52-card No-Joker OFC in true 1-on-1 play, plus legal Joker downgrade rules."
     />
     <meta name="twitter:image" content="https://ofcoptimizer.com/assets/og-v3-en.jpg?v=20261125-2" />
     <link rel="icon" type="image/png" href="../../assets/favicon-64.png" />
@@ -39,9 +39,9 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "OFC Pineapple Joker Rules: 54-Card vs. 52-Card EV & Strategy Guide",
-        "description": "Exact rules for wild Jokers in 54-card OFC Pineapple, automatic foul-avoiding demotion, and solver-verified EV comparison against 52-card No-Joker OFC.",
+        "description": "Exact rules for wild Jokers in 54-card OFC Pineapple, automatic foul-avoiding demotion, and solver-verified true 1-on-1 EV comparison against 52-card No-Joker OFC.",
         "datePublished": "2026-11-25",
-        "dateModified": "2026-11-25",
+        "dateModified": "2026-11-26",
         "inLanguage": "en",
         "author": { "@type": "Organization", "name": "OFC Optimizer" },
         "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
@@ -72,10 +72,10 @@
           },
           {
             "@type": "Question",
-            "name": "How much does Fantasyland EV drop in 52-card (no Joker) OFC?",
+            "name": "How much does Fantasyland EV change in 52-card (no Joker) OFC?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "At infinite stacks, Fantasyland EV drops by 40% to 54% without Jokers: QQ (14 cards) falls from 23.2 to 14.0 pts (-40%), KK (15 cards) from 38.0 to 21.1 pts (-44%), AA (16 cards) from 64.5 to 33.0 pts (-49%), and Trips (17 cards) from 126.4 to 58.5 pts (-54%)."
+              "text": "In true 1-on-1 play (accounting for opponent counter-FL at infinite stacks), 17-card Trips drops 43% (80.9 to 45.9 pts) and 16-card AA drops 28% (35.2 to 25.2 pts), while 14-card QQ actually rises from 3.3 to 8.2 pts because opponents rarely counter-FL without Jokers."
             }
           }
         ]
@@ -139,9 +139,9 @@
           <li><strong>No Five of a Kind:</strong> Quads + a Joker still ranks as Four of a Kind (with an Ace kicker).</li>
         </ul>
 
-        <h2>2. Exact Fantasyland EV Drop: 54-Card vs. 52-Card (∞ Stack)</h2>
+        <h2>2. True 1-on-1 Fantasyland EV: 54-Card vs. 52-Card (∞ Stack)</h2>
         <p>
-          Without 2 Jokers, Fantasyland entry values collapse by <strong>40% to 54% across every single tier</strong>:
+          In heads-up play (accounting for opponent counter-FL), removing the 2 Jokers cuts <strong>17-card Trips by -43%</strong> and <strong>16-card AA by -28%</strong>—while actually lifting <strong>14-card QQ from 3.3pt to 8.2pt</strong> because opponents rarely hit counter-FL from flat play without Jokers:
         </p>
         <div class="data-table-wrap">
           <table class="data-table" style="min-width:0;font-size:13px;">
@@ -150,39 +150,39 @@
                 <th style="padding:10px 8px;">Entry Tier</th>
                 <th style="padding:10px 8px;white-space:nowrap;">54-Card</th>
                 <th style="padding:10px 8px;white-space:nowrap;">52-Card</th>
-                <th style="padding:10px 8px;white-space:nowrap;">Drop</th>
+                <th style="padding:10px 8px;white-space:nowrap;">Change</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style="padding:10px 8px;">QQ (14 cards)</td>
-                <td style="padding:10px 8px;white-space:nowrap;">23.2 pt</td>
-                <td style="padding:10px 8px;white-space:nowrap;">14.0 pt</td>
-                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-40%</td>
+                <td style="padding:10px 8px;white-space:nowrap;">3.3 pt</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">8.2 pt</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">+153%</td>
               </tr>
               <tr>
                 <td style="padding:10px 8px;">KK (15 cards)</td>
-                <td style="padding:10px 8px;white-space:nowrap;">38.0 pt</td>
-                <td style="padding:10px 8px;white-space:nowrap;">21.1 pt</td>
-                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-44%</td>
+                <td style="padding:10px 8px;white-space:nowrap;">14.0 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">14.6 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">+5%</td>
               </tr>
               <tr>
                 <td style="padding:10px 8px;">AA (16 cards)</td>
-                <td style="padding:10px 8px;white-space:nowrap;">64.5 pt</td>
-                <td style="padding:10px 8px;white-space:nowrap;">33.0 pt</td>
-                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-49%</td>
+                <td style="padding:10px 8px;white-space:nowrap;">35.2 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">25.2 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-28%</td>
               </tr>
               <tr>
                 <td style="padding:10px 8px;">Trips (17 cards)</td>
-                <td class="hi" style="padding:10px 8px;white-space:nowrap;">126.4 pt</td>
-                <td style="padding:10px 8px;white-space:nowrap;">58.5 pt</td>
-                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-54%</td>
+                <td class="hi" style="padding:10px 8px;white-space:nowrap;">80.9 pt</td>
+                <td style="padding:10px 8px;white-space:nowrap;">45.9 pt</td>
+                <td class="neg" style="padding:10px 8px;white-space:nowrap;">-43%</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p class="table-note">
-          52-card repeat rates (exact solver + 100,000-chain simulation): QQ 11.5% · KK 19.9% · AA 35.0% · Trips 55.6%.
+          OFC Optimizer v3.0 exact C++20 1-on-1 net EV (accounting for opponent counter-FL, same-card Re-Fantasy). At 50pt stack in 52-card OFC: QQ 8.5 · KK 14.3 · AA 21.8 · Trips 30.6 pt.
         </p>
 
         <h2>3. Four Key Strategy Shifts for 52-Card (No Joker) Tables</h2>
@@ -190,7 +190,7 @@
           <div class="flip-card gold">
             <h3>1. Dial Back High-Foul Top Gambles</h3>
             <p>
-              Because Fantasyland EV is roughly cut in half without Jokers, reckless Top QQ+/Trips chases that accept 30%+ foul risk quickly turn -EV in 52-card games.
+              Because 17-card Trips FL drops from 80.9pt to 45.9pt without Jokers, reckless Top chases that accept 30%+ foul risk quickly turn -EV in 52-card games.
             </p>
           </div>
           <div class="flip-card">

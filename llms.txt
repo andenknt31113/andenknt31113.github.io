@@ -25,28 +25,30 @@
 - Privacy Policy: https://ofcoptimizer.com/ofc-fantasy-optimizer-legal/privacy-policy.html
 
 ## Core Capabilities (v3.0)
-- **Full Street 0–4 Flat-Play Solver**: Evaluates candidate placements by EV, Fantasyland tier probabilities (QQ / KK / AA / Trips), and Foul %.
-- **100% Offline iOS Engine**: Zero server latency; works on flights and in live poker rooms. Browser Web App runs quantized neural-net weights locally in a WebWorker.
+- **Full Street 0–4 Flat-Play Solver**: Evaluates candidate placements by true 1-on-1 Net EV (accounting for opponent counter-Fantasyland), Fantasyland tier probabilities (QQ / KK / AA / Trips), and Foul %.
+- **100% Offline iOS Engine**: Native C++20 neural nets + exact branch-and-bound FL & endgame enumeration with zero server latency; works on flights and in live poker rooms. Browser Web App runs quantized neural-net weights locally in a WebWorker.
 - **Deck Rules**: Supports both **54-card (2 Jokers)** with legal Joker downgrade rules and **52-card (No Jokers)**.
-- **Effective Stack Presets**: 1-tap switching across **50pt, 100pt, 200pt, and ∞ (infinite)** effective stacks with dedicated Fantasyland EV tables.
+- **Effective Stack Presets**: 1-tap switching across **50pt, 100pt, 200pt, and ∞ (infinite)** effective stacks with dedicated 1-on-1 Fantasyland EV tables.
 - **AI Full-Hand Review**: Grades every street (S0–S4) after a battle with Accuracy %, total EV loss, blunder highlights, and instant spot replay.
 - **Exact Fantasyland Solver (14–17 cards)**: Branch-and-bound optimal placement with 4×13 suited card keyboard.
 - **Free Daily Spot & Curated Pro Drills**: Solver-mined spots across Basic, Standard, and Master tiers plus automatic mistake review.
 
-## Verified Fantasyland EV Benchmarks (Exact Solver + 100,000-Chain Simulation, Own Chains Only)
-### 54-Card (2 Jokers) by Effective Stack
-- QQ (14 cards): ∞ 23.2pt | 200pt 23.2pt | 100pt 22.8pt | 50pt 20.3pt (-12%)
-- KK (15 cards): ∞ 38.0pt | 200pt 37.9pt | 100pt 35.4pt | 50pt 28.0pt (-26%)
-- AA (16 cards): ∞ 64.5pt | 200pt 61.9pt | 100pt 51.3pt | 50pt 35.5pt (-45%)
-- Trips (17 cards): ∞ 126.4pt | 200pt 100.7pt | 100pt 69.8pt | 50pt 42.0pt (-67%)
+## Verified 1-on-1 (Heads-Up) Fantasyland EV Benchmarks (v3.0 — Accounting for Opponent Counter-FL & Stack Caps)
+Unlike one-sided "own FL chain only" figures (which ignore the opponent entering Fantasyland back from flat play), OFC Optimizer v3.0 solves the true 1-on-1 equilibrium net value of entering Fantasyland (same-card Re-Fantasy: Top Trips or Bottom Quads+ only):
 
-### 52-Card (No Jokers, ∞ Stack)
-- QQ (14 cards): 14.0pt (-40%, 11.5% repeat rate)
-- KK (15 cards): 21.1pt (-44%, 19.9% repeat rate)
-- AA (16 cards): 33.0pt (-49%, 35.0% repeat rate)
-- Trips (17 cards): 58.5pt (-54%, 55.6% repeat rate)
+### 54-Card (2 Jokers) by Effective Stack
+- QQ (14 cards): ∞ 3.3pt (±0.4) | 200pt 3.6pt | 100pt 4.5pt | 50pt 6.0pt (+83% — shallow caps shield against opponent counter-FL)
+- KK (15 cards): ∞ 14.0pt (±0.6) | 200pt 14.1pt | 100pt 14.3pt | 50pt 13.5pt (-3%)
+- AA (16 cards): ∞ 35.2pt (±0.8) | 200pt 34.5pt | 100pt 30.3pt | 50pt 23.2pt (-34%)
+- Trips (17 cards): ∞ 80.9pt (±2.5) | 200pt 69.3pt | 100pt 51.1pt | 50pt 33.1pt (-59%)
+
+### 52-Card (No Jokers) by Effective Stack
+- QQ (14 cards): ∞ 8.2pt (±0.2) | 200pt 8.2pt | 100pt 8.4pt | 50pt 8.5pt (higher than 54c QQ because opponents rarely counter-FL without Jokers)
+- KK (15 cards): ∞ 14.6pt (±0.3) | 200pt 14.7pt | 100pt 14.7pt | 50pt 14.3pt
+- AA (16 cards): ∞ 25.2pt (±0.4) | 200pt 25.2pt | 100pt 24.8pt | 50pt 21.8pt (-13%)
+- Trips (17 cards): ∞ 45.9pt (±1.0) | 200pt 45.4pt | 100pt 40.9pt | 50pt 30.6pt (-33%)
 
 ## Pricing (iOS Reference Tiers)
 - **Free ($0 / ¥0)**: 1 Flat-Play solve/day (no ad gate), 1 AI Full-Hand Review/day, Free Daily Spot, 3 Spot Drills/day, 3 Fantasy solves/day, unlimited Beginner–Standard CPU battles, live browser Web App.
 - **Standard ($6.99/mo · ¥980/mo, Weekly, Lifetime)**: Unlimited Fantasy Solver & Training, unlimited Battle FL optimal, ad-free.
-- **Pro ($39.99/mo · ¥5,980/mo, Weekly, Annual, Lifetime $599.99 / ¥88,000)**: Unlimited Flat-Play Solver (S0–S4, 54c/52c, 50pt–∞), unlimited AI Full-Hand Review, Pro AI CPU opponent, unlimited Pro Spot Drills, plus all Standard features.
+- **Pro ($39.99/mo · ¥5,980/mo, Weekly, Annual $389.99 / ¥58,000, Lifetime $599.99 / ¥88,000)**: Unlimited Flat-Play Solver (S0–S4, 54c/52c, 50pt–∞), unlimited AI Full-Hand Review, Pro AI CPU opponent, unlimited Pro Spot Drills, plus all Standard features.

@@ -39,16 +39,49 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "OFC Optimizer",
+        "softwareVersion": "3.0",
         "applicationCategory": "GameApplication",
         "operatingSystem": "iOS, Web",
         "url": "https://ofcoptimizer.com/",
         "downloadUrl": "https://apps.apple.com/app/id6757732173",
-        "description": "100% offline Open Face Chinese (OFC) Pineapple Poker solver, Street 0–4 flat-play analysis, AI full-hand review, effective stack Fantasyland value benchmarks, and live browser Web App.",
+        "description": "100%オフライン動作の OFC Pineapple（オープンフェイスチャイニーズポーカー / チャイポ）AI ソルバー＆トレーニング。54枚（ジョーカー2枚）・52枚（ジョーカーなし）両対応、実効スタック別1対1 FL 期待値、AI 1局レビュー、PC・Android 向け無料 Web 版を提供。",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "JPY"
         }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "PC や Android でも OFC Optimizer を使えますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい。登録不要・無料でそのまま操作できる Web 版アプリ（https://app.ofcoptimizer.com/）を公開しています。PC や Android スマホのブラウザから CPU 対戦・平場ソルバー・AI 1局レビュー・ファンタジー解析を試せます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "52 枚（ジョーカーなし）の OFC パイナップルにも対応していますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい。54 枚（ジョーカー 2 枚）と 52 枚（ジョーカーなし）の両方に完全対応しており、専用モデルと1対1実戦 FL 価値テーブルを 1 タップで切り替えられます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "オフライン環境でもソルバーは動きますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい。iOS アプリは C++20 エンジンを端末内に内蔵しているため 100% オフラインで動作し、機内や海外のポーカールームでも遅延ゼロで解析できます。"
+            }
+          }
+        ]
       }
     </script>
   </head>
@@ -184,33 +217,33 @@
               <img
                 class="chart-img"
                 data-chart="chart-stack-fl"
-                src="assets/chart-stack-fl-ja.webp?v=20261125-5"
-                alt="Effective stack vs FL value chart"
+                src="assets/chart-stack-fl-ja.webp?v=20261126-1"
+                alt="54枚 OFC パイナップル 実効スタック別1対1 FL 期待値グラフ"
                 width="1400"
                 height="788"
                 loading="lazy"
               />
               <figcaption class="chart-caption" data-i18n="chart1_cap">
-                54枚（JK2枚）実効スタック別 FL 価値：Trips（17枚）は ∞ 126.4pt → 50pt 42.0pt（-67%）。一方 QQ（14枚）は 100pt でも 22.8pt とほぼ不変。
+                54枚（JK2枚）1対1実戦 FL 価値：Trips（17枚）は ∞ 80.9pt → 50pt 33.1pt（-59%）。一方、相手の反撃FLが減るため QQ（14枚）は 3.3pt → 6.0pt へ上昇。
               </figcaption>
             </figure>
             <figure class="chart-card" style="margin:0;">
               <img
                 class="chart-img"
                 data-chart="chart-54-vs-52"
-                src="assets/chart-54-vs-52-ja.webp?v=20261125-5"
-                alt="54-card vs 52-card FL value chart"
+                src="assets/chart-54-vs-52-ja.webp?v=20261126-1"
+                alt="54枚 vs 52枚（ジョーカーなし）1対1 FL 期待値比較グラフ"
                 width="1400"
                 height="788"
                 loading="lazy"
               />
               <figcaption class="chart-caption" data-i18n="chart2_cap">
-                54枚 vs 52枚（JKなし）：ジョーカー 2 枚が抜けると継続率が急落し、QQ 14.0pt（-40%）／Trips 58.5pt（-54%）まで半減。
+                54枚 vs 52枚（JKなし）：ジョーカーが抜けると Trips は 80.9pt → 45.9pt（-43%）へ急落。一方、相手の反撃FLも減るため QQ は 52枚（8.2pt）の方が高くなります。
               </figcaption>
             </figure>
           </div>
           <div class="methodology-box" data-i18n="methodology_note">
-            計測条件（再現性注記）：厳密 FL ソルバー（各ティア 1,200 局解析）＋ 100,000 回連鎖シミュレーション（同枚数リファンタジー採用）。自分の FL 連鎖のみを積算した基準値であり、相手の反撃 FL まで差し引くモデルでは値はこれより大きく低下します。誤差目安（∞）：QQ ±0.7 / KK ±1.2 / AA ±2.5 / Trips ±6.8 pt。
+            計測条件（v3.0 1対1実戦モデル）：C++20 厳密 FL ソルバー＋1対1対局シミュレーション（同枚数リファンタジー：トップ Trips / ボトム Quads+ のみ継続）。自分の FL 中に相手が平場から FL に入り返す「反撃 FL」と実効スタック上限まで正確に差し引いた実戦純期待値です。誤差目安（∞）：54枚 QQ ±0.4 / KK ±0.6 / AA ±0.8 / Trips ±2.5 pt。
           </div>
           <div class="guide-callout">
             <div class="guide-callout-text">
@@ -282,7 +315,7 @@
             </a>
             <a class="flip-card gold" href="joker-vs-52card/" style="text-decoration:none;display:block;">
               <h3>🃏 ジョーカー 54 枚 vs 52 枚比較ガイド →</h3>
-              <p>自動降格・重複ルール細則と、52 枚卓で FL 期待値が最大 -54% 低下する際の戦略修正 4 点。</p>
+              <p>自動降格・重複ルール細則と、52 枚卓で Trips FL が -43% 低下＆ QQ が逆転する理由と戦略修正 4 点。</p>
             </a>
           </div>
         </div>
@@ -364,6 +397,6 @@
       <img id="lightbox-img" alt="" />
     </div>
 
-    <script src="app.js?v=20261125-5"></script>
+    <script src="app.js?v=20261126-1"></script>
   </body>
 </html>
