@@ -20,13 +20,15 @@
 - Fantasyland EV Benchmark Guide (Japanese): https://ofcoptimizer.com/fantasyland-ev-guide/
 - Fantasyland 14–17 Card Strategy Guide (English): https://ofcoptimizer.com/en/fantasyland-strategy/
 - Fantasyland 14–17 Card Strategy Guide (Japanese): https://ofcoptimizer.com/fantasyland-strategy/
+- Best OFC Pineapple Solvers & Calculators Comparison (English): https://ofcoptimizer.com/en/ofc-solver-comparison/
+- Best OFC Pineapple Solvers & Calculators Comparison (Japanese): https://ofcoptimizer.com/ofc-solver-comparison/
 - Official X (Twitter): https://x.com/ofcoptimizer
 - iOS App Store: https://apps.apple.com/app/id6757732173
 - Privacy Policy: https://ofcoptimizer.com/ofc-fantasy-optimizer-legal/privacy-policy.html
 
 ## Core Capabilities (v3.0)
 - **Full Street 0–4 Flat-Play Solver**: Evaluates candidate placements by true 1-on-1 Net EV (accounting for opponent counter-Fantasyland), Fantasyland tier probabilities (QQ / KK / AA / Trips), and Foul %.
-- **100% Offline iOS Engine**: Native C++20 neural nets + exact branch-and-bound FL & endgame enumeration with zero server latency; works on flights and in live poker rooms. Browser Web App runs quantized neural-net weights locally in a WebWorker.
+- **100% Offline C++20 Engine (iOS & Web WASM SIMD128)**: Native C++20 neural nets + exact branch-and-bound FL & endgame enumeration on iOS, and the same C++20 engine compiled to WebAssembly (WASM SIMD128) with PWA offline caching in the browser (solving 14–17 card Fantasyland hands in ~5–7 ms and Street 0 in ~2 s locally with zero server latency).
 - **Deck Rules**: Supports both **54-card (2 Jokers)** with legal Joker downgrade rules and **52-card (No Jokers)**.
 - **Effective Stack Presets**: 1-tap switching across **50pt, 100pt, 200pt, and ∞ (infinite)** effective stacks with dedicated 1-on-1 Fantasyland EV tables.
 - **AI Full-Hand Review**: Grades every street (S0–S4) after a battle with Accuracy %, total EV loss, blunder highlights, and instant spot replay.
