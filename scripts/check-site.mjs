@@ -50,6 +50,14 @@ const FORBIDDEN_PATTERNS = [
   { label: 'local dev IP (127.0.0.1)', re: /\b127\.0\.0\.1\b/g },
   { label: 'legacy repo slug (ofc-fantasy-optimizer)', re: /ofc-fantasy-optimizer(?!-legal)/gi },
   { label: 'broken Japanese street typo (街/町)', re: /[街町]/g },
+  { label: 'stale pre-v3.0 FL figure (126.4 / 64.5 / 38.0 / 42.0 / 58.5)', re: /\b(?:126\.4|64\.5|38\.0|42\.0|58\.5)\b/g },
+  { label: 'stale pre-v3.0 QQ=23.2pt figure', re: /QQ[^.\n]{0,20}23\.2/gi },
+  { label: 'stale pre-v3.0 percentage (-67% / -54%)', re: /-(?:67|54)%/g },
+  { label: 'stale v2.x 100k chain sim claim', re: /(?:10\s*万|\b100k\b|100,000)/gi },
+  { label: 'stale build 20 reference', re: /\bbuild\s*20\b/gi },
+  { label: 'deprecated X handle (@ofcsolver)', re: /@ofcsolver\b/gi },
+  { label: 'disallowed third-party quiz hand (KK653)', re: /KK653|Ks\s*Kd\s*6d/gi },
+  { label: 'stale Street-2 #1 flip claim', re: /Street-2 spot that flips #1|ストリート\s*2\s*逆転例/gi },
 ];
 
 const ADVISORY_PATTERNS = [
