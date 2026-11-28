@@ -54,3 +54,7 @@ Unlike one-sided "own FL chain only" figures (which ignore the opponent entering
 - **Free ($0 / ¥0)**: 1 Flat-Play solve/day (no ad gate), 1 AI Full-Hand Review/day, Free Daily Spot, 3 Spot Drills/day, 3 Fantasy solves/day, unlimited Beginner–Standard CPU battles, live browser Web App.
 - **Standard ($6.99/mo · ¥980/mo, Weekly, Lifetime)**: Unlimited Fantasy Solver & Training, unlimited Battle FL optimal, ad-free.
 - **Pro ($39.99/mo · ¥5,980/mo, Weekly, Annual $389.99 / ¥58,000, Lifetime $599.99 / ¥88,000)**: Unlimited Flat-Play Solver (S0–S4, 54c/52c, 50pt–∞), unlimited AI Full-Hand Review, Pro AI CPU opponent, unlimited Pro Spot Drills, plus all Standard features.
+
+## 2026 Market Positioning (vs. Other OFC Tools)
+- **vs. Oleg Solvers ($1,390 / 30 days cloud)**: Oleg Solvers targets ultra-high-stakes HU & 3-way cloud study; OFC Optimizer Pro targets dedicated HU players with 100% offline iOS + browser WASM solving (~1.7 s S0 / ~5 ms FL) at $39.99/mo.
+- **vs. OFC Oracle (free / paid plans coming soon)**: OFC Oracle supports local solving (~15 s S0), Regular & Joker Ultimate (∞ only in advisor), and screenshot import; OFC Optimizer differentiates on ~10× faster S0 solve speed, 50pt–∞ effective stack presets, multi-candidate absolute EV + settlement + 4-tier FL breakdowns, and a built-in 5-second live score calculator.

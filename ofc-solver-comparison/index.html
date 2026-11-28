@@ -41,7 +41,7 @@
         "headline": "OFC パイナップル（チャイポ）ソルバー＆計算アプリ徹底比較（2026年版）",
         "description": "OFC パイナップル（オープンフェイスチャイニーズポーカー）のソルバー・FL 計算機・トレーニングアプリを用途別に公平比較したガイド。",
         "datePublished": "2026-11-27",
-        "dateModified": "2026-11-27",
+        "dateModified": "2026-11-28",
         "inLanguage": "ja",
         "author": { "@type": "Organization", "name": "OFC Optimizer" },
         "publisher": { "@type": "Organization", "name": "OFC Optimizer" },
@@ -76,6 +76,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "従来の計算の多くはスタック無限・54 枚前提ですが、1 対 1 の実戦均衡では 50pt 卓で 17 枚 Trips FL が 80.9pt から 33.1pt（-59%）へ、52 枚卓でも 45.9pt（-43%）へ大きく下がります。卓条件を変えると初手 66 局面のうち 71.2% で最善手が入れ替わります。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "OFC パイナップル用ソルバーの料金相場はどのくらいですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "無料の FL 計算機・トレーナー（OFC Oracle や fantasyland.poker 等）から、個人ガチ勢向けの OFC Optimizer Pro（月額 ¥5,980 / $39.99、買い切りあり）、さらに 3-way にも対応するクラウド型の専業プロ向け Oleg Solvers（30 日 $1,390）まで幅広く分かれています。"
             }
           }
         ]
@@ -139,95 +147,104 @@
         </p>
 
         <div class="data-table-wrap">
-          <table class="data-table" style="min-width:680px;font-size:13px;">
+          <table class="data-table" style="min-width:780px;font-size:13px;">
             <thead>
               <tr>
                 <th>ツール / カテゴリ</th>
                 <th>対応環境</th>
-                <th>100% オフライン</th>
+                <th>オフライン / 速度</th>
                 <th>平場 S0〜S4 EV</th>
-                <th>13〜17枚 FL 厳密解</th>
                 <th>54/52枚・スタック別</th>
-                <th>AI 1局レビュー</th>
+                <th>主な強み / 特徴</th>
+                <th>料金目安</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>OFC Optimizer v3.0</strong></td>
                 <td>iOS + Web (WASM)</td>
-                <td class="hi">対応（iOS・PWA）</td>
-                <td class="hi">対応（S0〜S4）</td>
-                <td class="hi">対応（約 5ms）</td>
-                <td class="hi">両対応・50pt〜∞</td>
-                <td class="hi">対応（S0〜S4）</td>
+                <td class="hi">100% オフライン<br>（S0 約1.7秒 / FL 5ms）</td>
+                <td class="hi">絶対EV＋平場点＋4種FL内訳・複数候補比較</td>
+                <td class="hi">両対応・<strong>50pt〜∞</strong></td>
+                <td class="hi">AI 1局レビュー・5秒点数計算・プロドリル</td>
+                <td>無料 / Pro ¥5,980/月（$39.99）・買切あり</td>
+              </tr>
+              <tr>
+                <td><strong>OFC Oracle</strong></td>
+                <td>iOS / Android / Web</td>
+                <td>ローカル計算<br>（S0 約15秒）</td>
+                <td>相対EV差（#1=0.000）＋FL/ファウル率</td>
+                <td>52枚・54枚（解析は∞固定）</td>
+                <td>スクショ読込・IP/OOP切替・Bot振り返り</td>
+                <td>現在無料（有料プラン準備中）</td>
+              </tr>
+              <tr>
+                <td><strong>Oleg Solvers</strong></td>
+                <td>Web クラウド</td>
+                <td>オンライン専用</td>
+                <td>専業向けクラウド解析</td>
+                <td>Classic / Progressive / Ultimate・<strong>HU &amp; 3-way</strong></td>
+                <td>ハイステークス専業・3人卓対応</td>
+                <td>$1,390 / 30日</td>
               </tr>
               <tr>
                 <td><strong>fantasyland.poker</strong></td>
-                <td>Web ブラウザ</td>
-                <td>非対応（要通信）</td>
-                <td>Bot / トレーナー</td>
-                <td>Bot 解析</td>
+                <td>Web / iOS</td>
+                <td>オンライン / Bot</td>
+                <td>Bot 思考表示トレーナー</td>
                 <td>標準ルール</td>
-                <td>トレーナー形式</td>
+                <td>AI 対戦＋Bot の判断観察</td>
+                <td>無料</td>
               </tr>
               <tr>
-                <td><strong>PrimeDope OFC Trainer</strong></td>
+                <td><strong>PrimeDope / ofcsolver.com</strong></td>
                 <td>Web ブラウザ</td>
-                <td>非対応（要通信）</td>
-                <td>パーセンタイル評価</td>
-                <td>—</td>
-                <td>基本ルール</td>
-                <td>スポット採点</td>
+                <td>オンライン</td>
+                <td>パーセンタイル / FL 専用</td>
+                <td>基本ルール / 13〜17枚FL</td>
+                <td>URL 共有・簡易チェック</td>
+                <td>無料</td>
               </tr>
               <tr>
                 <td><strong>OFC Poker AI</strong></td>
                 <td>Android</td>
                 <td>モバイルアプリ</td>
-                <td>AI 対戦</td>
-                <td>対応（13〜17枚）</td>
-                <td>ジョーカー対応</td>
-                <td>クイズ採点</td>
-              </tr>
-              <tr>
-                <td><strong>ABC Open Face 等</strong></td>
-                <td>iOS</td>
-                <td>CPU 対戦</td>
-                <td>非対応（対局専用）</td>
-                <td>非対応</td>
-                <td>各種バリアント</td>
-                <td>非対応</td>
+                <td>AI 対戦・クイズ</td>
+                <td>ジョーカー・13〜17枚FL</td>
+                <td>タイムアタック練習</td>
+                <td>無料＋PRO課金</td>
               </tr>
               <tr>
                 <td><strong>点数計算アプリ各種</strong></td>
                 <td>iOS</td>
-                <td>対応</td>
+                <td>オフライン</td>
                 <td>非対応（集計専用）</td>
-                <td>非対応</td>
                 <td>点数表ベース</td>
-                <td>非対応</td>
+                <td>リアル卓スコア管理</td>
+                <td>無料〜有料</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <h2>2. 用途別のおすすめの選び方</h2>
+        <h2>2. 用途別・予算別のおすすめの選び方</h2>
         <div class="flip-grid">
           <div class="flip-card gold">
-            <h3>iPhone・PC・Android で本格研究したい → OFC Optimizer v3.0</h3>
+            <h3>iPhone・Web で高速＆スタック別に研究したい → OFC Optimizer v3.0</h3>
             <p>
-              <strong>初手 S0〜最終 S4 の平場 EV 解析</strong>、<strong>13〜17 枚の FL 厳密解（約 5 ms）</strong>、対局後の <strong>AI 1 局レビュー</strong>、さらに <strong>50pt〜∞ の実効スタック別＆52 枚（ジョーカーなし）</strong> まで 100% オフラインで完結させたい方に最適です。
+              <strong>100% オフライン・S0 約 1.7 秒（FL 約 5 ms）の爆速解析</strong>、複数候補の絶対 EV・平場清算点比較、さらに <strong>50pt〜∞ の実効スタック別＆52 枚対応</strong>、AI 1 局レビュー、リアル卓 5 秒点数計算まで 1 本で完結させたい方に最適です。
             </p>
           </div>
           <div class="flip-card">
-            <h3>PC ブラウザで Bot の挙動を見たい → fantasyland.poker / PrimeDope</h3>
+            <h3>無料でスクショ読込や Bot 対戦を試したい → OFC Oracle / fantasyland.poker</h3>
             <p>
-              アプリを入れず PC ブラウザ上で Bot の打ち方や統計的な手筋の傾向だけ確認したい場合、<strong>fantasyland.poker</strong> や <strong>PrimeDope Trainer</strong> が参考になります。
+              <strong>OFC Oracle</strong> はスクショ入力や IP/OOP 切替・トレーニング設定が充実しており（現在無料・有料プラン準備中）、<strong>fantasyland.poker</strong> は Bot 対戦の思考観察が手軽にできます。解析速度や実効スタック別（50pt〜∞）の比較が必要な場面では OFC Optimizer と併用するのも有効です。
             </p>
           </div>
           <div class="flip-card">
-            <h3>人間同士で対局したい → ABC Open Face / クラブアプリ</h3>
+            <h3>3 人卓（3-way）のハイステークス専業研究 → Oleg Solvers</h3>
             <p>
-              ソルバーは対局後の研究・復習用です。対人戦は ABC Open Face や PPPoker / PokerBROS などの対局アプリで遊び、迷った局面だけオフラインソルバーで振り返るのが王道です。
+              3 人卓（3-way）を含むクラウド型プロ仕様の解析が必要で、高額レートで投資回収できる専業プレイヤー向けには <strong>Oleg Solvers（30 日 $1,390）</strong> という選択肢があります。HU 中心の個人研究であれば、月額 $39.99（¥5,980）で完全オフライン動作する OFC Optimizer Pro が圧倒的にコスパに優れます。
             </p>
           </div>
           <div class="flip-card gold">
